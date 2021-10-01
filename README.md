@@ -1,4 +1,5 @@
-# IT_Nihongo2
+# Team Shizuka
+This is the very first version of our IT-nihongo project
 ### `npm install`
 Project setup and install all the dependencies
 ### `npm start`
