@@ -1,130 +1,180 @@
 .background {
-    background: linear-gradient(117.06deg, rgba(179, 78, 227, 0.7) 4.96%, rgba(179, 78, 227, 0) 95.65%), linear-gradient(145.92deg, rgba(28, 4, 180, 0) 13.69%, #4341BC 58.48%);
-    position: relative;
-    width: 1350px;
-    height: 660px;
+  background: linear-gradient(
+      117.06deg,
+      rgba(179, 78, 227, 0.7) 4.96%,
+      rgba(179, 78, 227, 0) 95.65%
+    ),
+    linear-gradient(145.92deg, rgba(28, 4, 180, 0) 13.69%, #4341bc 58.48%);
+  position: relative;
+  width: 1350px;
+  height: 660px;
 }
 
 .frame {
-    width: 1000px;
-    height: 500px;
-    left: 180px;
-    top: 70px;
-    background: linear-gradient(76.99deg, rgba(204, 0, 255, 0.2) 51.14%, rgba(255, 255, 255, 0) 99.53%), linear-gradient(112.79deg, rgba(0, 8, 205, 0.7) 22.54%, rgba(22, 24, 89, 0) 89.51%), linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, rgba(72, 32, 91, 0.138068) 28.65%, rgba(64, 31, 80, 0.721717) 59.9%, #43105B 80.21%);
-    border-radius: 40px;
+  width: 1000px;
+  height: 500px;
+  left: 180px;
+  top: 70px;
+  background: linear-gradient(
+      76.99deg,
+      rgba(204, 0, 255, 0.2) 51.14%,
+      rgba(255, 255, 255, 0) 99.53%
+    ),
+    linear-gradient(
+      112.79deg,
+      rgba(0, 8, 205, 0.7) 22.54%,
+      rgba(22, 24, 89, 0) 89.51%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 0%,
+      rgba(72, 32, 91, 0.138068) 28.65%,
+      rgba(64, 31, 80, 0.721717) 59.9%,
+      #43105b 80.21%
+    );
+  border-radius: 40px;
 }
 
 .img-signup {
-    width: 400px;
-    height: 400px;
-    left: 230px;
-    top: 90px;
+  width: 400px;
+  height: 400px;
+  left: 230px;
+  top: 90px;
 }
 
 .easy-to-take {
-    height: 41px;
-    left: 394px;
-    top: 50px;
-    width: 500px;
-    font-family: 'Tahoma';
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 54px;
+  height: 41px;
+  left: 394px;
+  top: 50px;
+  width: 500px;
+  font-family: "Tahoma";
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 54px;
+}
+
+.create-account {
+  height: 41px;
+  left: 394px;
+  top: 30px;
+  width: 500px;
+  font-family: "Arial";
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 54px;
 }
 
 .text-login-page {
-    font-family: Noto Serif Telugu;
+  font-family: Noto Serif Telugu;
+}
+
+.Log-in-text {
+  color: #e18cff !important;
+  font-family: "Arial";
+  text-decoration: none;
+}
+
+.already-have-account {
+  width: 500px;
+  height: 32px;
+  left: 370px;
+  top: 75px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
 }
 
 .create-new-account {
-    width: 500px;
-    height: 32px;
-    left: 370px;
-    top: 95px;
-    font-family: Noto Serif Telugu;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 32px;
+  width: 500px;
+  height: 32px;
+  left: 370px;
+  top: 95px;
+  font-family: Noto Serif Telugu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
 }
 
 .sign-up-text {
-    color: #E18CFF !important;
-    text-decoration: none;
+  color: #e18cff !important;
+  text-decoration: none;
 }
 
 .input {
-    width: 400px;
-    height: 45px;
-    left: 500px;
-    top: 150px;
-    font-family: 'Segoe UI';
-    font-size: 23px;
-    border: 0;
-    outline: 0;
-    color: #fff;
-    background: transparent;
-    border-bottom: 1px solid #FFFFFF
+  width: 400px;
+  height: 45px;
+  left: 500px;
+  top: 150px;
+  font-family: "Segoe UI";
+  font-size: 23px;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  background: transparent;
+  border-bottom: 1px solid #ffffff;
 }
 
 ::placeholder {
-    color: #c5b7b7;
-    opacity: 1;
+  color: #c5b7b7;
+  opacity: 1;
 }
 
 .position-abs {
-    position: absolute;
+  position: absolute;
 }
 
 .checkbox-logged-in {
-    width: 500px;
-    height: 32px;
-    left: 500px;
-    top: 320px;
+  width: 500px;
+  height: 32px;
+  left: 500px;
+  top: 320px;
 }
 
 .button-enter {
-    width: 150px;
-    height: 50px;
-    left: 750px;
-    top: 350px;
-    background: #6C28AF;
-    border: 1px solid rgba(137, 128, 128, 0.63);
-    box-sizing: border-box;
-    border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  left: 750px;
+  top: 350px;
+  background: #6c28af;
+  border: 1px solid rgba(137, 128, 128, 0.63);
+  box-sizing: border-box;
+  border-radius: 20px;
 }
 
 .text-enter {
-    font-family: 'Segoe UI';
-    font-style: normal;
-    font-size: 20px;
-    letter-spacing: 0.15em;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-size: 20px;
+  letter-spacing: 0.15em;
 }
 
 .vector-enter {
-    width: 43.5px;
-    height: 30px;
-    left: 1231px;
-    top: 100px;
+  width: 43.5px;
+  height: 30px;
+  left: 1231px;
+  top: 100px;
 }
 
 .forgot-pass-text {
-    width: auto;
-    height: 50px;
-    left: 620px;
-    top: 410px;
-    color: #E18CFF !important;
+  width: auto;
+  height: 50px;
+  left: 620px;
+  top: 410px;
+  color: #e18cff !important;
 }
 
 .bottom-note {
-    width: 300px;
-    height: 70px;
-    left: 560px;
-    top: 440px;
-    font-family: 'Segoe UI';
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 10px;
-    align-items: center;
-    color: #a493aa !important;
+  width: 300px;
+  height: 70px;
+  left: 560px;
+  top: 440px;
+  font-family: "Segoe UI";
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 10px;
+  align-items: center;
+  color: #a493aa !important;
 }
