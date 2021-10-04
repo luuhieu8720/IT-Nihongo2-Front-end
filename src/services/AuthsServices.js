@@ -1,11 +1,14 @@
 import axios from "axios";
 
 const auths_URL = "api/auths";
+const reset_URL = "https://auth.habit-dev.novahub.vn/api/password/forget";
 
 class AuthsServices {
   login(login) {
-    console.log(login);
     return axios.post(auths_URL, login);
+  }
+  reset(email) {
+    return axios.post(reset_URL, email);
   }
 }
 
