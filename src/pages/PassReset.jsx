@@ -4,14 +4,11 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useState } from 'react';
 import AuthsServices from '../services/AuthsServices';
-import { useHistory } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function PassReset() {
     const [email, setEmail] = useState();
-
-    const history = useHistory();
 
     const handleChange = (evt) => {
         const value = evt.target.value;
