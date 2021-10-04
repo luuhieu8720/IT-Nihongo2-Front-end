@@ -76,7 +76,7 @@ function Signin() {
                         </Button>
                     </div>
                     <div className="row-cols-6">
-                        <Link to="/signin" className="forgot-pass-text position-abs text-center">Forgot your password?</Link>
+                        <Link to="/reset-password" className="forgot-pass-text position-abs text-center">Forgot your password?</Link>
                         <h5 className="bottom-note position-abs fst-normal text-left">By clicking Enter, I confirm that I have read and agree to the Terms of Service and Privacy Policy.</h5>
                     </div>
                 </div>

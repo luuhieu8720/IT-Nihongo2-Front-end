@@ -8,7 +8,7 @@ function App() {
         <BrowserRouter>
             <Switch>
 		        <Route exact path="/signin" component={ Signin }></Route>
-            	<Route exact path="/passreset" component={ PassReset }></Route>
+            	<Route exact path="/reset-password" component={ PassReset }></Route>
             </Switch>
         </BrowserRouter>
     );
