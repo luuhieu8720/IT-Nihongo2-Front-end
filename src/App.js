@@ -7,7 +7,7 @@ function App() {
 	return (
         <BrowserRouter>
             <Switch>
-		<Route exact path="/signin" component={ Signin }></Route>
+		        <Route exact path="/signin" component={ Signin }></Route>
             	<Route exact path="/passreset" component={ PassReset }></Route>
             </Switch>
         </BrowserRouter>
