@@ -1,10 +1,8 @@
 import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
-//import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 
-function Signup() {
   return (
     <div className="background">
       <div className="frame position-abs">
