@@ -1,19 +1,19 @@
 import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
-import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
+import { useState } from "react";
 import AuthsServices from "../services/AuthsServices";
-import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Signin() {
+function Signup() {
   const [state, setState] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await AuthsServices.login(state)
+
+    await AuthsServices.signup(state)
       .then((response) => {
         if (response.data !== "") {
           toast.success("Successfully");
@@ -21,7 +21,7 @@ function Signin() {
         }
       })
       .catch(() => {
-        toast.error("Wrong username or password");
+        toast.error("....................");
       });
   };
 
@@ -37,18 +37,18 @@ function Signin() {
       <ToastContainer />
       <div className="frame position-abs">
         <div className="col-6">
-          <Image src="Image/signin-1.png" alt="Image Text" />
+          <Image src="Image/signup-1.png" alt="Image Text" />
         </div>
         <div className="col-6">
           <div className="row-cols-6">
-            <label className="easy-to-take text-center fst-normal text-white position-abs">
-              EASY TO TAKE A JOB
+            <label className="create-account text-center fst-normal text-white position-abs">
+              CREATE YOUR ACCOUNT
             </label>
             <p>
-              <span className="create-new-account text-center fst-normal text-white position-abs">
-                Create new account.
-                <Link className="ms-2 sign-up-text" to="/">
-                  Sign up
+              <span className="already-have-account text-center fst-normal text-white position-abs">
+                Already have an account?
+                <Link className="ms-2 Log-in-text" to="/signin">
+                  Log in
                 </Link>
               </span>
             </p>
@@ -56,27 +56,31 @@ function Signin() {
           <div className="row-cols-6">
             <InputText
               className="input text-white position-abs"
+              placeholder="Email"
+              name="email"
+              type="email"
+              style={{ top: "120px" }}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="row-cols-6">
+            <InputText
+              className="input text-white position-abs"
               placeholder="Username"
               name="username"
-              style={{ top: "150px" }}
+              style={{ top: "200px" }}
               onChange={handleChange}
             />
           </div>
           <div className="row-cols-6">
-            <input
-              type="password"
+            <InputText
               className="input text-white position-abs"
               placeholder="Password"
+              type="password"
               name="password"
-              style={{ top: "250px" }}
+              style={{ top: "280px" }}
               onChange={handleChange}
             />
-          </div>
-          <div className="row-cols-6">
-            <span className="checkbox-logged-in fst-normal text-white position-abs">
-              <Checkbox className="me-2" style={{ display: "inline-block" }} />
-              <label className="text-login-page">Keep me login </label>
-            </span>
           </div>
           <div className="row-cols-6">
             <Button
@@ -84,16 +88,10 @@ function Signin() {
               onClick={handleSubmit}
             >
               ENTER
-              <i className="fa fa-long-arrow-right ms-2" aria-hidden="true"></i>
+              <i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i>
             </Button>
           </div>
           <div className="row-cols-6">
-            <Link
-              to="/reset-password"
-              className="forgot-pass-text position-abs text-center"
-            >
-              Forgot your password?
-            </Link>
             <h5 className="bottom-note position-abs fst-normal text-left">
               By clicking Enter, I confirm that I have read and agree to the
               Terms of Service and Privacy Policy.
@@ -104,4 +102,4 @@ function Signin() {
     </div>
   );
 }
-export default Signin;
+export default Signup;
