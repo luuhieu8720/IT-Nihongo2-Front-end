@@ -15,7 +15,7 @@ function Signin() {
         e.preventDefault();
 
         await AuthsServices.login(state).then(response => {
-                if (response.data != "") {
+                if (response.data !== "") {
                     toast.success("Successfully");
                     localStorage.setItem('token', response.data)
                 }
