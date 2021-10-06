@@ -48,6 +48,7 @@
         ]
     },
     "devDependencies": {
+        "css-loader": "^6.3.0",
         "http-proxy-middleware": "^2.0.1"
     }
 }

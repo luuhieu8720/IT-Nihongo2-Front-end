@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useState } from "react";
-import AuthsServices from "../services/AuthsServices";
+import AuthsServices from "../services/AuthsServices.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./CSS/signin.css";
 
 function Signup() {
   const [state, setState] = useState();

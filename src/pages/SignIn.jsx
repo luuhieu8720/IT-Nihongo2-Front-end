@@ -7,6 +7,7 @@ import AuthsServices from "../services/AuthsServices";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./CSS/signin.css";
 
 function Signin() {
   const [state, setState] = useState();
@@ -48,7 +49,7 @@ function Signin() {
             <p>
               <span className="create-new-account text-center fst-normal text-white position-abs">
                 Create new account.
-                <Link className="ms-2 sign-up-text" to="/">
+                <Link className="ms-2 sign-up-text" to="/signup">
                   Sign up
                 </Link>
               </span>
