@@ -1,10 +1,10 @@
 .icon-bar {
 	position:absolute;
-	margin-left: 3%;
+	margin-left: 2%;
 	margin-bottom: 2%;
-	margin-top: 2%;
+	margin-top: 1%;
 	width: 5%;
-	height: 90%;
+	height: 96%;
 	background: linear-gradient(180deg, #70078A 0%, rgba(204, 0, 255, 0) 100%), linear-gradient(180deg, rgba(67, 65, 188, 0) 0%, #4341BC 54.69%);
 	border-radius: 20px;
 }
@@ -38,8 +38,8 @@
 }
 .text-side-bar {
 	margin-left: 20%;
-	top: 5%;
-	margin-bottom: 55px;
+	margin-top: 10%;
+	margin-bottom: 80%;
 	font-family: Rasa;
 	font-style: normal;
 	font-weight: bold;
@@ -52,21 +52,21 @@
 	color: #FFFFFF;
 }
 .mt-sm-6 {
-	margin-top: 3.5rem !important;
+	margin-top: 70% !important;
 }
 .ms-6 {
-	margin-left: 20%;
-}
-.ms-7 {
 	margin-left: 25%;
 }
+.ms-7 {
+	margin-left: 55%;
+}
 .ms-8 {
-	margin-left: 30%;
+	margin-left: 15%;
 }
 .post-tutor {
 	position: absolute;
-	margin-left: 20%;
-	margin-top: 10%;
+	margin-left: 10%;
+	margin-top: 13%;
 }
 .text-easy {
 	font-family: Rasa;
@@ -85,8 +85,41 @@
 	color: #6C28AF
 }
 .mt-6 {
-	margin-top: 5.5%;
+	margin-top: 4%;
 }
 .mt-7 {
-	margin-top: 8%;
+	margin-top: 6%;
+}
+.image-homepage {
+	margin-left: 40%;
+}
+.card-tutor {
+	min-width: 80%;
+	margin-top: 1%;
+	margin-left: 15%;
+	min-height: 28%;
+	border-radius: 20px;
+}
+.text-time{
+	bottom: 5%;
+	color: rgb(118, 125, 126);
+}
+.student-top-component{
+	margin-top: 1%;
+}
+.col-sm-define {
+	flex: 0 0 auto;
+	width: 70%;
+}
+.text-contact {
+	padding-top: 10px;
+	font-family: 'Roboto';
+	font-size: small;
+	color: rgba(0, 0, 0, 0.5);
+}
+.icon-purple{
+	position: absolute;
+	color: #8543c7;
+	right: 2%;
+	bottom: 1%;
 }
