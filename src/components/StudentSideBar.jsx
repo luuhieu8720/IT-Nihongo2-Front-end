@@ -20,7 +20,7 @@ function StudentSideBar() {
                 </div>
             </div>
             <h4 className="text-center" style={{ font: 'Oxygen', marginTop: '10%' }}>Easy to find an experienced tutor for you!</h4>
-            <Image src="Image/test.jpg" style={{ marginLeft: '-5%' }} alt="image" rounded  ></Image>
+            <Image src="Image/teacher-expectation.jpg" style={{ marginLeft: '-5%' }} alt="image" rounded  ></Image>
             <div className="text-center text-contact">
                 <div style={{ marginBottom:'5px' }}>Email: eto.edu@gmail.com</div>
                 <div style={{ marginBottom:'5px' }}>Phone: +(84)123456789</div>

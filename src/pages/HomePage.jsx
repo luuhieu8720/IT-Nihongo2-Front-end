@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SideBar from "../components/Homepage/Sidebar";
+import SidebarHomePage from "../components/Homepage/SidebarHomePage";
 import { Card } from "react-bootstrap";
 import TopComponent from "../components/Homepage/TopComponent";
 import StudentSideBar from "../components/StudentSideBar";
@@ -8,7 +8,7 @@ function HomePage() {
     return (
         <div class="row">
             <div className="col-sm-auto">
-                <SideBar className="position-abs" />
+                <SidebarHomePage className="position-abs" />
             </div>
             <div className="col-sm-define ms-4">
                 <TopComponent />
