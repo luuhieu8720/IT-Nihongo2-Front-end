@@ -7,11 +7,8 @@ import AuthsServices from "../services/AuthsServices";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<<<<<<< HEAD
 import "./CSS/signin.css";
-=======
 import { useHistory } from "react-router-dom";
->>>>>>> b5d17bffaf38125f2d49e974ecbe39a24e719b1b
 
 function Signin() {
 	const [state, setState] = useState();
