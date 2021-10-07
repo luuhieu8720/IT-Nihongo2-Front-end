@@ -12,7 +12,8 @@ function App() {
                 <Route exact path="/signin" component={Signin}></Route>
                 <Route exact path="/reset-password" component={PassReset}></Route>
                 <Route exact path="/signup" component={Signup}></Route>
-                <Route exact path="/" component={HomePage}></Route>
+                <Route exact path="/" component={Signin}></Route>
+                <Route exact path="/homepage" component={HomePage}></Route>
             </Switch>
         </BrowserRouter>
     );
