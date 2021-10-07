@@ -51,7 +51,7 @@ function Signin() {
 						<p>
 							<span className="create-new-account text-center fst-normal text-white position-abs">
 								Create new account.
-								<Link className="ms-2 sign-up-text" to="/">
+								<Link className="ms-2 sign-up-text" to="/signup">
 									Sign up
 								</Link>
 							</span>
