@@ -78,15 +78,6 @@ function Signin() {
           </div>
           <div className="row-cols-6">
             <span className="checkbox-logged-in fst-normal text-white position-abs">
-              <Checkbox
-                className="me-2"
-                style={{
-                  display: "inline-block",
-                  position: "relative",
-                  marginLeft: "15%",
-                }}
-              />
-              <label className="text-login-page">Keep me login </label>
             </span>
           </div>
           <div className="row-cols-6">
