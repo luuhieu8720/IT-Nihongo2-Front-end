@@ -1,7 +1,9 @@
 .background {
-  background: linear-gradient(117.06deg,
+  background: linear-gradient(
+      117.06deg,
       rgba(179, 78, 227, 0.7) 4.96%,
-      rgba(179, 78, 227, 0) 95.65%),
+      rgba(179, 78, 227, 0) 95.65%
+    ),
     linear-gradient(145.92deg, rgba(28, 4, 180, 0) 13.69%, #4341bc 58.48%);
   position: absolute;
   width: 100%;
@@ -12,17 +14,23 @@
   left: 12%;
   top: 12%;
   right: 12%;
-  background: linear-gradient(76.99deg,
+  background: linear-gradient(
+      76.99deg,
       rgba(204, 0, 255, 0.2) 51.14%,
-      rgba(255, 255, 255, 0) 99.53%),
-    linear-gradient(112.79deg,
+      rgba(255, 255, 255, 0) 99.53%
+    ),
+    linear-gradient(
+      112.79deg,
       rgba(0, 8, 205, 0.7) 22.54%,
-      rgba(22, 24, 89, 0) 89.51%),
-    linear-gradient(180deg,
+      rgba(22, 24, 89, 0) 89.51%
+    ),
+    linear-gradient(
+      180deg,
       rgba(196, 196, 196, 0) 0%,
       rgba(72, 32, 91, 0.138068) 28.65%,
       rgba(64, 31, 80, 0.721717) 59.9%,
-      #43105b 80.21%);
+      #43105b 80.21%
+    );
   border-radius: 40px;
   bottom: 13%;
 }
@@ -58,7 +66,10 @@
 }
 
 .text-login-page {
-  font-family: 'Noto Serif Telugu';
+  font-family: "Noto Serif Telugu";
+  position: relative;
+  margin-top: 4%;
+  margin-left: 2%;
 }
 
 .Log-in-text {
@@ -83,7 +94,7 @@
   height: 32px;
   left: 36%;
   top: 20%;
-  font-family: 'Noto Serif Telugu';
+  font-family: "Noto Serif Telugu";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -95,7 +106,7 @@
   height: 32px;
   left: 40%;
   top: 18%;
-  font-family: 'Noto Serif Telugu';
+  font-family: "Noto Serif Telugu";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -219,7 +230,7 @@
   width: 150px;
   height: 50px;
   left: 75%;
-  top: 72%;
+  top: 67%;
   background: #6c28af;
   border: 1px solid rgba(137, 128, 128, 0.63);
   box-sizing: border-box;
@@ -249,7 +260,7 @@
 }
 
 .bottom-note {
-  position:absolute;
+  position: absolute;
   width: 300px;
   left: 55%;
   top: 88%;
@@ -261,10 +272,10 @@
   color: #a493aa !important;
 }
 .bottom-note-signup {
-  position:absolute;
+  position: absolute;
   width: 300px;
   left: 560px;
-  top: 85%;
+  top: 82%;
   font-family: "Segoe UI";
   font-weight: 500;
   font-size: 10px;
@@ -282,8 +293,8 @@
   font-size: 30px;
   line-height: 54px;
 }
-.signup-image{
+.signup-image {
   position: absolute;
-  left: -4%;
-  bottom: 10%;
+  left: -3%;
+  bottom: 14%;
 }

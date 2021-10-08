@@ -59,7 +59,7 @@ function Signup() {
               placeholder="Email"
               name="email"
               type="email"
-              style={{ top: "120px" }}
+              style={{ top: "25%" }}
               onChange={handleChange}
             />
           </div>
@@ -68,7 +68,7 @@ function Signup() {
               className="input text-white position-abs"
               placeholder="Username"
               name="username"
-              style={{ top: "200px" }}
+              style={{ top: "38%" }}
               onChange={handleChange}
             />
           </div>
@@ -78,13 +78,13 @@ function Signup() {
               placeholder="Password"
               type="password"
               name="password"
-              style={{ top: "280px" }}
+              style={{ top: "52%" }}
               onChange={handleChange}
             />
           </div>
           <div className="row-cols-6">
             <Button
-              className="button-enter-signup position-abs text-white text-enter"
+              className="position-abs button-enter-signup text-white text-enter"
               onClick={handleSubmit}
             >
               ENTER
