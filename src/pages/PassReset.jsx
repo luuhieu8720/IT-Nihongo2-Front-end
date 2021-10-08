@@ -35,7 +35,7 @@ function PassReset() {
       <ToastContainer />
       <div className="frame position-abs">
         <div className="col-6">
-          <Image src="Image/reset.png" alt="Image Text" />
+          <Image src="/Image/reset.png" alt="Image Text" />
         </div>
         <div className="col-6">
           <div className="row-cols-6">
