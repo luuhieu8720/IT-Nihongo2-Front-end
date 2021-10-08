@@ -7,7 +7,6 @@ import AuthsServices from "../services/AuthsServices";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./CSS/signin.css";
 import { useHistory } from "react-router-dom";
 
 function Signin() {
@@ -94,12 +93,12 @@ function Signin() {
 					</div>
 					<div className="row-cols-6">
 						<Link
-							to="/reset-password"
+							to="/password/reset"
 							className="forgot-pass-text position-abs text-center"
 						>
 							Forgot your password?
 						</Link>
-						<h5 className="bottom-note position-abs fst-normal text-left">
+						<h5 className="bottom-note fst-normal text-left">
 							By clicking Enter, I confirm that I have read and agree to the
 							Terms of Service and Privacy Policy.
 						</h5>

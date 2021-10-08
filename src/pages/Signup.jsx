@@ -6,7 +6,6 @@ import { useState } from "react";
 import AuthsServices from "../services/AuthsServices.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./CSS/signin.css";
 
 function Signup() {
   const [state, setState] = useState();
@@ -37,8 +36,8 @@ function Signup() {
     <div className="background">
       <ToastContainer />
       <div className="frame position-abs">
-        <div className="col-6">
-          <Image src="Image/signup-1.png" alt="Image Text" />
+        <div className="col-6 signup-image">
+          <Image className="" src="Image/signup-1.png" alt="Image Text" />
         </div>
         <div className="col-6">
           <div className="row-cols-6">
@@ -85,7 +84,7 @@ function Signup() {
           </div>
           <div className="row-cols-6">
             <Button
-              className="button-enter position-abs text-white text-enter"
+              className="button-enter-signup position-abs text-white text-enter"
               onClick={handleSubmit}
             >
               ENTER
@@ -93,7 +92,7 @@ function Signup() {
             </Button>
           </div>
           <div className="row-cols-6">
-            <h5 className="bottom-note position-abs fst-normal text-left">
+            <h5 className="bottom-note-signup position-abs fst-normal text-left">
               By clicking Enter, I confirm that I have read and agree to the
               Terms of Service and Privacy Policy.
             </h5>

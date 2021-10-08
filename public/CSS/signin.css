@@ -1,51 +1,44 @@
 .background {
-  background: linear-gradient(
-      117.06deg,
+  background: linear-gradient(117.06deg,
       rgba(179, 78, 227, 0.7) 4.96%,
-      rgba(179, 78, 227, 0) 95.65%
-    ),
+      rgba(179, 78, 227, 0) 95.65%),
     linear-gradient(145.92deg, rgba(28, 4, 180, 0) 13.69%, #4341bc 58.48%);
-  position: relative;
+  position: absolute;
   width: 1350px;
   height: 660px;
 }
 
 .frame {
-  width: 1000px;
-  height: 500px;
-  left: 180px;
-  top: 70px;
-  background: linear-gradient(
-      76.99deg,
+  left: 12%;
+  top: 12%;
+  right: 12%;
+  background: linear-gradient(76.99deg,
       rgba(204, 0, 255, 0.2) 51.14%,
-      rgba(255, 255, 255, 0) 99.53%
-    ),
-    linear-gradient(
-      112.79deg,
+      rgba(255, 255, 255, 0) 99.53%),
+    linear-gradient(112.79deg,
       rgba(0, 8, 205, 0.7) 22.54%,
-      rgba(22, 24, 89, 0) 89.51%
-    ),
-    linear-gradient(
-      180deg,
+      rgba(22, 24, 89, 0) 89.51%),
+    linear-gradient(180deg,
       rgba(196, 196, 196, 0) 0%,
       rgba(72, 32, 91, 0.138068) 28.65%,
       rgba(64, 31, 80, 0.721717) 59.9%,
-      #43105b 80.21%
-    );
+      #43105b 80.21%);
   border-radius: 40px;
+  bottom: 13%;
 }
 
 .img-signup {
+  position: absolute;
   width: 400px;
   height: 400px;
-  left: 230px;
-  top: 90px;
+  left: 13%;
+  top: 10%;
 }
 
 .easy-to-take {
-  height: 41px;
-  left: 394px;
-  top: 50px;
+  height: 5%;
+  left: 38.2%;
+  top: 10%;
   width: 500px;
   font-family: "Tahoma";
   font-weight: 500;
@@ -55,8 +48,8 @@
 
 .create-account {
   height: 41px;
-  left: 394px;
-  top: 30px;
+  left: 42%;
+  top: 6%;
   width: 500px;
   font-family: "Arial";
   font-weight: 500;
@@ -65,7 +58,7 @@
 }
 
 .text-login-page {
-  font-family: Noto Serif Telugu;
+  font-family: 'Noto Serif Telugu';
 }
 
 .Log-in-text {
@@ -76,9 +69,8 @@
 
 .already-have-account {
   width: 500px;
-  height: 32px;
-  left: 370px;
-  top: 75px;
+  left: 38.5%;
+  top: 16%;
   font-family: "Arial";
   font-style: normal;
   font-weight: 500;
@@ -89,20 +81,21 @@
 .create-new-account {
   width: 500px;
   height: 32px;
-  left: 370px;
-  top: 95px;
-  font-family: Noto Serif Telugu;
+  left: 36%;
+  top: 20%;
+  font-family: 'Noto Serif Telugu';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 32px;
 }
+
 .create-new-account1 {
-  width: 400px;
+  width: fit-content;
   height: 32px;
-  left: 375px;
-  top: 95px;
-  font-family: Noto Serif Telugu;
+  left: 40%;
+  top: 18%;
+  font-family: 'Noto Serif Telugu';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -111,6 +104,7 @@
   padding-top: 30px;
   word-break: break-word;
 }
+
 .create-new-account2 {
   height: 32px;
   left: 405px;
@@ -123,44 +117,48 @@
   margin-left: 95px;
   padding-top: 30px;
 }
+
 .sign-up-text {
   color: #e18cff !important;
   text-decoration: none;
 }
+
 .input1 {
   width: 400px;
   height: 60px;
-  left: 500px;
-  top: 150px;
+  left: 49%;
+  top: 35%;
   font-family: "Segoe UI";
   font-size: 20px;
   border-radius: 25px;
   border: 2px solid #beaeae;
-  /* outline: 1; */
   color: #fff;
   background: transparent;
   padding: 10px;
   margin-top: 60px;
 }
+
 .text-enter1 {
   font-family: "Segoe UI";
   font-style: normal;
   font-size: 18px;
   /* letter-spacing: 0.1em; */
 }
+
 .forgot-pass-text1 {
   width: auto;
   height: 50px;
-  left: 692px;
-  top: 390px;
+  left: 68%;
+  top: 78%;
   color: #e18cff !important;
   text-underline-position: none;
 }
+
 .forgot-pass-text2 {
   width: auto;
   height: 50px;
-  left: 632px;
-  top: 390px;
+  left: 63%;
+  top: 78%;
   color: #e18cff !important;
   text-underline-position: none;
 }
@@ -168,8 +166,8 @@
 .button1 {
   width: 400px;
   height: 50px;
-  left: 500px;
-  top: 300px;
+  left: 49%;
+  top: 65%;
   background: #6c28af;
   border: 1px solid rgba(137, 128, 128, 0.63);
   box-sizing: border-box;
@@ -179,7 +177,7 @@
 .input {
   width: 400px;
   height: 45px;
-  left: 500px;
+  left: 49%;
   top: 150px;
   font-family: "Segoe UI";
   font-size: 23px;
@@ -209,8 +207,19 @@
 .button-enter {
   width: 150px;
   height: 50px;
-  left: 750px;
-  top: 350px;
+  left: 75%;
+  top: 70%;
+  background: #6c28af;
+  border: 1px solid rgba(137, 128, 128, 0.63);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.button-enter-signup {
+  width: 150px;
+  height: 50px;
+  left: 75%;
+  top: 72%;
   background: #6c28af;
   border: 1px solid rgba(137, 128, 128, 0.63);
   box-sizing: border-box;
@@ -234,20 +243,47 @@
 .forgot-pass-text {
   width: auto;
   height: 50px;
-  left: 620px;
-  top: 410px;
+  left: 60%;
+  top: 82%;
   color: #e18cff !important;
 }
 
 .bottom-note {
+  position:absolute;
   width: 300px;
-  height: 70px;
-  left: 560px;
-  top: 440px;
+  left: 55%;
+  top: 88%;
   font-family: "Segoe UI";
   font-weight: 500;
   font-size: 10px;
   line-height: 10px;
   align-items: center;
   color: #a493aa !important;
+}
+.bottom-note-signup {
+  position:absolute;
+  width: 300px;
+  left: 560px;
+  top: 85%;
+  font-family: "Segoe UI";
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 10px;
+  align-items: center;
+  color: #a493aa !important;
+}
+.forget-pass-text-page {
+  height: 5%;
+  left: 39.2%;
+  top: 10%;
+  width: 500px;
+  font-family: "Tahoma";
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 54px;
+}
+.signup-image{
+  position: absolute;
+  left: -4%;
+  bottom: 10%;
 }
