@@ -19,7 +19,6 @@ function MainComponent() {
                     <h5 className="py-1">Current job </h5>
                     <h5 className="py-1">Gender </h5>
                     <h5 className="py-1">Location </h5>
-                    <h5 className="py-1">Speciality </h5>
                 </div>
                 <div className="col-sm-auto text-name-profile" style={{ marginTop:'5%' }}>
                     <h6 className="pb-2">9999</h6>
@@ -29,7 +28,6 @@ function MainComponent() {
                     <h6 className="pb-2 pt-1">Student</h6>
                     <h6 className="pb-2 pt-2">Female</h6>
                     <h6 className="pb-2 pt-1">Son Tra, Da Nang</h6>
-                    <h6 className="pb-2 pt-1">Nothing</h6>
                 </div>
             </div>
         </div>
