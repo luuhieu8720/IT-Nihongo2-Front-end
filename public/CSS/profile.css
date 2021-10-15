@@ -31,3 +31,7 @@ i{
     font-weight:400;
     color: rgba(0, 0, 0, 0.5);
 }
+.input-update-profile{
+    width:  250px;
+    height: 40px;
+}

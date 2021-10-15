@@ -21,6 +21,7 @@ function Signin() {
         if (response.data !== "") {
           toast.success("Successfully");
           localStorage.setItem("token", response.data);
+          localStorage.setItem("stateProfile","show");
           history.push("/homepage");
         }
       })
