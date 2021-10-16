@@ -22,7 +22,7 @@ function Signin() {
           toast.success("Successfully");
           localStorage.setItem("token", response.data);
           localStorage.setItem("stateProfile","show");
-          history.push("/homepage");
+          //history.push("/homepage");
         }
       })
       .catch(() => {
