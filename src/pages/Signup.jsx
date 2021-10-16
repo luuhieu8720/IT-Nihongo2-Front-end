@@ -6,42 +6,41 @@ import { useState } from "react";
 import AuthsServices from "../services/AuthsServices.js";
 import { ToastContainer, toast } from "react-toastify";
 import { RadioButton } from 'primereact/radiobutton';
-//import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from 'react-router-dom';
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
+	const history = useHistory();
 	const [state, setState] = useState({
-			email: "",
-			username: "",
-			password: "",
+		email: "",
+		username: "",
+		password: "",
+		name: ""
 	});
 	const [value, setValue] = useState();
 	const handleSubmit = async (e) => {
-			e.preventDefault();
-			if (state.username == "") {
-				console.log('null');
-				window.location.reload()
-			}
+		e.preventDefault();
+		if (state.username === "" || state.email === "" || state.username === "" || state.password === "" || state.name === "") {
+			alert("All fields are not allowed to be null");
+			window.location.reload()
+		}
 
-			console.log(state);	
-			const registerUser = new Object({
-				email: state.email,
-				username:state.username,
-				password:state.password,
-				role: value
+		console.log(state);
+		const registerUser = new Object({
+			email: state.email,
+			username: state.username,
+			password: state.password,
+			name: state.name,
+			role: value
+		})
+		await AuthsServices.signup(registerUser)
+			.then(() => {
+				alert('Successfully. Check your email for the confirmation code');
+				history.push("/verify-code");
 			})
-
-		console.log(registerUser);
-		alert('Successfully. Check your email for the confirmation code');
-		// await AuthsServices.signup(registerUser)
-		// 	.then((response) => {
-		// 		if (response.data !== "") {
-					
-		// 			//localStorage.setItem("token", response.data);
-		// 		}
-		// 	})
-		// 	.catch(() => {
-		// 		toast.error("....................");
-		// 	});
+			.catch(() => {
+				toast.error("Error!");
+			});
 	};
 
 	const handleChange = (evt) => {
@@ -78,7 +77,7 @@ function Signup() {
 							placeholder="Email"
 							name="email"
 							type="email"
-							style={{ top: "25%" }}
+							style={{ top: "23%" }}
 							onChange={handleChange}
 						/>
 					</div>
@@ -87,7 +86,7 @@ function Signup() {
 							className="input text-white position-abs"
 							placeholder="Username"
 							name="username"
-							style={{ top: "38%" }}
+							style={{ top: "35%" }}
 							onChange={handleChange}
 						/>
 					</div>
@@ -97,13 +96,23 @@ function Signup() {
 							placeholder="Password"
 							type="password"
 							name="password"
-							style={{ top: "52%" }}
+							style={{ top: "47%" }}
 							onChange={handleChange}
 						/>
-						<RadioButton style={{ position: 'absolute', top: '65%', left: '49%' }} value="user" name="city" onChange={(e) => setValue(e.value)} checked={value === 'user'} />
-						<span style={{ position: 'absolute', top: '65%', left: '51%' }} className="text-light">User</span>
-						<RadioButton style={{ position: 'absolute', top: '65%', left: '58%' }} value="tutor" name="city" onChange={(e) => setValue(e.value)} checked={value === 'tutor'} />
-						<span style={{ position: 'absolute', top: '65%', left: '60%' }} className="text-light">Tutor</span>
+
+					</div>
+					<div className="row-cols-6">
+						<InputText
+							className="input text-white position-abs"
+							placeholder="Name"
+							name="name"
+							style={{ top: "59%" }}
+							onChange={handleChange}
+						/>
+						<RadioButton style={{ position: 'absolute', top: '70%', left: '49%' }} value="User" name="city" onChange={(e) => setValue(e.value)} checked={value === 'User'} />
+						<span style={{ position: 'absolute', top: '70%', left: '51%' }} className="text-light">User</span>
+						<RadioButton style={{ position: 'absolute', top: '70%', left: '58%' }} value="Tutor" name="city" onChange={(e) => setValue(e.value)} checked={value === 'Tutor'} />
+						<span style={{ position: 'absolute', top: '70%', left: '60%' }} className="text-light">Tutor</span>
 					</div>
 					<div className="row-cols-6">
 

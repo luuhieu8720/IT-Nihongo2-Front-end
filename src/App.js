@@ -19,11 +19,7 @@ function App() {
         <Route exact path="/homepage" component={HomePage}></Route>
         <Route exact path="/user/profile/setting" component={Profile}></Route>
         <Route exact path="/post/view" component={ShowPost}></Route>
-        <Route
-          exact
-          path="/signup/enteryourcode"
-          component={EnterYourCode}
-        ></Route>
+        <Route exact path="/verify-code" component={EnterYourCode}></Route>
       </Switch>
     </BrowserRouter>
   );
