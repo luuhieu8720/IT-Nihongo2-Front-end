@@ -6,25 +6,25 @@ import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
+import EnterYourCode from "./pages/EnterYourCode";
 import AddPost from "./pages/AddPost";
-import TutorInfo from "./pages/TutorInfo";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/signin" component={Signin}></Route>
-                <Route exact path="/password/reset" component={PassReset}></Route>
-                <Route exact path="/signup" component={Signup}></Route>
-                <Route exact path="/" component={Signin}></Route>
-                <Route exact path="/homepage" component={HomePage}></Route>
-                <Route exact path="/profile/setting" component={Profile}></Route>
-                <Route exact path="/post/view" component={ShowPost}></Route>
-                <Route exact path="/post/add" component={AddPost}></Route>
-                <Route exact path="/tutor/view" component={TutorInfo}></Route>
-            </Switch>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/signin" component={Signin}></Route>
+        <Route exact path="/password/reset" component={PassReset}></Route>
+        <Route exact path="/signup" component={Signup}></Route>
+        <Route exact path="/" component={Signin}></Route>
+        <Route exact path="/homepage" component={HomePage}></Route>
+        <Route exact path="/user/profile/setting" component={Profile}></Route>
+        <Route exact path="/post/view" component={ShowPost}></Route>
+        <Route exact path="/verify-code" component={EnterYourCode}></Route>
+        <Route exact path="/post/add" component={AddPost}></Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;

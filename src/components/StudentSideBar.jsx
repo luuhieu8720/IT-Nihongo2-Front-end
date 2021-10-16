@@ -1,11 +1,11 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 
 function StudentSideBar() {
     return (
-        <div className="">
+        <div className="" style={{position:'fixed'}}>
             <div className="row">
-                <div className="col-sm-auto student-top-component">
+                <div className="col-sm-auto student-top-component" style={{ marginLeft:'3%' }}>
                     <i className="far fa-envelope fa-2x"></i>
                 </div>
                 <div className="col-sm-auto student-top-component">
@@ -26,7 +26,7 @@ function StudentSideBar() {
                 <div style={{ marginBottom:'5px' }}>Phone: +(84)123456789</div>
                 <div style={{ marginBottom:'5px' }}>Link: https://eto.edu.vn</div>
             </div>
-            <i className="bi bi-plus-circle fa-3x icon-purple"></i>
+            <i style={{position:'fixed'}} className="bi bi-plus-circle fa-3x icon-purple"></i>
         </div>
 
     );

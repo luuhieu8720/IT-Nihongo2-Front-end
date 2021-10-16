@@ -35,3 +35,26 @@
     background: #ffffff;
     color: rgba(0, 0, 0, 0.5);
   }
+  .special-add-post {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 730px;
+    top: 183px;
+    font-family: "Segoe UI";
+    color: #cccccc;
+    font-size: 40px;
+  }
+  .input-select {
+    position: absolute;
+    width: 440px;
+    height: 50px;
+    left: 560px;
+    top: 180px;
+    font-family: "Segoe UI";
+    font-size: 23px;
+    border: 0;
+    outline: 0;
+    color: #cccccc;
+    border-bottom: 2px solid #7f7f7f;
+  }

@@ -1,5 +1,5 @@
 .icon-bar {
-	position:absolute;
+	position:fixed;
 	margin-left: 2%;
 	margin-bottom: 2%;
 	margin-top: 1%;
@@ -97,7 +97,6 @@
 	min-width: 80%;
 	margin-top: 1%;
 	margin-left: 15%;
-	min-height: 28%;
 	border-radius: 20px;
 }
 .text-time{
@@ -109,7 +108,7 @@
 }
 .col-sm-define {
 	flex: 0 0 auto;
-	width: 70%;
+	width: 65%;
 }
 .text-contact {
 	padding-top: 10px;

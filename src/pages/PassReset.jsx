@@ -6,7 +6,6 @@ import { useState } from "react";
 import AuthsServices from "../services/AuthsServices";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./CSS/signin.css";
 
 function PassReset() {
   const [email, setEmail] = useState();
@@ -39,19 +38,12 @@ function PassReset() {
         </div>
         <div className="col-6">
           <div className="row-cols-6">
-            <label className="easy-to-take text-center fst-normal text-white position-abs">
+            <label className="forget-pass-text-page text-center fst-normal text-white position-abs">
               Forgot your password?
             </label>
             <p>
               <span className="create-new-account1 text-center fst-normal text-white position-abs">
-                Enter your email to receive password reset
-              </span>
-            </p>
-          </div>
-          <div className="row-cols-6">
-            <p>
-              <span className="create-new-account2 text-center fst-normal text-white position-abs">
-                instruction
+                Enter your email to receive password reset instruction
               </span>
             </p>
           </div>
