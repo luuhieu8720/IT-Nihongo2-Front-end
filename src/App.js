@@ -6,21 +6,27 @@ import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
+import EnterYourCode from "./pages/EnterYourCode";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/signin" component={Signin}></Route>
-                <Route exact path="/password/reset" component={PassReset}></Route>
-                <Route exact path="/signup" component={Signup}></Route>
-                <Route exact path="/" component={Signin}></Route>
-                <Route exact path="/homepage" component={HomePage}></Route>
-                <Route exact path="/user/profile/setting" component={Profile}></Route>
-                <Route exact path="/post/view" component={ShowPost}></Route>
-            </Switch>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/signin" component={Signin}></Route>
+        <Route exact path="/password/reset" component={PassReset}></Route>
+        <Route exact path="/signup" component={Signup}></Route>
+        <Route exact path="/" component={Signin}></Route>
+        <Route exact path="/homepage" component={HomePage}></Route>
+        <Route exact path="/user/profile/setting" component={Profile}></Route>
+        <Route exact path="/post/view" component={ShowPost}></Route>
+        <Route
+          exact
+          path="/signup/enteryourcode"
+          component={EnterYourCode}
+        ></Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
