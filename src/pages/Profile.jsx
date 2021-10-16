@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SideBarProfile from "../components/Profile/SideBarProfile";
 import MainComponent from "../components/Profile/MainComponent"
 

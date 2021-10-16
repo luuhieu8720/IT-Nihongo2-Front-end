@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
 import AddPost from "./pages/AddPost";
+import TutorInfo from "./pages/TutorInfo";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route exact path="/profile/setting" component={Profile}></Route>
                 <Route exact path="/post/view" component={ShowPost}></Route>
                 <Route exact path="/post/add" component={AddPost}></Route>
+                <Route exact path="/tutor/view" component={TutorInfo}></Route>
             </Switch>
         </BrowserRouter>
     );
