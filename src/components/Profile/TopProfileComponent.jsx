@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import { Image, Button } from "react-bootstrap";
 
 function TopProfileComponent() {
-    const handleEdit = () => {
-        localStorage['stateProfile'] = "edit";
-        window.location.reload();
-    }
+
     return (
         <div className="">
             <div className="" style={{ marginTop: '1.5%', display: 'inline-block' }}>
@@ -22,7 +19,7 @@ function TopProfileComponent() {
             </div>
             <span className="position-abs text-name-profile">Hieu Le</span>
             <h3 style={{ paddingTop: '3.5%' }}>Settings</h3>
-            <Link><i className="position-abs fas fa-pen fa-lg" style={{ marginTop:'5%', right:'10%' }} onClick={handleEdit} ></i></Link>
+           
         </div>
 
     );

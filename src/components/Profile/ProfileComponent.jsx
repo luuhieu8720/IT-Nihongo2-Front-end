@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 import TopProfileComponent from "./TopProfileComponent";
 
-function MainComponent() {
+function ProfileComponent() {
+        const handleEdit = () => {
+        localStorage['stateProfile'] = "edit";
+        window.location.reload();
+    }
     return (
         <div className="">
             <TopProfileComponent />
             <div className="row">
                 <div className="col-sm-3">
                     <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>Profile</h3>
+                     <Link><i className="position-abs fas fa-pen fa-lg" style={{ marginTop:'0%', right:'10%' }} onClick={handleEdit} ></i></Link>
                     <p className="position-abs" style={{ color: 'rgba(0, 0, 0, 0.5)', width: '0px', height: '400px', left: '35px', border: '1px solid #8d8989', marginLeft: '35%', top:'30%' }}></p>
                 </div>
                 <div className="col-sm-3" style={{ marginTop:'6%' }}>
@@ -34,4 +39,4 @@ function MainComponent() {
 
     );
 }
-export default MainComponent;
+export default ProfileComponent;
