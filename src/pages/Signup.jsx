@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { RadioButton } from 'primereact/radiobutton';
 import { useHistory } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
+import validator from 'validator'
 
 function Signup() {
 	const history = useHistory();
@@ -20,27 +21,33 @@ function Signup() {
 	const [value, setValue] = useState();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (state.username === "" || state.email === "" || state.username === "" || state.password === "" || state.name === "") {
-			alert("All fields are not allowed to be null");
-			window.location.reload()
+		if (!validator.isEmail(state.email)) {
+			alert("Your email must match the email format");
+			history.push("/signup");
 		}
 
-		console.log(state);
-		const registerUser = new Object({
-			email: state.email,
-			username: state.username,
-			password: state.password,
-			name: state.name,
-			role: value
-		})
-		await AuthsServices.signup(registerUser)
-			.then(() => {
-				alert('Successfully. Check your email for the confirmation code');
-				history.push("/verify-code");
+		else if (state.username === "" || state.username === "" || state.password === "" || state.name === "") {
+			alert("All fields are not allowed to be null");
+			history.push("/signup");
+		}
+
+		else {
+			const registerUser = new Object({
+				email: state.email,
+				username: state.username,
+				password: state.password,
+				name: state.name,
+				role: value
 			})
-			.catch(() => {
-				toast.error("Error!");
-			});
+			await AuthsServices.signup(registerUser)
+				.then(() => {
+					alert('Successfully. Check your email for the confirmation code');
+					history.push("/verify-code");
+				})
+				.catch(() => {
+					toast.error("Error!");
+				});
+		}
 	};
 
 	const handleChange = (evt) => {
