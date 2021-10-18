@@ -7,22 +7,24 @@ import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/signin" component={Signin}></Route>
-        <Route exact path="/password/reset" component={PassReset}></Route>
-        <Route exact path="/signup" component={Signup}></Route>
-        <Route exact path="/" component={Signin}></Route>
-        <Route exact path="/homepage" component={HomePage}></Route>
-        <Route exact path="/user/profile/setting" component={Profile}></Route>
-        <Route exact path="/post/view" component={ShowPost}></Route>
-        <Route exact path="/verify-code" component={CheckSignup}></Route>
-      </Switch>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/signin" component={Signin}></Route>
+                <Route exact path="/password/reset" component={PassReset}></Route>
+                <Route exact path="/signup" component={Signup}></Route>
+                <Route exact path="/" component={Signin}></Route>
+                <Route exact path="/homepage" component={HomePage}></Route>
+                <Route exact path="/user/profile/setting" component={Profile}></Route>
+                <Route exact path="/post/view" component={ShowPost}></Route>
+                <Route exact path="/verify-code" component={CheckSignup}></Route>
+                <Route exact path="/password/change" component={ChangePassword} ></Route>
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 export default App;
