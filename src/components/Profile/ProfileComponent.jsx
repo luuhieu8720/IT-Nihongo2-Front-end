@@ -1,4 +1,5 @@
 import TopProfileComponent from "./TopProfileComponent";
+import { Link } from "react-router-dom";
 
 function ProfileComponent() {
         const handleEdit = () => {
