@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
+import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Route exact path="/homepage" component={HomePage}></Route>
                 <Route exact path="/user/profile/setting" component={Profile}></Route>
                 <Route exact path="/post/view" component={ShowPost}></Route>
+                <Route exact path="/verify-code" component={CheckSignup}></Route>
                 <Route exact path="/password/change" component={ChangePassword} ></Route>
             </Switch>
         </BrowserRouter>
