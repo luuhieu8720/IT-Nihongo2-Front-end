@@ -6,10 +6,12 @@ import { useState } from "react";
 import AuthsServices from "../services/AuthsServices";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router";
 
 
 function CheckSignup() {
 	const [state, setState] = useState();
+	const history = useHistory();
 	const handleChange = (evt) => {
 		const value = evt.target.value;
 		setState({
@@ -21,7 +23,10 @@ function CheckSignup() {
 
 	const handleSubmit = () => {
 		AuthsServices.finishSignup(state).then(() => {
-			toast.success("Successfully sign up!");
+			toast.success("Successfully sign up! You can sign in now");
+			setTimeout(() => {
+				history.push("/signin");
+			}, 5000);
 		})
 			.catch((e) => {
 				if (e.response && e.response.data) {

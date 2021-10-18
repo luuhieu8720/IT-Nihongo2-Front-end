@@ -22,13 +22,14 @@ function Signup() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!validator.isEmail(state.email)) {
-			alert("Your email must match the email format");
-			history.push("/signup");
+			toast.warning("Your email must match the email format");
 		}
 
 		else if (state.username === "" || state.username === "" || state.password === "" || state.name === "") {
-			alert("All fields are not allowed to be null");
-			history.push("/signup");
+			toast.warning("All fields are not allowed to be null")
+			setTimeout(() => {
+				history.push("/signup")
+			}, 5000);
 		}
 
 		else {
@@ -41,8 +42,10 @@ function Signup() {
 			})
 			await AuthsServices.signup(registerUser)
 				.then(() => {
-					alert('Successfully. Check your email for the confirmation code');
-					history.push("/verify-code");
+					toast.success("Successfully! Check your email for the confirmation code");
+					setTimeout(() => {
+						history.push("/verify-code");
+					}, 5000);
 				})
 				.catch(() => {
 					toast.error("Error!");
