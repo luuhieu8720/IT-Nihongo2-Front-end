@@ -58,3 +58,10 @@
     color: #cccccc;
     border-bottom: 2px solid #7f7f7f;
   }
+  .frame-add{
+    width: 1100px;
+    height: 550px;
+    left: 270px;
+    top: 60px;
+    background: #ffffff;
+  }

@@ -3,8 +3,8 @@ import { Button } from "primereact/button";
 
 function AddPost() {
   return (
-    <div className="background1">
-      <div className="frame-show position-abs">
+    <div className="background">
+      <div className="frame-add position-abs">
         <div className="col-6">
           <div className="row-cols-6">
             <label className="tutor-asking position-abs">MAKE A NEW POST</label>
