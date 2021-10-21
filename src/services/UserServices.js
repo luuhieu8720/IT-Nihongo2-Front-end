@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api/";
-
 class UserServices {
-	updateProfile(){
-			
+	updateProfile(user){
+		return axios.put("auth/update", user);
+	}
+	getUserInformation(){
+		return axios.get("auth/get")	
+	}
+	updatePassword(passwordModel){
+		return axios.put("/auth/update/password", passwordModel)
 	}
 }
 
