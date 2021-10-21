@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const auths_URL = "http://localhost:8080/api/noauth/login";
-const signup_URL = "http://localhost:8080/api/noauth/signup";
-
 class AuthsServices {
   login(login) {
-    return axios.post(auths_URL, login);
-  }
-  reset(email) {
-    //return axios.post(reset_URL, email);
+    return axios.post("noauth/login", login);
   }
   signup(signup) {
-    return axios.post(signup_URL, signup);
+    return axios.post("noauth/signup", signup);
+  }
+  finishSignup(finishSignupModel){
+    return axios.post("noauth/signup/finish", finishSignupModel);
+  }
+  resetPassword(resetPasswordModel){
+    return axios.post("noauth/forgotpassword", resetPasswordModel);
   }
 }
 

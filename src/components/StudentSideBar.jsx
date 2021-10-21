@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 function StudentSideBar() {
+    const history = useHistory();
+    var user = JSON.parse(localStorage.getItem('currentUser'));
     return (
         <div className="" style={{position:'fixed'}}>
             <div className="row">
@@ -9,10 +11,10 @@ function StudentSideBar() {
                     <i className="far fa-envelope fa-2x"></i>
                 </div>
                 <div className="col-sm-auto student-top-component">
-                    <i class="far fa-bell fa-2x"></i>
+                    <i className="far fa-bell fa-2x"></i>
                 </div>
                 <div className="col-sm-auto student-top-component" style={{ paddingRight: '-1%', paddingLeft: '5%' }} >
-                    <p >Hi, Hieu</p>
+                    <p >Hi, {user == null ? history.push("/signin") : user.name}</p>
 
                 </div>
                 <div className="col-sm-auto" style={{ marginTop: '-3%' }}>

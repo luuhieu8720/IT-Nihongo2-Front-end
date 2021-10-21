@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 // import { Link } from "react-router-dom";
+=======
+>>>>>>> master
 import SideBarProfile from "../components/Profile/SideBarProfile";
-import MainComponent from "../components/Profile/MainComponent";
+import MainComponent from "../components/Profile/ProfileComponent";
 import EditProfile from "../components/Profile/EditProfile";
 
 function Profile() {
@@ -11,7 +14,7 @@ function Profile() {
                 <SideBarProfile />
             </div>
             <div className="col-sm-9">
-                 {(localStorage['stateProfile'] == "show") ? <MainComponent /> : <EditProfile />}
+                 {(localStorage['stateProfile'] === "show") ? <MainComponent /> : <EditProfile />}
             </div>
         </div>
 
