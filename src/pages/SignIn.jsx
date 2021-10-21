@@ -1,7 +1,6 @@
 import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
-import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 import AuthsServices from "../services/AuthsServices";
 import React, { useState } from "react";
@@ -20,11 +19,11 @@ function Signin() {
 			.then((response) => {
 				if (response.data !== "") {
 					toast.success("Successfully");
-					localStorage.setItem("token", response.data);
+					localStorage.setItem('currentUser', JSON.stringify(response.data.value));
 					localStorage.setItem("stateProfile", "show");
 					setTimeout(() => {
 						history.push("/homepage");
-					}, 5000);
+					}, 3000);
 				}
 			})
 			.catch((e) => {
