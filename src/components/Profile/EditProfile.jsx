@@ -15,19 +15,16 @@ function EditProfile() {
         address: ""
     })
     useEffect(() => {
-        console.log("hi");
         UserServices.getUserInformation()
             .then((response) => {
                 setUserProfile(response.data.value);
                 console.log(response.data);
             })
             .catch((e) => {
-                console.log("ok");
                 if (e.response && e.response.data) {
                     toast.error(e.response.data.value)
                 }
             })
-            .finally(console.log("ok"))
     }, [])
 
     const options = [
@@ -64,9 +61,15 @@ function EditProfile() {
     }
     const handleSubmit = () => {
         UserServices.updateProfile(userProfile).then(toast.success("Success"))
-            .catch(toast.error("error"));
-        localStorage['stateProfile'] = "show";
-        window.location.reload();
+            .catch((e) => {
+                if (e.response && e.response.data) {
+					toast.error(e.response.data.value);
+				}
+            });
+            setTimeout(() => {
+            localStorage['stateProfile'] = "show";
+            window.location.reload();
+        }, 3000);
     }
 
 

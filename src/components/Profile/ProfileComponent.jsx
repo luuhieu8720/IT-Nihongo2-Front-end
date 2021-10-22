@@ -11,18 +11,22 @@ function ProfileComponent() {
         window.location.reload();
     }
     const [userInformation, setUserInformation] = useState({
-        telephone:"",
-        email:"",
-        gender:"",
-        address:""
+        telephone: "",
+        email: "",
+        address: ""
     });
+    const [gender, setGender] = useState("")
     useEffect(() => {
-        console.log("hi");
         UserServices.getUserInformation()
             .then((response) => {
-                setUserInformation(response.data.value);
-                console.log(response.data.value);
+                if (response.data.value.male == "true") {
+                    setGender("Male")
+                }
+                else {
+                    setGender("Female")
+                }
                 console.log(userInformation)
+                setUserInformation(response.data.value);
             })
             .catch((e) => {
                 if (e.response && e.response.data) {
@@ -30,7 +34,7 @@ function ProfileComponent() {
                 }
             })
             .finally(console.log("ok"))
-    }, [userInformation])
+    },[])
     return (
         <div className="">
             <ToastContainer />
@@ -52,7 +56,7 @@ function ProfileComponent() {
                     <h6 className="pb-2 pt-1">{userInformation.telephone}</h6>
                     <h6 className="pb-2 pt-1">{userInformation.email}</h6>
                     <h6 className="pb-2 pt-1">{userInformation.name}</h6>
-                    <h6 className="pb-2 pt-2">{userInformation.gender}</h6>
+                    <h6 className="pb-2 pt-2">{gender}</h6>
                     <h6 className="pb-2 pt-1">{userInformation.address}</h6>
                 </div>
             </div>
