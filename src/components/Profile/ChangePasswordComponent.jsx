@@ -12,6 +12,10 @@ function ChangePasswordComponent() {
         confirmPassword: ""
     });
 
+    const handleReset = () => {
+        window.location.reload();
+    }
+
     const handleChange = (evt) => {
         const value = evt.target.value;
         setPasswordModel({
@@ -20,7 +24,8 @@ function ChangePasswordComponent() {
         });
     }
     const handleSubmit = () => {
-        if (passwordModel.newPassword !== passwordModel.confirmPassword) {
+        localStorage["statePassword"] = "false";
+        if (passwordModel.newPassword != passwordModel.confirmPassword) {
             toast.error("Confirm password has to be the same with new password!")
         }
         else {
@@ -46,17 +51,20 @@ function ChangePasswordComponent() {
                 <div className="col-sm-auto" style={{ marginTop: '6%' }}>
                     <div className="">
                         <h6 style={{ display: 'inline-block' }}>Old Password </h6>
-                        <Password style={{ marginLeft: '2.5rem', display: 'inline-block' }} name="oldPassword" className="input-update-profile" placeholder="" onChange={handleChange} feedback={false} />
+                        <Password style={{ marginLeft: '4rem', display: 'inline-block'}} name="oldPassword" className="input-update-profile" placeholder="" onChange={handleChange} feedback={false} />
                     </div>
                     <div className="mt-3">
                         <h6 style={{ display: 'inline-block' }} className="font-weight-bold">New Password </h6>
-                        <Password style={{ marginLeft: '2.1rem', display: 'inline-block' }} id="newPassword" name="newPassword" className="input-update-profile" placeholder="" onChange={handleChange} feedback={false} />
+                        <Password style={{ marginLeft: '3.6rem', display: 'inline-block' }} id="newPassword" name="newPassword" className="input-update-profile" placeholder="" onChange={handleChange} feedback={false} />
                     </div>
                     <div className="mt-3">
                         <h6 style={{ display: 'inline-block' }} className="font-weight-bold">Confirm Password </h6>
-                        <Password style={{ marginLeft: '0.5rem', display: 'inline-block' }} id="confirmPassword" name="confirmPassword" className="input-update-profile" placeholder="" onChange={handleChange} feedback={false} />
+                        <Password style={{ marginLeft: '2rem', display: 'inline-block' }} id="confirmPassword" name="confirmPassword" className="input-update-profile" placeholder="" onChange={handleChange} feedback={false} />
                     </div>
-                    <Button variant="primary" className="mt-4" onClick={handleSubmit} >Submit</Button>
+                    <div>
+                        <Button className="mt-4 button-update-password text-dark" onClick={handleReset}>Reset</Button>
+                        <Button className="mt-4 button-confirm-password" onClick={handleSubmit} >Confirm</Button>
+                    </div>
                 </div>
             </div>
 

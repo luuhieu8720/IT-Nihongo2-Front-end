@@ -1,7 +1,6 @@
 {
   "name": "hospitalk",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -14,6 +13,7 @@
     "bootstrap-icons": "^1.5.0",
     "geonames.js": "^3.0.3",
     "google-maps-react": "^2.0.6",
+    "cloudinary-react": "^1.7.0",
     "prime-react": "^1.0.0",
     "primeflex": "^3.0.1",
     "primeicons": "^4.1.0",
