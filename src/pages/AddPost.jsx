@@ -3,9 +3,8 @@ import { Button } from "primereact/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-// import PostServices from "../services/PostServices";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
-import useLocationForm from "../components/useLocationForm";
+import axios from "axios";
 import Select from "react-select";
 
 function AddPost({ }) {
@@ -28,31 +27,56 @@ function AddPost({ }) {
 	const handleChange = (evt) => {
 		const value = evt.target.value;
 	}
+
+	const [citis, setCitis] = useState({
+		id: "",
+		name: ""
+	})
+
+	const [district, setDistrict] = useState()
+
+	const [ward, setWard] = useState()
+
+	const handleChangeCity = e => {
+		setCitis(e.value)
+	}
+	const handleChangeDistrict = e => {
+		setDistrict(e.value)
+	}
+	const handleChangeWard = e => {
+		setWard(e.value)
+	}
 	const optionsArray = [
-		{ key: "au", label: "Monday" },
-		{ key: "ca", label: "Tuesday" },
-		{ key: "us", label: "Wednesday" },
-		{ key: "pl", label: "Thursday" },
-		{ key: "es", label: "Friday" },
-		{ key: "fr", label: "Saturday" },
-		{ key: "fr", label: "Sunday" },
+		{ key: "mon", label: "Monday" },
+		{ key: "tue", label: "Tuesday" },
+		{ key: "wed", label: "Wednesday" },
+		{ key: "thu", label: "Thursday" },
+		{ key: "fri", label: "Friday" },
+		{ key: "sat", label: "Saturday" },
+		{ key: "sun", label: "Sunday" },
 	];
-	const {
-		state,
-		onCitySelect,
-		onDistrictSelect,
-		onWardSelect
-	  } = useLocationForm(false);
-	
-	  const {
-		cityOptions,
-		districtOptions,
-		wardOptions,
-		selectedCity,
-		selectedDistrict,
-		selectedWard
-	  } = state;
-	
+	var options = ([
+		{
+			Id: "",
+			Name: ""
+		}
+	])
+
+	useEffect(() => {
+		var Parameter = {
+			url: 'https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json',//Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
+			method: 'GET', //do backend cung cấp 
+		}
+		//gọi ajax = axios => nó trả về cho chúng ta là một promise
+		var promise = axios(Parameter);
+		//Xử lý khi request thành công
+		promise.then(function (result) {
+			options = result.data
+			console.log(options)
+		})
+			.catch(e => console.log(e));
+	})
+
 	return (
 		<div className="background1">
 			<ToastContainer />
@@ -106,39 +130,32 @@ function AddPost({ }) {
 						>
 						</InputText> */}
 						<Select
-						className="input-select-city"
-						name="cityId"
-						key={`cityId_${selectedCity?.value}`}
-						// isDisabled={cityOptions.length === 0}
-						options={cityOptions}
-						onChange={(option) => onCitySelect(option)}
-						placeholder="City"
-						defaultValue={selectedCity}
-						style={{ top: "52%" }}
+							className="input-select-city"
+							name="cityId"
+							onChange={handleChangeCity}
+							options={options}
+							// isDisabled={cityOptions.length === 0}
+							placeholder="City"
+							style={{ top: "52%" }}
 						/>
 
 						<Select
-						className="input-select-district"
-						name="districtId"
-						key={`districtId_${selectedDistrict?.value}`}
-						// isDisabled={districtOptions.length === 0}
-						options={districtOptions}
-						onChange={(option) => onDistrictSelect(option)}
-						placeholder="District"
-						defaultValue={selectedDistrict}
-						style={{ top: "52%" }}
+							className="input-select-district"
+							name="districtId"
+							// isDisabled={districtOptions.length === 0}
+							placeholder="District"
+							style={{ top: "52%" }}
+							onChange={handleChangeDistrict}
 						/>
 
 						<Select
-						className="input-select-ward"
-						name="wardId"
-						key={`wardId_${selectedWard?.value}`}
-						// isDisabled={wardOptions.length === 0}
-						options={wardOptions}
-						placeholder="Ward"
-						onChange={(option) => onWardSelect(option)}
-						defaultValue={selectedWard}
-						style={{ top: "52%" }}
+							className="input-select-ward"
+							name="wardId"
+							// isDisabled={wardOptions.length === 0}
+							onChange={handleChangeWard}
+							placeholder="Ward"
+
+							style={{ top: "52%" }}
 						/>
 						<InputText
 							className="input-select"

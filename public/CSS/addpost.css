@@ -48,19 +48,7 @@
     font-size: 32px;
     color: #000000;
   }
-  .enter-your-description {
-    position: absolute;
-    width: 11%;
-    height: 28px;
-    left: 6%;
-    top: 37.5%;
-  
-    font-family: "Segoe UI";
-    font-size: 23px;
-    align-items: center;
-    background: #ffffff;
-    color: rgba(0, 0, 0, 0.5);
-  }
+
   .special-add-post {
     position: absolute;
     width: 50px;
@@ -76,7 +64,7 @@
     width: 25%;
     height: 10%;
     left: 99%;
-    top: 310px;
+    margin-top: 50%;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
@@ -85,11 +73,10 @@
     border-bottom: 2px solid #7f7f7f;
   }
   .input-select-district {
-    position: absolute;
     width: 25%;
     height: 10%;
-    left: 125%;
-    top: 260px;
+    margin-left: 125%;
+    margin-top: -50px;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
@@ -98,11 +85,10 @@
     border-bottom: 2px solid #7f7f7f;
   }
   .input-select-ward {
-    position: absolute;
     width: 25%;
     height: 10%;
-    left: 152%;
-    top: 210px;
+    margin-left: 151%;
+    margin-top: -50px;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
