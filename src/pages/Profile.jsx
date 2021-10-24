@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// import { Link } from "react-router-dom";
-=======
->>>>>>> master
 import SideBarProfile from "../components/Profile/SideBarProfile";
 import MainComponent from "../components/Profile/ProfileComponent";
 import EditProfile from "../components/Profile/EditProfile";

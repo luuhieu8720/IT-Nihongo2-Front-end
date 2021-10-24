@@ -20,7 +20,7 @@ function ChangePasswordComponent() {
         });
     }
     const handleSubmit = () => {
-        if (passwordModel.newPassword != passwordModel.confirmPassword) {
+        if (passwordModel.newPassword !== passwordModel.confirmPassword) {
             toast.error("Confirm password has to be the same with new password!")
         }
         else {

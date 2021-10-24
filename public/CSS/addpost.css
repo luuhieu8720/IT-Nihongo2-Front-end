@@ -45,11 +45,37 @@
     color: #cccccc;
     font-size: 40px;
   }
-  .input-select {
+  .input-select-city{
     position: absolute;
-    width: 440px;
+    width: 150px;
     height: 50px;
     left: 560px;
+    top: 280px;
+    font-family: "Segoe UI";
+    font-size: 23px;
+    border: 0;
+    outline: 0;
+    color: #cccccc;
+    border-bottom: 2px solid #7f7f7f;
+  }
+  .input-select-district {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 725px;
+    top: 230px;
+    font-family: "Segoe UI";
+    font-size: 23px;
+    border: 0;
+    outline: 0;
+    color: #cccccc;
+    border-bottom: 2px solid #7f7f7f;
+  }
+  .input-select-ward {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 890px;
     top: 180px;
     font-family: "Segoe UI";
     font-size: 23px;

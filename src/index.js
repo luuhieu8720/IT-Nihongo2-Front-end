@@ -7,8 +7,8 @@ import axios from "axios";
 
 var user = JSON.parse(localStorage.getItem('currentUser'));
 
-axios.defaults.baseURL="http://localhost:8080/api/";
-axios.defaults.headers.common['Authorization'] = "Bearer " + user.token;
+// axios.defaults.baseURL="http://localhost:8080/api/";
+// axios.defaults.headers.common['Authorization'] = "Bearer " + user.token;
 
 ReactDOM.render(
   <React.StrictMode>

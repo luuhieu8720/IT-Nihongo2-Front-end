@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Image, Button } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 function TopProfileComponent() {
 

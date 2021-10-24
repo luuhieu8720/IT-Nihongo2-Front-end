@@ -6,11 +6,12 @@ import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
-import EnterYourCode from "./pages/EnterYourCode";
+// import EnterYourCode from "./pages/EnterYourCode";
 import AddPost from "./pages/AddPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
-
+// import GetLocation from "./pages/GetLocation";
+import LocationForm from "./pages/LocationForm";
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,8 @@ function App() {
         <Route exact path="/verify-code" component={CheckSignup}></Route>
         <Route exact path="/password/change" component={ChangePassword} ></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
+        {/* <Route exact path="/locate/get" component={GetLocation}></Route> */}
+        <Route exact path="/check" component={LocationForm}></Route>
       </Switch>
     </BrowserRouter>
   )
