@@ -2,7 +2,7 @@ import axios from "axios";
 
 class PostServices {
 	getPostInformation(id){
-		return axios.get("auth/post/get/" + id)	
+		return axios.post("auth/post/get", id)	
 	}
 }
 
