@@ -39,7 +39,7 @@ function ProfileComponent() {
             <TopProfileComponent />
             <div className="row">
                 <div className="col-sm-3">
-                    <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>{localStorage.getItem("statePassword") === "false" ? "Profile" : "Password"}</h3>
+                    <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>Profile</h3>
                     <Link to=""><i className="position-abs fas fa-pen fa-lg" style={{ marginTop: '0%', right: '10%' }} onClick={handleEdit} ></i></Link>
                     <p className="position-abs" style={{ color: 'rgba(0, 0, 0, 0.5)', width: '0px', height: '400px', left: '35px', border: '1px solid #8d8989', marginLeft: '35%', top: '30%' }}></p>
                 </div>
