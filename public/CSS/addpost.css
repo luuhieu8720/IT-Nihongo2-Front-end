@@ -11,6 +11,32 @@
     color: #cccccc;
     border-bottom: 2px solid #7f7f7f;
   }
+  .input-select-post {
+    position: absolute;
+    width: 44%;
+    height: 9%;
+    left: 51%;
+    top: 180px;
+    font-family: "Segoe UI";
+    font-size: 23px;
+    border: 0;
+    outline: 0;
+    color: #000000;
+    border-bottom: 1px solid #000000;
+  }
+  .input-addpost {
+    width: 43%;
+    height: 10%;
+    top: 20%;
+    font-family: "Segoe UI";
+    font-size: 23px;
+    border: 0;
+    outline: 0;
+    color: #000000;
+    background: transparent;
+    border-bottom: 1px solid #000000;
+  }
+  
   .tutor-asking {
     position: absolute;
     width: 460px;
@@ -24,10 +50,10 @@
   }
   .enter-your-description {
     position: absolute;
-    width: 234px;
+    width: 21%;
     height: 28px;
-    left: 80px;
-    top: 200px;
+    left: 7%;
+    top: 36%;
   
     font-family: "Segoe UI";
     font-size: 23px;

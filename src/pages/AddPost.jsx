@@ -83,31 +83,31 @@ function AddPost() {
           </div>
           <div className="row-cols-6">
             <InputText
-              className="input-showpost text-black position-abs"
+              className="input-addpost text-black position-abs"
               placeholder="Title "
               name="title"
-              style={{ left: "60px" }}
+              style={{ left: "5%" }}
               // onChange={handleChange}
             />
             <InputText
-              className="input-showpost text-black position-abs"
+              className="input-addpost text-black position-abs"
               placeholder="Salary"
               name="salary"
-              style={{ left: "560px" }}
+              style={{ left: "51%" }}
               // onChange={handleChange}
             />
             <InputText
-              className="input-showpost text-black text-left position-abs"
+              className="input-addpost text-black text-left position-abs"
               placeholder="Time"
               name="time"
-              style={{ left: "560px", top: "190px", width: "150px" }}
+              style={{ left: "51%", top: "34.5%", width: "15%" }}
               // onChange={handleChange}
             />
             <InputText
-              className="input-showpost text-black position-abs"
+              className="input-addpost text-black position-abs"
               placeholder=""
               name="day"
-              style={{ left: "760px", top: "190px", width: "240px" }}
+              style={{ left: "68.5%", top: "34.5%", width: "27%" }}
               // onChange={handleChange}
             />
             <p className="special-add-post">/</p>
@@ -161,10 +161,10 @@ function AddPost() {
               defaultValue={selectedWard}
             />
             <select
-              className="input-select"
+              className="input-select-post"
               name="gender"
               placeholder="Gender"
-              style={{ top: "370px" }}
+              style={{ top: "67%" }}
               // onChange={handleChange}
             >
               <option value="gender">Gender</option>
