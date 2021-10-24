@@ -5,6 +5,7 @@ import UserServices from "../../services/UserServices";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import Select from 'react-select';
+import UploadImageServices from "../../services/UploadImageServices";
 
 function EditProfile() {
     const [userProfile, setUserProfile] = useState({
@@ -12,22 +13,22 @@ function EditProfile() {
         email: "",
         name: "",
         male: "",
-        address: ""
+        address: "",
+        avatar: ""
     })
+    const [avatar, setAvatar] = useState()
+    const [imageSelected, setImageSelected] = useState("");
     useEffect(() => {
-        console.log("hi");
         UserServices.getUserInformation()
             .then((response) => {
                 setUserProfile(response.data.value);
                 console.log(response.data);
             })
             .catch((e) => {
-                console.log("ok");
                 if (e.response && e.response.data) {
                     toast.error(e.response.data.value)
                 }
             })
-            .finally(console.log("ok"))
     }, [])
 
     const options = [
@@ -47,11 +48,9 @@ function EditProfile() {
         },
     }
 
-    const [selectedValue, setSelectedValue] = useState();
-
     const handleChangeGender = e => {
-        setSelectedValue(e.value)
-        setUserProfile({ ...userProfile, male: e.value })
+        userProfile.male = e.value;
+        console.log(userProfile)
     }
 
     const handleChange = (evt) => {
@@ -62,13 +61,58 @@ function EditProfile() {
         });
         console.log(userProfile)
     }
+
     const handleSubmit = () => {
-        UserServices.updateProfile(userProfile).then(toast.success("Success"))
-            .catch(toast.error("error"));
-        localStorage['stateProfile'] = "show";
-        window.location.reload();
+        const formData = new FormData();
+        formData.append("file", imageSelected);
+        formData.append("upload_preset", "fb42jacc");
+        var imageName = makeid(10);
+        formData.append("public_id", imageName)
+
+        if (imageSelected.name != null) {
+            imageName += "." + imageSelected.name.slice(-3);
+            UploadImageServices.uploadImage(formData).then(() => {
+                if (imageName != "") {
+                    userProfile.avatar = "https://res.cloudinary.com/it-nihongo/image/upload/v1634999302/" + imageName;
+                    setUserProfile({ ...userProfile, avatar: imageName })
+                    imageName = "";
+                }
+                console.log(userProfile);
+                UserServices.updateProfile(userProfile).then(toast.success("Success"))
+                    .catch((e) => {
+                        if (e.response && e.response.data) {
+                            toast.error(e.response.data.value);
+                        }
+                    });
+            })
+        }
+        else {
+            UserServices.updateProfile(userProfile).then(toast.success("Success"))
+                .catch((e) => {
+                    if (e.response && e.response.data) {
+                        toast.error(e.response.data.value);
+                    }
+                });
+        }
+
+        setTimeout(() => {
+            localStorage['stateProfile'] = "show";
+            window.location.reload();
+        }, 3000);
     }
 
+
+
+    const makeid = (length) => {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        return result;
+    }
 
     return (
         <div className="">
@@ -96,7 +140,6 @@ function EditProfile() {
                         <span className="">Gender </span>
                         <div style={{ display: 'inline-block', marginLeft: '4.8rem' }}>
                             <Select styles={colourStyles}
-                                value={options.find(obj => obj.value === selectedValue)}
                                 options={options}
                                 defaultValue={options[0]}
                                 onChange={handleChangeGender}
@@ -107,6 +150,10 @@ function EditProfile() {
                         <span className="">Address </span>
                         <InputText style={{ marginLeft: '4.6rem' }} defaultValue={userProfile.address} name="address" className="input-update-profile" placeholder="" onChange={handleChange} />
                     </div>
+                    <div className="mt-3">
+                        <input type="file" style={{ marginTop: '1rem' }} onChange={(event) => { setImageSelected(event.target.files[0]) }}></input>
+                    </div>
+
                     <Button variant="primary" className="mt-4" onClick={handleSubmit} >Submit</Button>
                 </div>
             </div>

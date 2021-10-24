@@ -13,6 +13,9 @@ class AuthsServices {
   resetPassword(resetPasswordModel){
     return axios.post("noauth/forgotpassword", resetPasswordModel);
   }
+  signOut(){
+    localStorage.clear();
+  }
 }
 
 export default new AuthsServices();
