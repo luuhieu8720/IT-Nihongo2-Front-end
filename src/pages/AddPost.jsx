@@ -3,8 +3,10 @@ import { Button } from "primereact/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-import PostServices from "../services/PostServices";
+// import PostServices from "../services/PostServices";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import useLocationForm from "../components/useLocationForm";
+import Select from "react-select";
 
 function AddPost({ }) {
 
@@ -35,7 +37,22 @@ function AddPost({ }) {
 		{ key: "fr", label: "Saturday" },
 		{ key: "fr", label: "Sunday" },
 	];
-
+	const {
+		state,
+		onCitySelect,
+		onDistrictSelect,
+		onWardSelect
+	  } = useLocationForm(false);
+	
+	  const {
+		cityOptions,
+		districtOptions,
+		wardOptions,
+		selectedCity,
+		selectedDistrict,
+		selectedWard
+	  } = state;
+	
 	return (
 		<div className="background1">
 			<ToastContainer />
@@ -80,14 +97,49 @@ function AddPost({ }) {
 						<p className="money">$</p>
 					</div>
 					<div className="row-cols-6">
-						<InputText
+						{/* <InputText
 							className="input-select"
 							name="location"
 							style={{ top: "52%" }}
 							value={post.location}
 							onChange={handleChange}
 						>
-						</InputText>
+						</InputText> */}
+						<Select
+						className="input-select-city"
+						name="cityId"
+						key={`cityId_${selectedCity?.value}`}
+						// isDisabled={cityOptions.length === 0}
+						options={cityOptions}
+						onChange={(option) => onCitySelect(option)}
+						placeholder="City"
+						defaultValue={selectedCity}
+						style={{ top: "52%" }}
+						/>
+
+						<Select
+						className="input-select-district"
+						name="districtId"
+						key={`districtId_${selectedDistrict?.value}`}
+						// isDisabled={districtOptions.length === 0}
+						options={districtOptions}
+						onChange={(option) => onDistrictSelect(option)}
+						placeholder="District"
+						defaultValue={selectedDistrict}
+						style={{ top: "52%" }}
+						/>
+
+						<Select
+						className="input-select-ward"
+						name="wardId"
+						key={`wardId_${selectedWard?.value}`}
+						// isDisabled={wardOptions.length === 0}
+						options={wardOptions}
+						placeholder="Ward"
+						onChange={(option) => onWardSelect(option)}
+						defaultValue={selectedWard}
+						style={{ top: "52%" }}
+						/>
 						<InputText
 							className="input-select"
 							name="gender"

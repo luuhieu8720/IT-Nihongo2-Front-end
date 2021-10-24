@@ -50,10 +50,10 @@
   }
   .enter-your-description {
     position: absolute;
-    width: 21%;
+    width: 11%;
     height: 28px;
-    left: 7%;
-    top: 36%;
+    left: 6%;
+    top: 37.5%;
   
     font-family: "Segoe UI";
     font-size: 23px;
@@ -73,10 +73,10 @@
   }
   .input-select-city{
     position: absolute;
-    width: 150px;
-    height: 50px;
-    left: 560px;
-    top: 280px;
+    width: 25%;
+    height: 10%;
+    left: 99%;
+    top: 310px;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
@@ -86,10 +86,10 @@
   }
   .input-select-district {
     position: absolute;
-    width: 150px;
-    height: 50px;
-    left: 725px;
-    top: 230px;
+    width: 25%;
+    height: 10%;
+    left: 125%;
+    top: 260px;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
@@ -99,10 +99,10 @@
   }
   .input-select-ward {
     position: absolute;
-    width: 150px;
-    height: 50px;
-    left: 890px;
-    top: 180px;
+    width: 25%;
+    height: 10%;
+    left: 152%;
+    top: 210px;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
