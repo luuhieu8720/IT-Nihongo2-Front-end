@@ -78,7 +78,13 @@ function EditProfile() {
                     imageName = "";
                 }
                 console.log(userProfile);
-                UserServices.updateProfile(userProfile).then(toast.success("Success"))
+                UserServices.updateProfile(userProfile).then(() => {
+                    toast.success("Success")
+                    setTimeout(() => {
+                        localStorage['stateProfile'] = "show";
+                        window.location.reload();
+                    }, 3000);
+                })
                     .catch((e) => {
                         if (e.response && e.response.data) {
                             toast.error(e.response.data.value);
@@ -87,7 +93,13 @@ function EditProfile() {
             })
         }
         else {
-            UserServices.updateProfile(userProfile).then(toast.success("Success"))
+            UserServices.updateProfile(userProfile).then(() => {
+                    toast.success("Success")
+                    setTimeout(() => {
+                        localStorage['stateProfile'] = "show";
+                        window.location.reload();
+                    }, 3000);
+                })
                 .catch((e) => {
                     if (e.response && e.response.data) {
                         toast.error(e.response.data.value);
@@ -95,10 +107,10 @@ function EditProfile() {
                 });
         }
 
-        setTimeout(() => {
-            localStorage['stateProfile'] = "show";
-            window.location.reload();
-        }, 3000);
+        // setTimeout(() => {
+        //     localStorage['stateProfile'] = "show";
+        //     window.location.reload();
+        // }, 3000);
     }
 
 
