@@ -6,12 +6,10 @@ import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
-// import EnterYourCode from "./pages/EnterYourCode";
-import AddPost from "./pages/AddPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
-// import GetLocation from "./pages/GetLocation";
-import LocationForm from "./pages/LocationForm";
+import AddPost from "./pages/AddPost"
+
 function App() {
   return (
     <BrowserRouter>
@@ -22,14 +20,13 @@ function App() {
         <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/homepage" component={HomePage}></Route>
         <Route exact path="/user/profile/setting" component={Profile}></Route>
-        <Route exact path="/post/view" component={ShowPost}></Route>
+        <Route exact path="/post/show/:id" component={ShowPost}></Route>
         <Route exact path="/verify-code" component={CheckSignup}></Route>
-        <Route exact path="/password/change" component={ChangePassword} ></Route>
+        <Route exact path="/password/change" component={ChangePassword}></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
-        {/* <Route exact path="/locate/get" component={GetLocation}></Route> */}
-        <Route exact path="/check" component={LocationForm}></Route>
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
+
 export default App;

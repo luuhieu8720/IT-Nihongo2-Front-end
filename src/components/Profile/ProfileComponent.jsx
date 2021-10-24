@@ -11,33 +11,35 @@ function ProfileComponent() {
         window.location.reload();
     }
     const [userInformation, setUserInformation] = useState({
-        telephone:"",
-        email:"",
-        gender:"",
-        address:""
+        telephone: "",
+        email: "",
+        address: ""
     });
+    const [gender, setGender] = useState("")
     useEffect(() => {
-        console.log("hi");
         UserServices.getUserInformation()
             .then((response) => {
+                if (response.data.value.male === true) {
+                    setGender("Male")
+                }
+                else {
+                    setGender("Female")
+                }
                 setUserInformation(response.data.value);
-                console.log(response.data.value);
-                console.log(userInformation)
             })
             .catch((e) => {
                 if (e.response && e.response.data) {
                     toast.error(e.response.data.value)
                 }
             })
-            .finally(console.log("ok"))
-    }, [userInformation])
+    },[])
     return (
         <div className="">
             <ToastContainer />
             <TopProfileComponent />
             <div className="row">
                 <div className="col-sm-3">
-                    <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>Profile</h3>
+                    <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>{localStorage.getItem("statePassword") === "false" ? "Profile" : "Password"}</h3>
                     <Link to=""><i className="position-abs fas fa-pen fa-lg" style={{ marginTop: '0%', right: '10%' }} onClick={handleEdit} ></i></Link>
                     <p className="position-abs" style={{ color: 'rgba(0, 0, 0, 0.5)', width: '0px', height: '400px', left: '35px', border: '1px solid #8d8989', marginLeft: '35%', top: '30%' }}></p>
                 </div>
@@ -48,11 +50,11 @@ function ProfileComponent() {
                     <h5 className="py-1">Gender </h5>
                     <h5 className="py-1">Address </h5>
                 </div>
-                <div className="col-sm-auto text-name-profile" style={{ marginTop: '5%' }}>
+                <div className="col-sm-auto text-name-profile" style={{ marginTop: '4.5%' }}>
                     <h6 className="pb-2 pt-1">{userInformation.telephone}</h6>
                     <h6 className="pb-2 pt-1">{userInformation.email}</h6>
                     <h6 className="pb-2 pt-1">{userInformation.name}</h6>
-                    <h6 className="pb-2 pt-2">{userInformation.gender}</h6>
+                    <h6 className="pb-2 pt-2">{gender}</h6>
                     <h6 className="pb-2 pt-1">{userInformation.address}</h6>
                 </div>
             </div>
