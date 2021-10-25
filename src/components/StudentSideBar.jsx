@@ -1,20 +1,34 @@
+import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router";
+import UserServices from "../services/UserServices";
 
 function StudentSideBar() {
     const history = useHistory();
-    var user = JSON.parse(localStorage.getItem('currentUser'));
+    //var user = JSON.parse(localStorage.getItem('currentUser'));
+    const [user, setUser] = useState({
+        username:"",
+        name:"",
+        telephone:"",
+        email:"",
+    });
+    useEffect(() => {
+        UserServices.getUserInformation().then(response => {
+            setUser(response.data.value)
+        });
+    },[])
+
     return (
-        <div className="" style={{position:'fixed'}}>
+        <div className="" style={{ position: 'fixed' }}>
             <div className="row">
-                <div className="col-sm-auto student-top-component" style={{ marginLeft:'3%' }}>
+                <div className="col-sm-auto student-top-component" style={{ marginLeft: '3%' }}>
                     <i className="far fa-envelope fa-2x"></i>
                 </div>
                 <div className="col-sm-auto student-top-component">
                     <i className="far fa-bell fa-2x"></i>
                 </div>
                 <div className="col-sm-auto student-top-component" style={{ paddingRight: '-1%', paddingLeft: '5%' }} >
-                    <p >Hi, {user == null ? history.push("/signin") : user.name}</p>
+                    <p >Hi, {localStorage.getItem('currentUser') == null ? history.push("/signin") : user.name}</p>
 
                 </div>
                 <div className="col-sm-auto" style={{ marginTop: '-3%' }}>
@@ -24,11 +38,11 @@ function StudentSideBar() {
             <h4 className="text-center" style={{ font: 'Oxygen', marginTop: '10%' }}>Easy to find an experienced tutor for you!</h4>
             <Image src="Image/teacher-expectation.jpg" style={{ marginLeft: '-5%' }} alt="image" rounded  ></Image>
             <div className="text-center text-contact">
-                <div style={{ marginBottom:'5px' }}>Email: eto.edu@gmail.com</div>
-                <div style={{ marginBottom:'5px' }}>Phone: +(84)123456789</div>
-                <div style={{ marginBottom:'5px' }}>Link: https://eto.edu.vn</div>
+                <div style={{ marginBottom: '5px' }}>Email: {user.email}</div>
+                <div style={{ marginBottom: '5px' }}>Phone: {user.telephone}</div>
+                <div style={{ marginBottom: '5px' }}>Link: https://eto.edu.vn</div>
             </div>
-            <i style={{position:'fixed'}} className="bi bi-plus-circle fa-3x icon-purple"></i>
+            <i style={{ position: 'fixed' }} className="bi bi-plus-circle fa-3x icon-purple"></i>
         </div>
 
     );
