@@ -9,8 +9,9 @@ import Select from "react-select";
 
 function AddPost({ }) {
 	const optionGender = [
-		{ value: 'true', label: 'Male' },
-		{ value: 'false', label: 'Female' }
+		{ value: 'Male', label: 'Male' },
+		{ value: 'Female', label: 'Female' },
+		{ value: 'None', label: 'None' }
 	];
 
 	const [post, setPost] = useState({
@@ -23,7 +24,7 @@ function AddPost({ }) {
 			day: ""
 		},
 		location: "",
-		male: "",
+		gender: "",
 		details: "",
 		salary: ""
 	})
@@ -56,8 +57,6 @@ function AddPost({ }) {
         });
 		console.log(post)
 	}
-
-
 
 	const [ward, setWard] = useState()
 
@@ -114,8 +113,8 @@ function AddPost({ }) {
 
 	}])
 	const handleChangeGender = e => {
-		// userProfile.male = e.value;
-		// console.log(userProfile)
+		post.gender = e.value
+		console.log(post)
 	}
 
 
