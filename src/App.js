@@ -8,6 +8,8 @@ import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
+import Test from "./components/Homepage/Test";
+import SelectFilter from "./components/Homepage/SelectFilter";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route exact path="/post/show/:id" component={ShowPost}></Route>
         <Route exact path="/verify-code" component={CheckSignup}></Route>
         <Route exact path="/password/change" component={ChangePassword}></Route>
+        <Route exact path="/test" component={Test}></Route>
+        <Route exact path="/select" component={SelectFilter}></Route>
       </Switch>
     </BrowserRouter>
   );
