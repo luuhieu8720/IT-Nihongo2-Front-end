@@ -1,23 +1,24 @@
-import { Link } from "react-router-dom";
 import SidebarHomePage from "../components/Homepage/SidebarHomePage";
 import PostServices from "../services/PostServices"
 import TopComponent from "../components/Homepage/TopComponent";
 import StudentSideBar from "../components/StudentSideBar";
 import Thumbnail from "../components/Homepage/Thumbnail";
 import { useState, useEffect } from "react";
+import { Card } from "react-bootstrap";
+import SelectFilter from "../components/Homepage/SelectFilter";
 
 function HomePage() {
     var postIDs = []
     const [posts, setPostIDs] = useState([])
     useEffect(
         () => {
-            PostServices.getAllPost().then( response => {
-                var listPosts = response.data.value; 
+            PostServices.getAllPost().then(response => {
+                var listPosts = response.data.value;
                 let ids = listPosts.map(post => post.id);
-                setPostIDs(ids); 
+                setPostIDs(ids);
                 console.log(ids)
             })
-            .catch(error => console.log(error));
+                .catch(error => console.log(error));
         }, []
     )
 
@@ -31,15 +32,43 @@ function HomePage() {
             <div className="blank"></div>
         </div>
     )
+
+    const [buttonPopup, setButtonPopup] = useState(false);
+    const handleSubmit = () => {
+
+    }
+    const handleClick = () => {
+        window.scrollTo(0, 0);
+        setTimeout(() => {
+            setButtonPopup(true);
+        }, 500);
+    }
+
     return (
         <div className="row">
             <div className="col-sm-1" >
                 <SidebarHomePage />
             </div>
+
             <div className="col-sm-define" style={{ marginLeft: '-3%' }} >
                 <div>
                     <TopComponent />
+
                 </div>
+                <SelectFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
+                </SelectFilter>
+                <Card className="card-filter">
+                    <Card.Body>
+                        <Card.Title style={{ display: 'inline-block' }} className="filter-text">
+                            FILTER
+                        </Card.Title>
+                        <Card.Subtitle style={{ display: 'inline-block' }} className="ms-5 filter-text-condition" >
+                            Da Nang, Math, High SChool, Female
+                        </Card.Subtitle>
+                        <i className="fas fa-angle-double-up fa-lg position-abs" onClick={handleClick} style={{ right: '10px' }}></i>
+                    </Card.Body>
+                </Card>
+
                 <div style={{ marginTop: '30px' }}>
                     {listPosts}
                 </div>
@@ -47,6 +76,7 @@ function HomePage() {
             <div className="col-sm-3 student-top-component" style={{ paddingLeft: '5%' }}>
                 <StudentSideBar />
             </div>
+
         </div>
     );
 }
