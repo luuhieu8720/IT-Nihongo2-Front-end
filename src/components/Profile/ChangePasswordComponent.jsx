@@ -45,7 +45,7 @@ function ChangePasswordComponent() {
             <TopProfileComponent />
             <div className="row">
                 <div className="col-sm-3">
-                    <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>Profile</h3>
+                    <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>Password</h3>
                     <p className="position-abs" style={{ color: 'rgba(0, 0, 0, 0.5)', width: '0px', height: '400px', left: '35px', border: '1px solid #8d8989', marginLeft: '35%', top: '30%' }}></p>
                 </div>
                 <div className="col-sm-auto" style={{ marginTop: '6%' }}>
