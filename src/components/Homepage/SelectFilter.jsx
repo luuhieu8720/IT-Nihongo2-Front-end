@@ -1,30 +1,28 @@
 import { InputText } from "primereact/inputtext";
+import PostServices from "../../services/PostServices";
 import { Button } from "primereact/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import Select from "react-select";
+import { useHistory } from "react-router";
 
 function SelectFilter(props) {
+    const history = useHistory()
     const optionGender = [
         { value: 'Male', label: 'Male' },
         { value: 'Female', label: 'Female' },
         { value: 'None', label: 'None' }
     ];
-
+    const test = {
+        id: '617434f1db81702e10c16ad0'
+    }
     const [post, setPost] = useState({
-        title: "",
-        time: {
-            startHour: "",
-            endHour: "",
-            startMinus: "",
-            endMinus: "",
-            day: ""
-        },
-        location: "",
+        city: "",
+        district: "",
+        ward: "",
+        course: "",
         gender: "",
-        details: "",
-        salary: ""
     })
     const [districtOptions, setDistrictOptions] = useState([{
         value: "",
@@ -46,9 +44,6 @@ function SelectFilter(props) {
 
     const handleChange = (evt) => {
         var value = evt.target.value;
-        if (evt.target.name == "location") {
-            value = value + ", " + ward + ", " + district.name + ", " + city.name
-        }
         setPost({
             ...post,
             [evt.target.name]: value,
@@ -56,7 +51,7 @@ function SelectFilter(props) {
         console.log(post)
     }
 
-    const [ward, setWard] = useState()
+    const [ward, setWard] = useState("")
 
     const handleChangeCity = e => {
         setCity({ id: e.value, name: e.label });
@@ -70,17 +65,14 @@ function SelectFilter(props) {
         districts.forEach(element => {
             tmpDistricts.push({ value: element.Id, label: element.Name, wards: element.Wards })
         })
-        console.log(tmpDistricts)
         setDistrictOptions(tmpDistricts);
     }
     const handleChangeDistrict = e => {
         setDistrict({ id: e.value, name: e.label });
         var wards = []
-        console.log("districtOptions: ", districtOptions)
         districtOptions.forEach(element => {
             if (element.value == e.value) {
                 wards = (element.wards);
-                console.log(element.value + "   " + e.value)
             }
         });
         var tmpWards = [{ value: "", label: "" }]
@@ -91,7 +83,6 @@ function SelectFilter(props) {
     }
     const handleChangeWard = e => {
         setWard(e.label)
-        console.log(e.label)
     }
     const optionsArray = [
         { key: "mon", label: "Monday" },
@@ -112,10 +103,36 @@ function SelectFilter(props) {
     }])
     const handleChangeGender = e => {
         post.gender = e.value
-        console.log(post)
     }
 
-
+    const handleSubmit = () => {
+        post.city = city.name;
+        post.district = district.name;
+        post.ward = ward;
+        console.log(post);
+        var filterString = "";
+        if (post.course != "") filterString += " " + post.course + ",";
+        if (post.city != "") filterString += " " + post.city + ",";
+        if (post.district != "") filterString += " " + post.district + ",";
+        if (post.ward != "") filterString += " " + post.ward + ",";
+        if (post.gender != "") filterString += " " + post.gender + ",";
+        if (filterString != "") filterString = filterString.slice(0, -1);
+        console.log(filterString)
+        sessionStorage.setItem("filterString", filterString);
+        PostServices.getAllPost().then((response) => {
+            var posts = []
+            var temp = JSON.stringify(response.data.value);
+            posts = JSON.parse(temp);
+            var postIds = [];
+            Object.values(posts).forEach((element) => {
+                postIds.push(element.id)
+            })
+            console.log(postIds)
+            sessionStorage.setItem("postIds", JSON.stringify(postIds))
+            props.setTrigger(false)
+            window.location.reload();
+        })
+    }
 
     useEffect(() => {
         fetch("https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json")
@@ -131,7 +148,6 @@ function SelectFilter(props) {
                     });
                     setCityOptions(tmpOptions)
                     setOptions(result)
-                    console.log(tmpOptions)
                 },
                 (error) => {
 
@@ -139,21 +155,24 @@ function SelectFilter(props) {
             )
     }, [])
 
-    return  (props.trigger) ? (
+    return (props.trigger) ? (
         <div>
             <div className="background-homepage">
-            <ToastContainer />
+                <ToastContainer />
+            </div>
 
-           
-        </div>
-
-         <div className="frame-select-filter position-abs">
-           <i className="fa fa-window-close position-abs" style={{right:'5px'}} onClick={() => props.setTrigger(false)} aria-hidden="true"></i>
+            <div className="frame-select-filter position-abs">
+                <i className="fa fa-window-close position-abs" style={{ right: '0px', top: '-1px' }}
+                    onClick={() => {
+                        props.setTrigger(false); sessionStorage.setItem("filterState", "true");
+                        sessionStorage.setItem("filterString","")
+                    }}
+                    aria-hidden="true"></i>
                 <label className="tutor-asking position-abs" style={{ marginTop: '-15px' }} >Filtering</label>
                 <p className="subject" >Subject</p>
                 <InputText
                     className="input-text-subject position-abs"
-                    name="title"
+                    name="course"
                     onChange={handleChange}
                 />
                 <p className="home-page-location">Location</p>
@@ -188,10 +207,11 @@ function SelectFilter(props) {
                     onChange={handleChangeGender}
                     placeholder="Gender"
                 />
-            </div>        
+                <Button className="btn btn-secondary position-abs button-filter" onClick={handleSubmit}>Start Filtering</Button>
+            </div>
 
         </div>
-        
+
     ) : "";
 }
 export default SelectFilter;

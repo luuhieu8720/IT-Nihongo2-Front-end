@@ -55,7 +55,6 @@ function Thumbnail(props) {
                     postTemp.time.endMinus = "0" + postTemp.time.endMinus
                 }
                 setPost(postTemp);
-                console.log(postTemp)
             })
             .catch((e) => {
                 if (e.response && e.response.data) {
