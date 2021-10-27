@@ -8,19 +8,28 @@ import { Card } from "react-bootstrap";
 import SelectFilter from "../components/Homepage/SelectFilter";
 
 function HomePage() {
+
     var postIDs = []
+
     const [posts, setPostIDs] = useState([])
     useEffect(
         () => {
-            PostServices.getAllPost().then(response => {
-                var listPosts = response.data.value;
-                let ids = listPosts.map(post => post.id);
-                setPostIDs(ids);
-                console.log(ids)
-            })
-                .catch(error => console.log(error));
-        }, []
-    )
+            var postIds = JSON.parse(sessionStorage.getItem("postIds"));
+            let postTemp = [];
+
+            if (postIds != null) {
+                postTemp.push(postIds[0]);
+                setPostIDs(postTemp);
+            }
+            else {
+                PostServices.getAllPost().then(response => {
+                    var listPosts = response.data.value;
+                    let ids = listPosts.map(post => post.id);
+                    setPostIDs(ids);
+                })
+                    .catch(error => console.log(error));
+            }
+        }, [])
 
     Object.values(posts).forEach((id) => {
         postIDs.push(id);
@@ -34,11 +43,15 @@ function HomePage() {
     )
 
     const [buttonPopup, setButtonPopup] = useState(false);
-    const handleSubmit = () => {
-
+    const handleClickClose = () => {
+        sessionStorage.setItem("filterState", "true");
+        sessionStorage.removeItem("postIds");
+        sessionStorage.setItem("filterString", "");
+        window.location.reload();
     }
-    const handleClick = () => {
+    const handleClickFilter = () => {
         window.scrollTo(0, 0);
+        sessionStorage.setItem("filterState", "false");
         setTimeout(() => {
             setButtonPopup(true);
         }, 500);
@@ -53,7 +66,6 @@ function HomePage() {
             <div className="col-sm-define" style={{ marginLeft: '-3%' }} >
                 <div>
                     <TopComponent />
-
                 </div>
                 <SelectFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
                 </SelectFilter>
@@ -63,9 +75,12 @@ function HomePage() {
                             FILTER
                         </Card.Title>
                         <Card.Subtitle style={{ display: 'inline-block' }} className="ms-5 filter-text-condition" >
-                            Da Nang, Math, High SChool, Female
+                            {sessionStorage.getItem("filterString")}
                         </Card.Subtitle>
-                        <i className="fas fa-angle-double-up fa-lg position-abs" onClick={handleClick} style={{ right: '10px' }}></i>
+                        <i className="fas fa-angle-double-up fa-lg position-abs" hidden={(sessionStorage.getItem("filterState") != "true" && sessionStorage.getItem("filterState") != null)}
+                            onClick={handleClickFilter} style={{ right: '10px' }}></i>
+                        <i className="fa fa-window-close fa-lg position-abs" hidden={(sessionStorage.getItem("filterState") == "true" || sessionStorage.getItem("filterState") == null)}
+                            onClick={handleClickClose} style={{ right: '10px' }}></i>
                     </Card.Body>
                 </Card>
 
