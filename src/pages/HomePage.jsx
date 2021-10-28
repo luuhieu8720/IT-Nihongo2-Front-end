@@ -18,7 +18,7 @@ function HomePage() {
             let postTemp = [];
 
             if (postIds != null) {
-                postTemp.push(postIds[0]);
+                postIds.forEach(element => postTemp.push(element));
                 setPostIDs(postTemp);
             }
             else {

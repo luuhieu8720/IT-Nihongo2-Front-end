@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router";
 import UserServices from "../services/UserServices";
+import { Link } from "react-router-dom";
 
 function StudentSideBar() {
     const history = useHistory();
-    //var user = JSON.parse(localStorage.getItem('currentUser'));
+    const [currentUser, setCurrentUser] = useState({role:''});
     const [user, setUser] = useState({
         username:"",
         name:"",
@@ -16,6 +17,8 @@ function StudentSideBar() {
         UserServices.getUserInformation().then(response => {
             setUser(response.data.value)
         });
+        setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
+        console.log(currentUser)
     },[])
 
     return (
@@ -42,7 +45,9 @@ function StudentSideBar() {
                 <div style={{ marginBottom: '5px' }}>Phone: {user.telephone}</div>
                 <div style={{ marginBottom: '5px' }}>Link: https://eto.edu.vn</div>
             </div>
-            <i style={{ position: 'fixed' }} className="bi bi-plus-circle fa-3x icon-purple"></i>
+            <Link to = "post/add">
+                <i style={{ position: 'fixed' }} hidden={currentUser.role != "User"} className="bi bi-plus-circle fa-3x icon-purple"></i>
+            </Link>
         </div>
 
     );
