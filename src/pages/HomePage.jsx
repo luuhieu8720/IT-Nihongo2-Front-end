@@ -6,6 +6,7 @@ import Thumbnail from "../components/Homepage/Thumbnail";
 import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import SelectFilter from "../components/Homepage/SelectFilter";
+import ShowPost from "./ShowPost";
 
 function HomePage() {
 
@@ -18,7 +19,7 @@ function HomePage() {
             let postTemp = [];
 
             if (postIds != null) {
-                postTemp.push(postIds[0]);
+                postIds.forEach(element => postTemp.push(element));
                 setPostIDs(postTemp);
             }
             else {
@@ -43,6 +44,9 @@ function HomePage() {
     )
 
     const [buttonPopup, setButtonPopup] = useState(false);
+
+    const [buttonPopupShow, setButtonPopupShow] = useState(false);
+
     const handleClickClose = () => {
         sessionStorage.setItem("filterState", "true");
         sessionStorage.removeItem("postIds");
@@ -69,6 +73,8 @@ function HomePage() {
                 </div>
                 <SelectFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
                 </SelectFilter>
+                {/* <ShowPost trigger={buttonPopupShow} setTrigger={setButtonPopupShow}>
+                </ShowPost> */}
                 <Card className="card-filter">
                     <Card.Body>
                         <Card.Title style={{ display: 'inline-block' }} className="filter-text">

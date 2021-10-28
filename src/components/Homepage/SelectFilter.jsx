@@ -22,7 +22,7 @@ function SelectFilter(props) {
         district: "",
         ward: "",
         course: "",
-        gender: "",
+        gender: "None",
     })
     const [districtOptions, setDistrictOptions] = useState([{
         value: "",
@@ -48,7 +48,6 @@ function SelectFilter(props) {
             ...post,
             [evt.target.name]: value,
         });
-        console.log(post)
     }
 
     const [ward, setWard] = useState("")
@@ -118,19 +117,30 @@ function SelectFilter(props) {
         if (post.gender != "") filterString += " " + post.gender + ",";
         if (filterString != "") filterString = filterString.slice(0, -1);
         console.log(filterString)
-        sessionStorage.setItem("filterString", filterString);
-        PostServices.getAllPost().then((response) => {
-            var posts = []
-            var temp = JSON.stringify(response.data.value);
-            posts = JSON.parse(temp);
-            var postIds = [];
-            Object.values(posts).forEach((element) => {
-                postIds.push(element.id)
-            })
-            console.log(postIds)
-            sessionStorage.setItem("postIds", JSON.stringify(postIds))
+
+        PostServices.findPost(post).then((response) => {
+            if (response.data.value.length == 0) {
+                toast.warning("No posts found");
+                sessionStorage.setItem("filterState", "true");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+            else {
+                sessionStorage.setItem("filterString", filterString);
+                console.log(response.data.value);
+                var posts = []
+                var temp = JSON.stringify(response.data.value);
+                posts = JSON.parse(temp);
+                var postIds = [];
+                Object.values(posts).forEach((element) => {
+                    postIds.push(element.id)
+                })
+                console.log(postIds)
+                sessionStorage.setItem("postIds", JSON.stringify(postIds))
+                window.location.reload();
+            }
             props.setTrigger(false)
-            window.location.reload();
         })
     }
 
@@ -157,15 +167,16 @@ function SelectFilter(props) {
 
     return (props.trigger) ? (
         <div>
+            <ToastContainer />
             <div className="background-homepage">
-                <ToastContainer />
+
             </div>
 
             <div className="frame-select-filter position-abs">
                 <i className="fa fa-window-close position-abs" style={{ right: '0px', top: '-1px' }}
                     onClick={() => {
                         props.setTrigger(false); sessionStorage.setItem("filterState", "true");
-                        sessionStorage.setItem("filterString","")
+                        sessionStorage.setItem("filterString", "")
                     }}
                     aria-hidden="true"></i>
                 <label className="tutor-asking position-abs" style={{ marginTop: '-15px' }} >Filtering</label>
@@ -203,7 +214,7 @@ function SelectFilter(props) {
 
                 <Select className="position-abs input-select-gender"
                     options={optionGender}
-                    defaultValue={optionGender[0]}
+                    defaultValue={optionGender[2]}
                     onChange={handleChangeGender}
                     placeholder="Gender"
                 />

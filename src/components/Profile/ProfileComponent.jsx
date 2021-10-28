@@ -19,11 +19,12 @@ function ProfileComponent() {
     useEffect(() => {
         UserServices.getUserInformation()
             .then((response) => {
-                if (response.data.value.male === true) {
-                    setGender("Male")
+                console.log(response.data.value)
+                if (response.data.value.gender === "Female") {
+                    setGender("Female")
                 }
                 else {
-                    setGender("Female")
+                    setGender("Male")
                 }
                 setUserInformation(response.data.value);
             })

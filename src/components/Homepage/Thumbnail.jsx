@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PostServices from "../../services/PostServices";
 import { toast, ToastContainer } from "react-toastify";
+import { unstable_concurrentAct } from "react-dom/test-utils";
 
 function Thumbnail(props) {
     const postID = {
@@ -18,10 +19,13 @@ function Thumbnail(props) {
             endMinus: "",
         },
         day: "",
-        location: "",
+        city: "",
+        district: "",
+        ward: "",
         gender: "",
         details: "",
-        salary: ""
+        salary: "",
+        course:""
     })
 
     useEffect(() => {
@@ -41,10 +45,13 @@ function Thumbnail(props) {
                         startMinus: tmp.time[0].startMinus,
                         endMinus: tmp.time[0].endMinus,
                     },
-                    location: tmp.location,
+                    city: tmp.city,
+                    district: tmp.district,
+                    ward: tmp.ward,
                     gender: tmp.gender,
                     details: tmp.details,
                     salary: tmp.salary,
+                    course:tmp.course,
                     day: date
                 }
 
@@ -72,13 +79,14 @@ function Thumbnail(props) {
                     <div className="col-sm-6">
                         <Card.Title>Title: {post.title}</Card.Title>
                         <Card.Text>Description: {post.details}</Card.Text>
+
                     </div>
                     <div className="col-sm-6">
                         <div className="dropdown">
                             <i className="fa fa-ellipsis-v" style={{ marginLeft: '95%' }} type="" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             </i>
                             <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-                                <li><Link className="dropdown-item" to="/" >View detail</Link></li>
+                                <li><Link className="dropdown-item" to={`/post/show/${postID.id}`} params={{ id: postID.id }} >View detail</Link></li>
                                 <li><Link className="dropdown-item" to="/" >Report this post</Link></li>
                                 <li><Link className="dropdown-item" to="/" >Manage</Link></li>
                             </ul>
@@ -88,7 +96,7 @@ function Thumbnail(props) {
                             + post.time.endHour + ":" + post.time.endMinus} {post.day}
 
                         </Card.Subtitle>
-                        <Card.Subtitle className="mt-2">Location: {post.location}</Card.Subtitle>
+                        <Card.Subtitle className="mt-2">Location: {post.ward + ", " + post.district + ", " + post.city}</Card.Subtitle>
                         <Card.Subtitle className="mt-2">Gender: {post.gender}</Card.Subtitle>
 
                     </div>

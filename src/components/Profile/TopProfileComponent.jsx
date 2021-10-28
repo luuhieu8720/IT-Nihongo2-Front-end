@@ -41,8 +41,8 @@ function TopProfileComponent() {
                     <i className="fa fa-ellipsis-h fa-2x" type="" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                     </i>
                     <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-                        <li><Link className="dropdown-item" >Finding tutor</Link></li>
-                        <li><Link className="dropdown-item" >Back to home page</Link></li>
+                        <li><Link to="/" className="dropdown-item" >Finding tutor</Link></li>
+                        <li><Link to="/" className="dropdown-item" >Back to home page</Link></li>
                         <li><a className="dropdown-item" onClick={signOut} >Sign out</a></li>
                     </ul>
                 </div>
