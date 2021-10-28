@@ -78,7 +78,13 @@ function EditProfile() {
                     imageName = "";
                 }
                 console.log(userProfile);
-                UserServices.updateProfile(userProfile).then(toast.success("Success"))
+                UserServices.updateProfile(userProfile).then(() => {
+                    toast.success("Success")
+                    setTimeout(() => {
+                        localStorage['stateProfile'] = "show";
+                        window.location.reload();
+                    }, 3000);
+                })
                     .catch((e) => {
                         if (e.response && e.response.data) {
                             toast.error(e.response.data.value);
@@ -87,7 +93,13 @@ function EditProfile() {
             })
         }
         else {
-            UserServices.updateProfile(userProfile).then(toast.success("Success"))
+            UserServices.updateProfile(userProfile).then(() => {
+                    toast.success("Success")
+                    setTimeout(() => {
+                        localStorage['stateProfile'] = "show";
+                        window.location.reload();
+                    }, 3000);
+                })
                 .catch((e) => {
                     if (e.response && e.response.data) {
                         toast.error(e.response.data.value);
@@ -95,10 +107,10 @@ function EditProfile() {
                 });
         }
 
-        setTimeout(() => {
-            localStorage['stateProfile'] = "show";
-            window.location.reload();
-        }, 3000);
+        // setTimeout(() => {
+        //     localStorage['stateProfile'] = "show";
+        //     window.location.reload();
+        // }, 3000);
     }
 
 
@@ -123,14 +135,10 @@ function EditProfile() {
                     <h3 className="" style={{ fontSize: '28px', marginTop: '18%', color: 'darkviolet' }}>Profile</h3>
                     <p className="position-abs" style={{ color: 'rgba(0, 0, 0, 0.5)', width: '0px', height: '400px', left: '35px', border: '1px solid #8d8989', marginLeft: '35%', top: '30%' }}></p>
                 </div>
-                <div className="col-sm-5" style={{ marginTop: '4%' }}>
+                <div className="col-sm-5" style={{ marginTop: '0%' }}>
                     <div className="mt-3">
                         <span className="">Phone </span>
                         <InputText style={{ marginLeft: '5.2rem' }} defaultValue={userProfile.telephone} name="telephone" className="input-update-profile" placeholder="" onChange={handleChange} />
-                    </div>
-                    <div className="mt-3">
-                        <span className="">Email </span>
-                        <InputText style={{ marginLeft: '5.7rem' }} defaultValue={userProfile.email} name="email" className="input-update-profile" placeholder="" onChange={handleChange} />
                     </div>
                     <div className="mt-3">
                         <span className="">Name </span>

@@ -3,12 +3,16 @@ import { Button } from "primereact/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-// import PostServices from "../services/PostServices";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
-import useLocationForm from "../components/useLocationForm";
+import axios from "axios";
 import Select from "react-select";
 
 function AddPost({ }) {
+	const optionGender = [
+		{ value: 'Male', label: 'Male' },
+		{ value: 'Female', label: 'Female' },
+		{ value: 'None', label: 'None' }
+	];
 
 	const [post, setPost] = useState({
 		title: "",
@@ -20,39 +24,123 @@ function AddPost({ }) {
 			day: ""
 		},
 		location: "",
-		male: "",
+		gender: "",
 		details: "",
 		salary: ""
 	})
+	const [districtOptions, setDistrictOptions] = useState([{
+		value: "",
+		label: "",
+		wards: []
+	}])
+
+	const [wardOptions, setWardOptions] = useState([{
+		value: "",
+		label: ""
+	}])
+
+	const [city, setCity] = useState({
+		id: "",
+		name: ""
+	})
+
+	const [district, setDistrict] = useState({id:"", name:""})
 
 	const handleChange = (evt) => {
-		const value = evt.target.value;
+		var value = evt.target.value;
+		if (evt.target.name == "location") {
+			value = value + ", " + ward + ", " + district.name + ", " + city.name
+		}
+		 setPost({
+            ...post,
+            [evt.target.name]: value,
+        });
+		console.log(post)
+	}
+
+	const [ward, setWard] = useState()
+
+	const handleChangeCity = e => {
+		setCity({id: e.value, name: e.label});
+		var districts = []
+		options.forEach(element => {
+			if (element.Id == e.value) {
+				districts = (element.Districts);
+			}
+		});
+		var tmpDistricts = [{ value: "", label: "", wards: [] }]
+		districts.forEach(element => {
+			tmpDistricts.push({ value: element.Id, label: element.Name, wards: element.Wards })
+		})
+		console.log(tmpDistricts)
+		setDistrictOptions(tmpDistricts);
+	}
+	const handleChangeDistrict = e => {
+		setDistrict({id: e.value, name: e.label});
+		var wards = []
+		console.log("districtOptions: ", districtOptions)
+		districtOptions.forEach(element => {
+			if (element.value == e.value) {
+				wards = (element.wards);
+				console.log(element.value + "   " + e.value)
+			}
+		});
+		var tmpWards = [{ value: "", label: "" }]
+		wards.forEach(element => {
+			tmpWards.push({ value: element.Id, label: element.Name })
+		})
+		setWardOptions(tmpWards);
+	}
+	const handleChangeWard = e => {
+		setWard(e.label)
+		console.log(e.label)
 	}
 	const optionsArray = [
-		{ key: "au", label: "Monday" },
-		{ key: "ca", label: "Tuesday" },
-		{ key: "us", label: "Wednesday" },
-		{ key: "pl", label: "Thursday" },
-		{ key: "es", label: "Friday" },
-		{ key: "fr", label: "Saturday" },
-		{ key: "fr", label: "Sunday" },
+		{ key: "mon", label: "Monday" },
+		{ key: "tue", label: "Tuesday" },
+		{ key: "wed", label: "Wednesday" },
+		{ key: "thu", label: "Thursday" },
+		{ key: "fri", label: "Friday" },
+		{ key: "sat", label: "Saturday" },
+		{ key: "sun", label: "Sunday" },
 	];
-	const {
-		state,
-		onCitySelect,
-		onDistrictSelect,
-		onWardSelect
-	  } = useLocationForm(false);
-	
-	  const {
-		cityOptions,
-		districtOptions,
-		wardOptions,
-		selectedCity,
-		selectedDistrict,
-		selectedWard
-	  } = state;
-	
+	const [cityOptions, setCityOptions] = useState([{
+		value: "",
+		label: ""
+	}])
+
+	const [options, setOptions] = useState([{
+
+	}])
+	const handleChangeGender = e => {
+		post.gender = e.value
+		console.log(post)
+	}
+
+
+
+	useEffect(() => {
+		fetch("https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json")
+			.then(res => res.json())
+			.then(
+				(result) => {
+					var tmpOptions = [{
+						value: "",
+						label: ""
+					}];
+					result.forEach(element => {
+						tmpOptions.push({ value: element.Id, label: element.Name })
+					});
+					setCityOptions(tmpOptions)
+					setOptions(result)
+					console.log(tmpOptions)
+				},
+				(error) => {
+
+				}
+			)
+	}, [])
+
 	return (
 		<div className="background1">
 			<ToastContainer />
@@ -62,9 +150,9 @@ function AddPost({ }) {
 						<label className="tutor-asking position-abs" style={{ marginTop: '-10px' }} >MAKE A NEW POST</label>
 						<p className="title" >Title</p>
 						<p className="salary">Salary</p>
-						<p className="time">Time</p>
-						<p className="location">Location</p>
-						<p className="gender">Gender</p>
+						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
+						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
+						<p className="gender" style={{ marginTop: '27px' }}>Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -79,15 +167,15 @@ function AddPost({ }) {
 							style={{ left: "49.5%" }}
 							onChange={handleChange}
 						/>
-						<p className="special">/</p>
+						<p className="special" style={{ marginTop: '-23px' }}>/</p>
 						<InputText
 							className="input-showpost text-black position-abs"
-							name="day"
-							style={{ left: "49.5%", top: "35%", width: "13%" }}
-							value={post.day}
+							name="time"
+							style={{ left: "49.5%", top: "32%", width: "13%" }}
+							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
-						<div className="input-showpost text-black position-abs" style={{ left: "66%", top: "35%", width: "21.6%" }}>
+						<div className="input-showpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
 							<DropdownMultiselect
 								options={optionsArray}
 								name="day"
@@ -96,58 +184,53 @@ function AddPost({ }) {
 						</div>
 						<p className="money">$</p>
 					</div>
-					<div className="row-cols-6">
-						{/* <InputText
-							className="input-select"
-							name="location"
-							style={{ top: "52%" }}
-							value={post.location}
-							onChange={handleChange}
-						>
-						</InputText> */}
-						<Select
-						className="input-select-city"
-						name="cityId"
-						key={`cityId_${selectedCity?.value}`}
-						// isDisabled={cityOptions.length === 0}
-						options={cityOptions}
-						onChange={(option) => onCitySelect(option)}
-						placeholder="City"
-						defaultValue={selectedCity}
-						style={{ top: "52%" }}
-						/>
-
-						<Select
-						className="input-select-district"
-						name="districtId"
-						key={`districtId_${selectedDistrict?.value}`}
-						// isDisabled={districtOptions.length === 0}
-						options={districtOptions}
-						onChange={(option) => onDistrictSelect(option)}
-						placeholder="District"
-						defaultValue={selectedDistrict}
-						style={{ top: "52%" }}
-						/>
-
-						<Select
-						className="input-select-ward"
-						name="wardId"
-						key={`wardId_${selectedWard?.value}`}
-						// isDisabled={wardOptions.length === 0}
-						options={wardOptions}
-						placeholder="Ward"
-						onChange={(option) => onWardSelect(option)}
-						defaultValue={selectedWard}
-						style={{ top: "52%" }}
-						/>
+					<div className="position-abs" style={{ top: '45%', left: '49.5%', width: '100%' }}>
 						<InputText
-							className="input-select"
-							name="gender"
-							style={{ top: "68%" }}
-							value={post.male == true ? "Male" : "Female"}
+							className="input-showpost"
+							name="location"
+							placeholder="House number, building, street name"
 							onChange={handleChange}
 						>
 						</InputText>
+					</div>
+					<div className="row-cols-6">
+
+						<Select
+							className="input-select-city"
+							name="cityId"
+							onChange={handleChangeCity}
+							options={cityOptions}
+							// isDisabled={cityOptions.length === 0}
+							placeholder="City"
+						/>
+
+						<Select
+							className="input-select-district"
+							name="districtId"
+							// isDisabled={districtOptions.length === 0}
+							placeholder="District"
+							style={{ top: "48%" }}
+							options={districtOptions}
+							onChange={handleChangeDistrict}
+						/>
+
+						<Select
+							className="input-select-ward"
+							name="wardId"
+							// isDisabled={wardOptions.length === 0}
+							onChange={handleChangeWard}
+							options={wardOptions}
+							placeholder="Ward"
+
+
+						/>
+						<div style={{ display: 'inline-block', marginLeft: '115%', marginTop: '20px' }}>
+							<Select
+								options={optionGender}
+								defaultValue={optionGender[0]}
+								onChange={handleChangeGender}
+							/>
+						</div>
 					</div>
 					<div className="row-cols-6">
 						<label className="rectangle"></label>
