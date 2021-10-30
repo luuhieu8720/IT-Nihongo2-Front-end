@@ -6,28 +6,36 @@ import { useEffect, useState } from "react";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 import axios from "axios";
 import Select from "react-select";
+import PostServices from "../services/PostServices";
+import { useHistory } from "react-router";
+import validator from "validator";
+import { Col, Form } from "react-bootstrap";
+import ShowPost from "./ShowPost";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function AddPost({ }) {
+function AddPost({  }) {
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
 		{ value: 'Female', label: 'Female' },
 		{ value: 'None', label: 'None' }
 	];
 
+	const history = useHistory();
 	const [post, setPost] = useState({
 		title: "",
-		time: {
-			startHour: "",
-			endHour: "",
-			startMinus: "",
-			endMinus: "",
-			day: ""
-		},
-		location: "",
-		gender: "",
+		time:  "",
+		city: "",
+		district: "",
+		ward: "",
+		gender: "None",
 		details: "",
-		salary: ""
+		salary: "", 
+		day:""
 	})
+	// Modify postID
+
+	
+	// 
 	const [districtOptions, setDistrictOptions] = useState([{
 		value: "",
 		label: "",
@@ -48,17 +56,20 @@ function AddPost({ }) {
 
 	const handleChange = (evt) => {
 		var value = evt.target.value;
-		if (evt.target.name == "location") {
-			value = value + ", " + ward + ", " + district.name + ", " + city.name
-		}
+		console.log(evt.target.name);
+		post.city = city.name;
+		post.district = district.name;
+		post.ward= ward;
+
 		 setPost({
             ...post,
             [evt.target.name]: value,
         });
-		console.log(post)
+	
+		console.log("post:",post);
 	}
 
-	const [ward, setWard] = useState()
+	const [ward, setWard] = useState();
 
 	const handleChangeCity = e => {
 		setCity({id: e.value, name: e.label});
@@ -95,14 +106,17 @@ function AddPost({ }) {
 		setWard(e.label)
 		console.log(e.label)
 	}
+	// ===
+	const [field, setField] = useState([]);
+	// 
 	const optionsArray = [
-		{ key: "mon", label: "Monday" },
-		{ key: "tue", label: "Tuesday" },
-		{ key: "wed", label: "Wednesday" },
-		{ key: "thu", label: "Thursday" },
-		{ key: "fri", label: "Friday" },
-		{ key: "sat", label: "Saturday" },
-		{ key: "sun", label: "Sunday" },
+		{ value: 'Mon', label: 'Monday' },
+		{ value: 'Tue', label: 'Tuesday'},
+		{ value: 'Wed', label: 'Wednesday'},
+		{ value: 'Thu', label: 'Thursday' },
+		{ value: 'Fri', label: 'Friday' },
+		{ value: 'Sat', label: 'Saturday' },
+		{ value: 'Sun', label: 'Sunday' },
 	];
 	const [cityOptions, setCityOptions] = useState([{
 		value: "",
@@ -113,10 +127,61 @@ function AddPost({ }) {
 
 	}])
 	const handleChangeGender = e => {
+		console.log("gender1", post.gender);
+		console.log("gender2", e.value);
 		post.gender = e.value
+		console.log("gender3", post.gender);
 		console.log(post)
 	}
+	const handleChangeDay = e => {
+		setField([].slice.call(e.target.selectedOptions).map(item => item.value))
+		console.log("Yes: field:", field);
+		// post.day = field ;
+		// console.log("day:", post.day);
+		const stringData = field.join();
+		post.day = stringData;
+		console.log(post.day);
+		
+	}
 
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		if (!validator.isInt(post.salary)) {
+		  toast.warning("Salary must be a number.");
+		} else if (
+		  post.title === "" ||
+		  post.time === "" ||
+		  post.city === "" ||
+		  post.district === "" ||
+		  post.ward === "" ||
+		  post.gender === "" ||
+		  post.details === "" ||
+		  post.salary === "" || 
+		  post.day == ""
+		) {
+		  toast.warning("All fields are not allowed to be null");
+		  setTimeout(() => {
+			  alert("TimeOut");
+			// history.push("/signup");
+		  }, 5000);
+		} 
+	else{
+		await PostServices.creastePost(post)
+			.then(() => {
+				toast.success("Create successfully. Go to View Post!!");
+				setTimeout(() => {
+					alert("TimeOut_New");
+					console.log("post cuoi", post);
+					
+				}, 5000);
+			})
+			.catch((e) => {
+				if (e.response && e.response.data) {
+					toast.error(e.response.data.value)
+				}
+			})
+		}
+	};
 
 
 	useEffect(() => {
@@ -176,15 +241,27 @@ function AddPost({ }) {
 							onChange={handleChange}
 						/>
 						<div className="input-showpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							<DropdownMultiselect
+							{/* <DropdownMultiselect
 								options={optionsArray}
 								name="day"
-								onChange={handleChange}
-							/>
+								onChange={handleChangeDay}
+							/> */}
+							 <Form.Group as={Col} controlId="my_multiselect_field">
+								<Form.Label>My multiselect</Form.Label>
+								<Form.Control as="select" multiple value={field} onChange={handleChangeDay} >
+									<option value="Mon">Monday</option>
+									<option value="Tue">Tuesday</option>
+									<option value="Wed">Wednesday</option>
+									<option value="Thur">Thurday</option>
+									<option value="Fri">Friday</option>
+									<option value="Sat">Saturday</option>
+									<option value="Sun">Sunday</option>
+								</Form.Control>
+							</Form.Group>
 						</div>
 						<p className="money">$</p>
 					</div>
-					<div className="position-abs" style={{ top: '45%', left: '49.5%', width: '100%' }}>
+					{/* <div className="position-abs" style={{ top: '45%', left: '49.5%', width: '100%' }}>
 						<InputText
 							className="input-showpost"
 							name="location"
@@ -192,8 +269,8 @@ function AddPost({ }) {
 							onChange={handleChange}
 						>
 						</InputText>
-					</div>
-					<div className="row-cols-6">
+					</div> */}
+					<div className="row-cols-6" >
 
 						<Select
 							className="input-select-city"
@@ -243,12 +320,13 @@ function AddPost({ }) {
 						<textarea
 							className="description text-black"
 							placeholder="Need a high school math teacher."
-							name="description"
+							name="details"
+							onChange={handleChange}
 						/>
 					</div>
 					<div className="row-cols-6">
 						<Button
-							className="button-contact position-abs text-white"
+							className="button-contact position-abs text-white" onClick={handleSubmit}
 						>
 							Contact right now!
 						</Button>
@@ -258,4 +336,5 @@ function AddPost({ }) {
 		</div>
 	);
 }
+
 export default AddPost;
