@@ -9,14 +9,9 @@ function ShowPost({ match }) {
 
 	const [post, setPost] = useState({
 		title: "",
-		time: {
-			startHour: "",
-			endHour: "",
-			startMinus: "",
-			endMinus: "",
-			day: ""
-		},
+		time: "",
 		location: "",
+		day:"",
 		male: "",
 		details: "",
 		salary: ""
@@ -37,12 +32,7 @@ function ShowPost({ match }) {
 				date = date.slice(0, -2)
 				var postTemp = {
 					title: tmp.title,
-					time: {
-						startHour: tmp.time[0].startHour,
-						endHour: tmp.time[0].endHour,
-						startMinus: tmp.time[0].startMinus,
-						endMinus: tmp.time[0].endMinus,
-					},
+					time: tmp.time,
 					location: `${tmp.ward}, ${tmp.district}, ${tmp.city}`,
 					male: tmp.male,
 					details: tmp.details,
@@ -103,8 +93,7 @@ function ShowPost({ match }) {
 								className="input-showpost text-black text-center position-abs"
 								placeholder="9:00-11:00"
 								name="time"
-								value={post.time.startHour + ":" + post.time.startMinus + "-"
-									+ post.time.endHour + ":" + post.time.endMinus}
+								value={post.time}
 								style={{ left: "49.5%", top: "35%", width: "13%" }}
 								disabled="true"
 							/>

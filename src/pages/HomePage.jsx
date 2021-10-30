@@ -73,8 +73,6 @@ function HomePage() {
                 </div>
                 <SelectFilter trigger={buttonPopup} setTrigger={setButtonPopup}>
                 </SelectFilter>
-                {/* <ShowPost trigger={buttonPopupShow} setTrigger={setButtonPopupShow}>
-                </ShowPost> */}
                 <Card className="card-filter">
                     <Card.Body>
                         <Card.Title style={{ display: 'inline-block' }} className="filter-text">
