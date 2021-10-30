@@ -3,24 +3,23 @@ import { Button } from "primereact/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
-import axios from "axios";
-import Select from "react-select";
 import PostServices from "../services/PostServices";
 import { useHistory } from "react-router";
 import validator from "validator";
-import { Col, Form } from "react-bootstrap";
-import ShowPost from "./ShowPost";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import OutlinedInput from '@mui/material/OutlinedInput';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import CreatableSelect from "react-select/creatable";
 
-function AddPost({  }) {
+function AddPost({ }) {
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
 		{ value: 'Female', label: 'Female' },
 		{ value: 'None', label: 'None' }
 	];
-
-	const history = useHistory();
 	const [post, setPost] = useState({
 		title: "",
 		time:  "",
@@ -67,7 +66,7 @@ function AddPost({  }) {
         });
 	
 		console.log("post:",post);
-	}
+	};
 
 	const [ward, setWard] = useState();
 
@@ -85,7 +84,7 @@ function AddPost({  }) {
 		})
 		console.log(tmpDistricts)
 		setDistrictOptions(tmpDistricts);
-	}
+	};
 	const handleChangeDistrict = e => {
 		setDistrict({id: e.value, name: e.label});
 		var wards = []
@@ -101,28 +100,27 @@ function AddPost({  }) {
 			tmpWards.push({ value: element.Id, label: element.Name })
 		})
 		setWardOptions(tmpWards);
-	}
+	};
 	const handleChangeWard = e => {
 		setWard(e.label)
 		console.log(e.label)
-	}
-	// ===
-	const [field, setField] = useState([]);
-	// 
+	};
+	
 	const optionsArray = [
-		{ value: 'Mon', label: 'Monday' },
-		{ value: 'Tue', label: 'Tuesday'},
-		{ value: 'Wed', label: 'Wednesday'},
-		{ value: 'Thu', label: 'Thursday' },
-		{ value: 'Fri', label: 'Friday' },
-		{ value: 'Sat', label: 'Saturday' },
-		{ value: 'Sun', label: 'Sunday' },
-	];
+		'Mon',
+		'Tues',
+		'Wed',
+		'Thur',
+		'Fri',
+		'Sat',
+		'Sun'
+	  ];
 	const [cityOptions, setCityOptions] = useState([{
 		value: "",
 		label: ""
 	}])
 
+	const { Option } = Select;
 	const [options, setOptions] = useState([{
 
 	}])
@@ -132,18 +130,38 @@ function AddPost({  }) {
 		post.gender = e.value
 		console.log("gender3", post.gender);
 		console.log(post)
-	}
-	const handleChangeDay = e => {
-		setField([].slice.call(e.target.selectedOptions).map(item => item.value))
-		console.log("Yes: field:", field);
-		// post.day = field ;
-		// console.log("day:", post.day);
-		const stringData = field.join();
-		post.day = stringData;
-		console.log(post.day);
-		
-	}
+	};
 
+
+	
+	const ITEM_HEIGHT = 15;
+	const ITEM_PADDING_TOP = 8;
+	const MenuProps = {
+		PaperProps: {
+		  style: {
+			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+			width: 250,
+		  },
+		},
+	  };
+	
+	const [date, setDate] = useState([]);
+
+	const handleChangeDay = (event) => {
+		const {
+		target: { value },
+		} = event;
+		setDate(
+			// On autofill we get a the stringified value.
+			typeof value === 'string' ? value.split(',') : value,
+		);
+		console.log("day:", value);
+		const stringData = value.join();
+		post.day = stringData;
+		console.log("abc:",post.day);
+	};
+
+	// 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!validator.isInt(post.salary)) {
@@ -205,7 +223,7 @@ function AddPost({  }) {
 				}
 			)
 	}, [])
-
+	// 
 	return (
 		<div className="background1">
 			<ToastContainer />
@@ -244,21 +262,35 @@ function AddPost({  }) {
 							{/* <DropdownMultiselect
 								options={optionsArray}
 								name="day"
+								value = {field}
 								onChange={handleChangeDay}
 							/> */}
-							 <Form.Group as={Col} controlId="my_multiselect_field">
-								<Form.Label>My multiselect</Form.Label>
-								<Form.Control as="select" multiple value={field} onChange={handleChangeDay} >
-									<option value="Mon">Monday</option>
-									<option value="Tue">Tuesday</option>
-									<option value="Wed">Wednesday</option>
-									<option value="Thur">Thurday</option>
-									<option value="Fri">Friday</option>
-									<option value="Sat">Saturday</option>
-									<option value="Sun">Sunday</option>
-								</Form.Control>
-							</Form.Group>
-						</div>
+							
+							<FormControl sx={{ top: 0, left:2, width: 280, height: 100 }}>
+							{/* <InputLabel id="demo-multiple-checkbox-label">Day</InputLabel> */}
+							<Select
+								labelId="demo-multiple-checkbox-label"
+								id="demo-multiple-checkbox"
+								style ={{border:0}}
+								placeholder="Select expected days"
+								multiple
+								value={date}
+								onChange={handleChangeDay}
+								input={<OutlinedInput label="Tag" />}
+								renderValue={(selected) => selected.join(', ')}
+								MenuProps={MenuProps}
+							>
+							{optionsArray.map((name) => (
+								<MenuItem key={name} value={name}>
+								<Checkbox checked={date.indexOf(name) > -1} />
+								<ListItemText primary={name} />
+								</MenuItem>
+							))}
+							</Select>
+						</FormControl>
+					
+   						 </div>
+					
 						<p className="money">$</p>
 					</div>
 					{/* <div className="position-abs" style={{ top: '45%', left: '49.5%', width: '100%' }}>
@@ -272,7 +304,7 @@ function AddPost({  }) {
 					</div> */}
 					<div className="row-cols-6" >
 
-						<Select
+						<CreatableSelect
 							className="input-select-city"
 							name="cityId"
 							onChange={handleChangeCity}
@@ -280,8 +312,7 @@ function AddPost({  }) {
 							// isDisabled={cityOptions.length === 0}
 							placeholder="City"
 						/>
-
-						<Select
+						<CreatableSelect
 							className="input-select-district"
 							name="districtId"
 							// isDisabled={districtOptions.length === 0}
@@ -291,7 +322,7 @@ function AddPost({  }) {
 							onChange={handleChangeDistrict}
 						/>
 
-						<Select
+						<CreatableSelect
 							className="input-select-ward"
 							name="wardId"
 							// isDisabled={wardOptions.length === 0}
@@ -302,14 +333,14 @@ function AddPost({  }) {
 
 						/>
 						<div style={{ display: 'inline-block', marginLeft: '115%', marginTop: '20px' }}>
-							<Select
+							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
 								onChange={handleChangeGender}
 							/>
 						</div>
-					</div>
-					<div className="row-cols-6">
+						</div>
+						<div className="row-cols-6">
 						<label className="rectangle"></label>
 						<p
 							className="enter-your-description"
@@ -323,18 +354,18 @@ function AddPost({  }) {
 							name="details"
 							onChange={handleChange}
 						/>
-					</div>
-					<div className="row-cols-6">
+						</div>
+						<div className="row-cols-6">
 						<Button
 							className="button-contact position-abs text-white" onClick={handleSubmit}
 						>
 							Contact right now!
 						</Button>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-}
+						</div>
+						</div>
+						</div>
+						</div>
+						);
+						}
 
 export default AddPost;
