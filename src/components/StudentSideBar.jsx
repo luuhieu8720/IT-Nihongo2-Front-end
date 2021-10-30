@@ -37,7 +37,7 @@ function StudentSideBar() {
                 </div>
                 <div className="col-sm-auto" style={{ marginTop: '-3%' }}>
                     <div className="dropdown">
-                        <Image src={user.avatar == "" ? "Image/avatardefault.png" : user.avatar} style={{ marginLeft: '-10px' }} width="60" height="60" alt="image" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" roundedCircle ></Image>
+                        <Image src={user.avatar == "" || user.avatar == null ? "Image/avatardefault.png" : user.avatar} style={{ marginLeft: '-10px' }} width="60" height="60" alt="image" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" roundedCircle ></Image>
                         <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
                             <li><Link className="dropdown-item"
                                 to={currentUser.role == "User" ? "user/profile/setting" : "/"}>Profile</Link></li>
