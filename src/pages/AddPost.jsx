@@ -13,7 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import CreatableSelect from "react-select/creatable";
-
+import { InputLabel} from "@mui/material";
 function AddPost({ }) {
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
@@ -235,7 +235,7 @@ function AddPost({ }) {
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
 						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
-						<p className="gender" style={{ marginTop: '27px' }}>Gender</p>
+						<p className="gender" style={{ marginTop: '-10px' }}>Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -267,7 +267,7 @@ function AddPost({ }) {
 							/> */}
 							
 							<FormControl sx={{ top: 0, left:2, width: 280, height: 100 }}>
-							{/* <InputLabel id="demo-multiple-checkbox-label">Day</InputLabel> */}
+							<InputLabel id="demo-multiple-checkbox-label">Day</InputLabel>
 							<Select
 								labelId="demo-multiple-checkbox-label"
 								id="demo-multiple-checkbox"
@@ -323,7 +323,7 @@ function AddPost({ }) {
 
 
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '115%', marginTop: '20px' }}>
+						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '54px', width: '165px' }}>
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
