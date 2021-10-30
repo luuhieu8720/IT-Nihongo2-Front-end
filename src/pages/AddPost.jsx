@@ -261,15 +261,6 @@ function AddPost({  }) {
 						</div>
 						<p className="money">$</p>
 					</div>
-					{/* <div className="position-abs" style={{ top: '45%', left: '49.5%', width: '100%' }}>
-						<InputText
-							className="input-showpost"
-							name="location"
-							placeholder="House number, building, street name"
-							onChange={handleChange}
-						>
-						</InputText>
-					</div> */}
 					<div className="row-cols-6" >
 
 						<Select
