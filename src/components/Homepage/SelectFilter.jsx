@@ -5,18 +5,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { useHistory } from "react-router";
 
 function SelectFilter(props) {
-    const history = useHistory()
     const optionGender = [
         { value: 'Male', label: 'Male' },
         { value: 'Female', label: 'Female' },
         { value: 'None', label: 'None' }
     ];
-    const test = {
-        id: '617434f1db81702e10c16ad0'
-    }
+
     const [post, setPost] = useState({
         city: "",
         district: "",
