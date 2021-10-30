@@ -1,56 +1,41 @@
 import SidebarHomePage from "../components/Homepage/SidebarHomePage";
-import PostServices from "../services/PostServices";
+import TutorServices from "../services/TutorServices";
 import TopTutorComponent from "../components/Tutor/TopTutorComponent";
 import TutorInfo from "../components/Tutor/TutorInfo";
+import FindTutorFilter from "../components/Tutor/FindTutorFilter";
 import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import SelectFilter from "../components/Homepage/SelectFilter";
 import ProfileSideBar from "../components/Tutor/ProfileSideBar";
 import ShowPost from "./ShowPost";
+import PostServices from "../services/PostServices";
 
 function TutorList() {
-  var postIDs = [];
+  const [tutorlist, setTutorList] = useState([]);
 
-  const [posts, setPostIDs] = useState([]);
   useEffect(() => {
-    var postIds = JSON.parse(sessionStorage.getItem("postIds"));
-    let postTemp = [];
-
-    if (postIds != null) {
-      postIds.forEach((element) => postTemp.push(element));
-      setPostIDs(postTemp);
-    } else {
-      PostServices.getAllPost()
-        .then((response) => {
-          var listPosts = response.data.value;
-          let ids = listPosts.map((post) => post.id);
-          setPostIDs(ids);
-        })
-        .catch((error) => console.log(error));
-    }
+    const fetchTutorList = async () => {
+      try {
+        const responce = await TutorServices.getAllTutor();
+        console.log("Successfully: ", responce.data.value);
+        setTutorList(responce.data.value);
+      } catch (error) {
+        console.log("Failed", error);
+      }
+    };
+    fetchTutorList();
   }, []);
 
-  Object.values(posts).forEach((id) => {
-    postIDs.push(id);
-  });
-
-  const listPosts = postIDs.map((postID) => (
-    <div>
-      <TutorInfo id={postID}></TutorInfo>
-      <div className="blank"></div>
+  console.log(tutorlist);
+  const listTutor = tutorlist.map((tutor) => (
+    <div className="row">
+      <div className="grid col-12  col-lg-4">
+        <TutorInfo tutor={tutor}></TutorInfo>
+      </div>
     </div>
   ));
 
   const [buttonPopup, setButtonPopup] = useState(false);
 
-  const [buttonPopupShow, setButtonPopupShow] = useState(false);
-
-  const handleClickClose = () => {
-    sessionStorage.setItem("filterState", "true");
-    sessionStorage.removeItem("postIds");
-    sessionStorage.setItem("filterString", "");
-    window.location.reload();
-  };
   const handleClickFilter = () => {
     window.scrollTo(0, 0);
     sessionStorage.setItem("filterState", "false");
@@ -69,12 +54,10 @@ function TutorList() {
         <div>
           <TopTutorComponent />
         </div>
-        <SelectFilter
+        <FindTutorFilter
           trigger={buttonPopup}
           setTrigger={setButtonPopup}
-        ></SelectFilter>
-        {/* <ShowPost trigger={buttonPopupShow} setTrigger={setButtonPopupShow}>
-                </ShowPost> */}
+        ></FindTutorFilter>
         <Card className="card-filter">
           <Card.Body>
             <Card.Title
@@ -98,23 +81,14 @@ function TutorList() {
               onClick={handleClickFilter}
               style={{ right: "10px" }}
             ></i>
-            <i
-              className="fa fa-window-close fa-lg position-abs"
-              hidden={
-                sessionStorage.getItem("filterState") == "true" ||
-                sessionStorage.getItem("filterState") == null
-              }
-              onClick={handleClickClose}
-              style={{ right: "10px" }}
-            ></i>
           </Card.Body>
         </Card>
 
-        <div style={{ marginTop: "30px" }}>{listPosts}</div>
+        <div style={{ marginTop: "30px" }}>{listTutor}</div>
       </div>
       <div
         className="col-sm-3 student-top-component"
-        style={{ paddingLeft: "5%" }}
+        style={{ paddingLeft: "3%" }}
       >
         <ProfileSideBar />
       </div>
