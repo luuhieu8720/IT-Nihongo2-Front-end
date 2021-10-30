@@ -12,7 +12,7 @@ function EditProfile() {
         telephone: "",
         email: "",
         name: "",
-        male: "",
+        gender: "",
         address: "",
         avatar: ""
     })
@@ -22,7 +22,7 @@ function EditProfile() {
         UserServices.getUserInformation()
             .then((response) => {
                 setUserProfile(response.data.value);
-                console.log(response.data);
+                console.log(response.data.value.gender === "Female");
             })
             .catch((e) => {
                 if (e.response && e.response.data) {
@@ -32,8 +32,8 @@ function EditProfile() {
     }, [])
 
     const options = [
-        { value: 'true', label: 'Male' },
-        { value: 'false', label: 'Female' }
+        { value: 'Male', label: 'Male' },
+        { value: 'Female', label: 'Female' }
     ];
 
     const colourStyles = {
@@ -49,7 +49,7 @@ function EditProfile() {
     }
 
     const handleChangeGender = e => {
-        userProfile.male = e.value;
+        userProfile.gender = e.value;
         console.log(userProfile)
     }
 
@@ -106,14 +106,7 @@ function EditProfile() {
                     }
                 });
         }
-
-        // setTimeout(() => {
-        //     localStorage['stateProfile'] = "show";
-        //     window.location.reload();
-        // }, 3000);
     }
-
-
 
     const makeid = (length) => {
         var result = '';
@@ -149,7 +142,7 @@ function EditProfile() {
                         <div style={{ display: 'inline-block', marginLeft: '4.8rem' }}>
                             <Select styles={colourStyles}
                                 options={options}
-                                defaultValue={options[0]}
+                                defaultValue={userProfile.gender === "Female" ? options[1] : options[0]}
                                 onChange={handleChangeGender}
                             />
                         </div>

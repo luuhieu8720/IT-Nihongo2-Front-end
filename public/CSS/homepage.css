@@ -1,5 +1,5 @@
 .icon-bar {
-	position:fixed;
+	position: fixed;
 	margin-left: 2%;
 	margin-bottom: 2%;
 	margin-top: 1%;
@@ -30,12 +30,15 @@
 .height-1 {
 	min-height: 10%;
 }
+
 .height-3 {
 	min-height: 35%;
 }
+
 .height-1 {
 	min-height: 35%;
 }
+
 .text-side-bar {
 	margin-left: 20%;
 	margin-top: 10%;
@@ -51,23 +54,29 @@
 
 	color: #FFFFFF;
 }
+
 .mt-sm-6 {
 	margin-top: 35% !important;
 }
+
 .ms-6 {
 	margin-left: 25%;
 }
+
 .ms-7 {
 	margin-left: 55%;
 }
+
 .ms-8 {
 	margin-left: 15%;
 }
+
 .post-tutor {
 	position: absolute;
 	margin-left: 10%;
 	margin-top: 13%;
 }
+
 .text-easy {
 	font-family: Rasa;
 	font-style: normal;
@@ -76,6 +85,7 @@
 	line-height: 44px;
 	color: #0008CD;
 }
+
 .text-tutor {
 	font-family: Rasa;
 	font-style: normal;
@@ -84,41 +94,214 @@
 	line-height: 44px;
 	color: #6C28AF
 }
+
 .mt-6 {
 	margin-top: 4%;
 }
+
 .mt-7 {
 	margin-top: 6%;
 }
+
 .image-homepage {
 	margin-left: 40%;
 }
+
 .card-tutor {
 	min-width: 80%;
 	margin-top: 1%;
 	margin-left: 15%;
 	border-radius: 20px;
+	height: fit-content;
 }
-.text-time{
+
+.text-time {
 	bottom: 5%;
 	color: rgb(118, 125, 126);
 }
-.student-top-component{
+
+.student-top-component {
 	margin-top: 1%;
 }
+
 .col-sm-define {
 	flex: 0 0 auto;
 	width: 65%;
 }
+
 .text-contact {
 	padding-top: 10px;
 	font-family: 'Roboto';
 	font-size: small;
 	color: rgba(0, 0, 0, 0.5);
 }
-.icon-purple{
+
+.icon-purple {
 	position: absolute;
 	color: #8543c7;
 	right: 2%;
 	bottom: 1%;
+}
+
+.card-filter {
+	min-width: 55%;
+	margin-top: 30%;
+	margin-left: 9.5%;
+	border-radius: 20px;
+	position: fixed;
+	z-index: 1;
+}
+
+.filter-text {
+	font-size: 20px;
+	background: -webkit-linear-gradient(#0008CD,
+			#0008CD);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: 'Rasa';
+	font-style: normal;
+	font-weight: bold;
+}
+
+.filter-text-condition {
+	font-family: 'Rasa';
+	font-size: 20px;
+}
+
+.frame-select-filter {
+	width: 45%;
+	height: 65%;
+	left: 28%;
+	top: 17%;
+	background: #ffffff;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+}
+
+.home-page-location {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 13%;
+	top: 35%;
+
+	font-family: "Segoe UI";
+	font-size: 14px;
+	align-items: center;
+
+	color: #000000;
+}
+
+.gender-homepage {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 13%;
+	top: 58%;
+
+	font-family: "Segoe UI";
+	font-size: 14px;
+	align-items: center;
+
+	color: #000000;
+}
+
+.input-select-gender {
+	position: absolute;
+	width: 23%;
+	height: 1%;
+	left: 13%;
+	margin-top: 15%;
+	font-family: "Segoe UI";
+	font-size: 23px;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid #7f7f7f;
+}
+
+.input-select-city-homepage {
+	position: absolute;
+	width: 23%;
+	height: 1%;
+	margin-top: 28%;
+	left: 13%;
+	font-family: "Segoe UI";
+	font-size: 23px;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid #7f7f7f;
+}
+
+.input-select-district-homepage {
+	position: absolute;
+	width: 23%;
+	height: 1%;
+	margin-top: -1%;
+	left: 39%;
+	font-family: "Segoe UI";
+	font-size: 23px;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid #7f7f7f;
+}
+
+.input-select-ward-homepage {
+	position: absolute;
+	width: 23%;
+	height: 1%;
+	margin-top: -0.75%;
+	left: 65%;
+	font-family: "Segoe UI";
+	font-size: 23px;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid #7f7f7f;
+}
+
+.input-text-subject {
+	position: absolute;
+	width: 50%;
+	height: 8%;
+	top: 25%;
+	left: 13%;
+	font-family: "Segoe UI";
+	font-size: 23px;
+	border: 0;
+	outline: 0;
+	color: #000000;
+	background: transparent;
+	border-bottom: 1px solid #000000;
+}
+
+.subject {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 13%;
+	top: 20%;
+
+	font-family: "Segoe UI";
+	font-size: 14px;
+	align-items: center;
+
+	color: #000000;
+}
+
+.background-homepage {
+	background: #a9a9ad;
+	opacity: 0.75;
+	position: absolute;
+	width:100%;
+	height: 100%;
+	top: 0%;
+	left: 0%;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+}
+
+.button-filter{
+	margin-left: 42%;
+	margin-top: 10%;
 }
