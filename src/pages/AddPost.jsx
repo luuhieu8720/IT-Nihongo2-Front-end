@@ -258,7 +258,7 @@ function AddPost({ }) {
 							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
-						<div className="input-showpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
+						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
 							{/* <DropdownMultiselect
 								options={optionsArray}
 								name="day"
@@ -271,7 +271,7 @@ function AddPost({ }) {
 							<Select
 								labelId="demo-multiple-checkbox-label"
 								id="demo-multiple-checkbox"
-								style ={{border:0}}
+								style ={{border:0, height: 49}}
 								placeholder="Select expected days"
 								multiple
 								value={date}
@@ -332,9 +332,9 @@ function AddPost({ }) {
 						</div>
 						</div>
 						<div className="row-cols-6">
-						<label className="rectangle"></label>
+						<label className="rectangle-add"></label>
 						<p
-							className="enter-your-description"
+							className="enter-your-description-add"
 							name="description"
 						>
 							Post details
