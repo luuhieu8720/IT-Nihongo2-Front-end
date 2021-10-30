@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function SideBarProfile() {
+function SideBarAdmin() {
     const handleProfileSubmit = () => {
         localStorage['stateProfile'] = "show";
     }
+    //localStorage["stateTabIndex"] = "0";
 
     const handleChangeIndexProfile = () =>{
         localStorage["stateTabIndex"] = "1";
@@ -47,4 +48,4 @@ function SideBarProfile() {
 
     );
 }
-export default SideBarProfile;
+export default SideBarAdmin;
