@@ -10,7 +10,9 @@ function ShowPost({ match }) {
 	const [post, setPost] = useState({
 		title: "",
 		time: "",
-		location: "",
+		city: "",
+		district:"",
+		ward:"",
 		day:"",
 		male: "",
 		details: "",
@@ -24,30 +26,8 @@ function ShowPost({ match }) {
 		console.log(postId)
 		PostServices.getPostInformation(postId)
 			.then((response) => {
-				var tmp = response.data.value;
-				var date = ""
-				tmp.time.forEach(element => {
-					date += element.day + ", "
-				})
-				date = date.slice(0, -2)
-				var postTemp = {
-					title: tmp.title,
-					time: tmp.time,
-					location: `${tmp.ward}, ${tmp.district}, ${tmp.city}`,
-					male: tmp.male,
-					details: tmp.details,
-					salary: tmp.salary,
-					day: date
-				}
-
-				if (postTemp.time.startMinus < 10) {
-					postTemp.time.startMinus = "0" + postTemp.time.startMinus
-				}
-				if (postTemp.time.endMinus < 10) {
-					postTemp.time.endMinus = "0" + postTemp.time.endMinus
-				}
-				setPost(postTemp);
-				console.log(response.data.value)
+				setPost(response.data.value);
+				console.log(post)
 			})
 			.catch((e) => {
 				if (e.response && e.response.data) {
@@ -111,7 +91,7 @@ function ShowPost({ match }) {
 								className="input-select"
 								name="location"
 								style={{ top: "52%" }}
-								value={post.location}
+								value={`${post.city}, ${post.district}, ${post.ward}`}
 								disabled="true"
 							>
 							</InputText>
