@@ -29,7 +29,8 @@ function AddPost({ }) {
 		gender: "None",
 		details: "",
 		salary: "", 
-		day:""
+		day:"", 
+		course:""
 	})
 	// Modify postID
 
@@ -164,8 +165,8 @@ function AddPost({ }) {
 	// 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!validator.isInt(post.salary)) {
-		  toast.warning("Salary must be a number.");
+		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
+		  toast.warning("Salary must be a number and be positive.");
 		} else if (
 		  post.title === "" ||
 		  post.time === "" ||
@@ -175,11 +176,12 @@ function AddPost({ }) {
 		  post.gender === "" ||
 		  post.details === "" ||
 		  post.salary === "" || 
-		  post.day == ""
+		  post.day == "" || 
+		  post.course == ""
 		) {
 		  toast.warning("All fields are not allowed to be null");
 		  setTimeout(() => {
-			  alert("TimeOut");
+			  
 			// history.push("/signup");
 		  }, 5000);
 		} 
@@ -188,7 +190,7 @@ function AddPost({ }) {
 			.then(() => {
 				toast.success("Create successfully. Go to View Post!!");
 				setTimeout(() => {
-					alert("TimeOut_New");
+					
 					console.log("post cuoi", post);
 					
 				}, 5000);
@@ -232,6 +234,7 @@ function AddPost({ }) {
 					<div className="row-cols-6">
 						<label className="tutor-asking position-abs" style={{ marginTop: '-10px' }} >MAKE A NEW POST</label>
 						<p className="title" >Title</p>
+						<p className="subject">Subject</p>
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
 						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
@@ -246,10 +249,17 @@ function AddPost({ }) {
 						/>
 						<InputText
 							className="input-showpost text-black position-abs"
+							name="course"
+							style={{ left: "6.5%", top: "32%" }}
+							onChange={handleChange}
+						/>
+						<InputText
+							className="input-showpost text-black position-abs"
 							name="salary"
 							style={{ left: "49.5%" }}
 							onChange={handleChange}
 						/>
+						
 						<p className="special" style={{ marginTop: '-23px' }}>/</p>
 						<InputText
 							className="input-showpost text-black position-abs"
@@ -340,7 +350,7 @@ function AddPost({ }) {
 							Post details
 						</p>
 						<textarea
-							className="description text-black"
+							className="description-add text-black"
 							placeholder="Need a high school math teacher."
 							name="details"
 							onChange={handleChange}
