@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import PostServices from "../services/PostServices";
+import { useHistory } from "react-router";
 import validator from "validator";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,10 +14,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import CreatableSelect from "react-select/creatable";
 import { InputLabel } from "@mui/material";
-import { useHistory } from "react-router";
-
 function AddPost({ }) {
-	const history = useHistory();
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
 		{ value: 'Female', label: 'Female' },
@@ -31,7 +29,8 @@ function AddPost({ }) {
 		gender: "None",
 		details: "",
 		salary: "",
-		day: ""
+		day: "",
+		course: ""
 	})
 	// Modify postID
 
@@ -110,7 +109,7 @@ function AddPost({ }) {
 
 	const optionsArray = [
 		'Mon',
-		'Tue',
+		'Tues',
 		'Wed',
 		'Thur',
 		'Fri',
@@ -154,6 +153,7 @@ function AddPost({ }) {
 			target: { value },
 		} = event;
 		setDate(
+			// On autofill we get a the stringified value.
 			typeof value === 'string' ? value.split(',') : value,
 		);
 		console.log("day:", value);
@@ -165,8 +165,8 @@ function AddPost({ }) {
 	// 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!validator.isInt(post.salary)) {
-			toast.warning("Salary must be a number.");
+		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
+			toast.warning("Salary must be a number and be positive.");
 		} else if (
 			post.title === "" ||
 			post.time === "" ||
@@ -176,17 +176,24 @@ function AddPost({ }) {
 			post.gender === "" ||
 			post.details === "" ||
 			post.salary === "" ||
-			post.day == ""
+			post.day == "" ||
+			post.course == ""
 		) {
 			toast.warning("All fields are not allowed to be null");
+			setTimeout(() => {
+
+				// history.push("/signup");
+			}, 5000);
 		}
 		else {
 			await PostServices.creastePost(post)
 				.then(() => {
-					toast.success("Created successfully!");
+					toast.success("Create successfully. Go to View Post!!");
 					setTimeout(() => {
-						history.push("/");
-					}, 2000);
+
+						console.log("post cuoi", post);
+
+					}, 5000);
 				})
 				.catch((e) => {
 					if (e.response && e.response.data) {
@@ -227,10 +234,11 @@ function AddPost({ }) {
 					<div className="row-cols-6">
 						<label className="tutor-asking position-abs" style={{ marginTop: '-10px' }} >MAKE A NEW POST</label>
 						<p className="title" >Title</p>
+						<p className="subject">Subject</p>
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
-						<p className="location" style={{ marginTop: '-20px' }}>Location</p>
-						<p className="gender" style={{ marginTop: '-5px' }}>Gender</p>
+						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
+						<p className="gender" style={{ marginTop: '-10px' }}>Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -241,20 +249,34 @@ function AddPost({ }) {
 						/>
 						<InputText
 							className="input-showpost text-black position-abs"
+							name="course"
+							style={{ left: "6.5%", top: "32%" }}
+							onChange={handleChange}
+						/>
+						<InputText
+							className="input-showpost text-black position-abs"
 							name="salary"
 							style={{ left: "49.5%" }}
 							onChange={handleChange}
 						/>
-						<p className="special" style={{ marginTop: '-15px' }}>/</p>
+
+						<p className="special" style={{ marginTop: '-23px' }}>/</p>
 						<InputText
 							className="input-showpost text-black position-abs"
 							name="time"
-							style={{ left: "49.5%", top: "34%", width: "13%" }}
+							style={{ left: "49.5%", top: "32%", width: "13%" }}
 							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
 						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							<FormControl sx={{ top: '5px', left: 2, width: 280, height: 80 }}>
+							{/* <DropdownMultiselect
+								options={optionsArray}
+								name="day"
+								value = {field}
+								onChange={handleChangeDay}
+							/> */}
+
+							<FormControl sx={{ top: 0, left: 2, width: 280, height: 100 }}>
 								<InputLabel id="demo-multiple-checkbox-label">Day</InputLabel>
 								<Select
 									labelId="demo-multiple-checkbox-label"
@@ -288,11 +310,13 @@ function AddPost({ }) {
 							name="cityId"
 							onChange={handleChangeCity}
 							options={cityOptions}
+							// isDisabled={cityOptions.length === 0}
 							placeholder="City"
 						/>
 						<CreatableSelect
 							className="input-select-district"
 							name="districtId"
+							// isDisabled={districtOptions.length === 0}
 							placeholder="District"
 							style={{ top: "48%" }}
 							options={districtOptions}
@@ -302,6 +326,7 @@ function AddPost({ }) {
 						<CreatableSelect
 							className="input-select-ward"
 							name="wardId"
+							// isDisabled={wardOptions.length === 0}
 							onChange={handleChangeWard}
 							options={wardOptions}
 							placeholder="Ward"
@@ -325,7 +350,7 @@ function AddPost({ }) {
 							Post details
 						</p>
 						<textarea
-							className="description text-black"
+							className="description-add text-black"
 							placeholder="Need a high school math teacher."
 							name="details"
 							onChange={handleChange}
