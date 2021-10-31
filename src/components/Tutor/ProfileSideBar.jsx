@@ -3,6 +3,7 @@ import { Image } from "react-bootstrap";
 import { useHistory } from "react-router";
 import UserServices from "../../services/UserServices";
 import { Link } from "react-router-dom";
+import { IconButton } from "@material-ui/core";
 
 function ProfileSideBar() {
   const history = useHistory();
@@ -100,6 +101,52 @@ function ProfileSideBar() {
         >
           PROFILE
         </h1>
+        <Image
+          src="Image/camera.png"
+          className="position-abs"
+          style={{ marginLeft: "10%", marginTop: "5%" }}
+          width="280"
+          height="220"
+          alt="image"
+        ></Image>
+        <h5
+          className="text-center"
+          style={{
+            font: "Oxygen",
+            marginTop: "70%",
+            fontSize: "24px",
+            color: "rgba(0, 0, 0, 0.5)",
+          }}
+        >
+          You don't have tutor profile
+        </h5>
+        <h5
+          className="text-center"
+          style={{
+            font: "Oxygen",
+            marginTop: "70%",
+            marginLeft: "-30%",
+            fontSize: "24px",
+            color: "rgba(0, 0, 0, 0.5)",
+          }}
+        >
+          Become a tutor!
+        </h5>
+        <IconButton
+          className="icon-purple"
+          children="asking"
+          color="primary"
+          style={{ marginLeft: "75%", top: "-52px" }}
+          size="medium"
+        >
+          <Image
+            src="Image/tutor_icon.JPG"
+            className="position-abs"
+            width="80"
+            height="80"
+            alt="image"
+          ></Image>
+        </IconButton>
       </form>
     </div>
   );
