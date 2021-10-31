@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PostServices from "../../services/PostServices";
 import { toast, ToastContainer } from "react-toastify";
-import { unstable_concurrentAct } from "react-dom/test-utils";
 
 function Thumbnail(props) {
   const postID = {
@@ -82,8 +81,7 @@ function Thumbnail(props) {
             </div>
             <Card.Subtitle>Salary: {post.salary} VND</Card.Subtitle>
             <Card.Subtitle className="mt-2">
-              Time:{post.time}
-              {post.day}
+              Time: {post.time} {post.day}
             </Card.Subtitle>
             <Card.Subtitle className="mt-2">
               Location: {post.ward + ", " + post.district + ", " + post.city}

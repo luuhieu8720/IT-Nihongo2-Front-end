@@ -9,14 +9,11 @@ function ShowPost({ match }) {
 
 	const [post, setPost] = useState({
 		title: "",
-		time: {
-			startHour: "",
-			endHour: "",
-			startMinus: "",
-			endMinus: "",
-			day: ""
-		},
-		location: "",
+		time: "",
+		city: "",
+		district:"",
+		ward:"",
+		day:"",
 		male: "",
 		details: "",
 		salary: ""
@@ -29,35 +26,8 @@ function ShowPost({ match }) {
 		console.log(postId)
 		PostServices.getPostInformation(postId)
 			.then((response) => {
-				var tmp = response.data.value;
-				var date = ""
-				tmp.time.forEach(element => {
-					date += element.day + ", "
-				})
-				date = date.slice(0, -2)
-				var postTemp = {
-					title: tmp.title,
-					time: {
-						startHour: tmp.time[0].startHour,
-						endHour: tmp.time[0].endHour,
-						startMinus: tmp.time[0].startMinus,
-						endMinus: tmp.time[0].endMinus,
-					},
-					location: `${tmp.ward}, ${tmp.district}, ${tmp.city}`,
-					male: tmp.male,
-					details: tmp.details,
-					salary: tmp.salary,
-					day: date
-				}
-
-				if (postTemp.time.startMinus < 10) {
-					postTemp.time.startMinus = "0" + postTemp.time.startMinus
-				}
-				if (postTemp.time.endMinus < 10) {
-					postTemp.time.endMinus = "0" + postTemp.time.endMinus
-				}
-				setPost(postTemp);
-				console.log(response.data.value)
+				setPost(response.data.value);
+				console.log(post)
 			})
 			.catch((e) => {
 				if (e.response && e.response.data) {
@@ -103,8 +73,7 @@ function ShowPost({ match }) {
 								className="input-showpost text-black text-center position-abs"
 								placeholder="9:00-11:00"
 								name="time"
-								value={post.time.startHour + ":" + post.time.startMinus + "-"
-									+ post.time.endHour + ":" + post.time.endMinus}
+								value={post.time}
 								style={{ left: "49.5%", top: "35%", width: "13%" }}
 								disabled="true"
 							/>
@@ -122,7 +91,7 @@ function ShowPost({ match }) {
 								className="input-select"
 								name="location"
 								style={{ top: "52%" }}
-								value={post.location}
+								value={`${post.city}, ${post.district}, ${post.ward}`}
 								disabled="true"
 							>
 							</InputText>

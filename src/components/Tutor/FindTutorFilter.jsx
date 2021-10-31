@@ -52,13 +52,14 @@ function FindTutorFilter(props) {
     TutorServices.findTutor(tutor).then((response) => {
       if (response.data.value.length == 0) {
         toast.warning("Tutor not found");
-        sessionStorage.setItem("filterState", "true");
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+        sessionStorage.setItem("filterTutorState", "true");
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 1000);
       } else {
         sessionStorage.setItem("filterString", filterString);
         console.log(response.data.value);
+        sessionStorage.setItem("filterTutorState","false");
         // var tutors = [];
         // var temp = JSON.stringify(response.data.value);
         // tutors = JSON.parse(temp);

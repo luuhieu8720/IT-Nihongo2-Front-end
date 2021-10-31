@@ -9,6 +9,7 @@ import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
 import TutorList from "./pages/TutorList";
+import AddPost from "./pages/AddPost"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/verify-code" component={CheckSignup}></Route>
         <Route exact path="/password/change" component={ChangePassword}></Route>
         <Route exact path="/tutor" component={TutorList}></Route>
+        <Route exact path="/post/add" component={AddPost}></Route>
       </Switch>
     </BrowserRouter>
   );

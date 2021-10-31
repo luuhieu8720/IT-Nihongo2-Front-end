@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
+import axios from "axios"
 
 function Signin() {
   const [state, setState] = useState();
@@ -19,6 +20,7 @@ function Signin() {
       .then((response) => {
         if (response.data !== "") {
           toast.success("Successfully");
+          axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.value.token;
           localStorage.setItem(
             "currentUser",
             JSON.stringify(response.data.value)

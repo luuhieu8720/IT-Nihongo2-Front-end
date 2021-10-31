@@ -2,16 +2,16 @@ import axios from "axios";
 
 class AuthsServices {
   login(login) {
-    return axios.post("noauth/login", login);
+    return axios.post( "noauth/login", login);
   }
   signup(signup) {
-    return axios.post("noauth/signup", signup);
+    return axios.post( "noauth/signup", signup);
   }
   finishSignup(finishSignupModel){
-    return axios.post("noauth/signup/finish", finishSignupModel);
+    return axios.post( "noauth/signup/finish", finishSignupModel);
   }
   resetPassword(resetPasswordModel){
-    return axios.post("noauth/forgotpassword", resetPasswordModel);
+    return axios.post( "noauth/forgotpassword", resetPasswordModel);
   }
   signOut(){
     localStorage.clear();
