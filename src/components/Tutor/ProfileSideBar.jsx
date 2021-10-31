@@ -24,7 +24,7 @@ function ProfileSideBar() {
   }, []);
 
   return (
-    <div className="" style={{ position: "fixed" }}>
+    <div className="">
       <div className="row">
         <div
           className="col-sm-auto student-top-component"
@@ -55,7 +55,7 @@ function ProfileSideBar() {
                   : user.avatar
               }
               className="position-abs"
-              style={{ marginLeft: "240px", top: "-45px" }}
+              style={{ marginLeft: "80%", top: "0%" }}
               width="60"
               height="60"
               alt="image"
@@ -101,19 +101,25 @@ function ProfileSideBar() {
         >
           PROFILE
         </h1>
-        <Image
-          src="Image/camera.png"
-          className="position-abs"
-          style={{ marginLeft: "10%", marginTop: "5%" }}
-          width="280"
-          height="220"
-          alt="image"
-        ></Image>
+        <IconButton
+          className="icon-purple"
+          children="camera"
+          color="primary"
+          style={{ marginLeft: "50%", marginTop: "30%" }}
+        >
+          <Image
+            src="Image/camera.png"
+            className="position-abs"
+            width="280"
+            height="220"
+            alt="image"
+          ></Image>
+        </IconButton>
         <h5
           className="text-center"
           style={{
             font: "Oxygen",
-            marginTop: "70%",
+            marginTop: "30%",
             fontSize: "24px",
             color: "rgba(0, 0, 0, 0.5)",
           }}

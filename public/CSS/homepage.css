@@ -176,10 +176,10 @@
 
 .profile-box {
   position: absolute;
-  width: 165%;
-  height: 1550%;
-  left: 0%;
-  top: 150%;
+  width: 24%;
+  height: 90%;
+  left: 75%;
+  top: 10%;
 
   background: rgba(233, 227, 255, 0.43);
 }
