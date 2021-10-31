@@ -45,8 +45,6 @@ function HomePage() {
 
     const [buttonPopup, setButtonPopup] = useState(false);
 
-    const [buttonPopupShow, setButtonPopupShow] = useState(false);
-
     const handleClickClose = () => {
         sessionStorage.setItem("filterState", "true");
         sessionStorage.removeItem("postIds");

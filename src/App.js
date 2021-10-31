@@ -8,8 +8,8 @@ import Profile from "./pages/Profile";
 import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
+import TutorList from "./pages/TutorList";
 import AddPost from "./pages/AddPost"
-import Test from "./pages/Test";
 
 function App() {
   return (
@@ -24,8 +24,8 @@ function App() {
         <Route exact path="/post/show/:id" component={ShowPost}></Route>
         <Route exact path="/verify-code" component={CheckSignup}></Route>
         <Route exact path="/password/change" component={ChangePassword}></Route>
+        <Route exact path="/tutors/list" component={TutorList}></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
-        <Route exact path="/test" component={Test}></Route>
       </Switch>
     </BrowserRouter>
   );
