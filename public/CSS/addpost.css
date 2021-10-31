@@ -9,9 +9,9 @@
     border: 0;
     outline: 0;
     color: #cccccc;
-    border-bottom: 2px solid #7f7f7f;
-  }
-  .input-select-post {
+}
+
+.input-select-post {
     position: absolute;
     width: 44%;
     height: 9%;
@@ -22,9 +22,9 @@
     border: 0;
     outline: 0;
     color: #000000;
-    border-bottom: 1px solid #000000;
-  }
-  .input-addpost {
+}
+
+.input-addpost {
     width: 43%;
     height: 10%;
     top: 20%;
@@ -34,10 +34,9 @@
     outline: 0;
     color: #000000;
     background: transparent;
-    border-bottom: 1px solid #000000;
-  }
-  
-  .tutor-asking {
+}
+
+.tutor-asking {
     position: absolute;
     width: 460px;
     height: 133px;
@@ -47,32 +46,33 @@
     font-weight: 900;
     font-size: 32px;
     color: #000000;
-  }
+}
 
-  .special-add-post {
+.special-add-post {
     position: absolute;
     width: 50px;
     height: 50px;
     left: 730px;
     top: 183px;
     font-family: "Segoe UI";
-    color: #cccccc;
+    color: black;
     font-size: 40px;
-  }
-  .input-select-city{
+}
+
+.input-select-city {
     position: absolute;
     width: 25%;
     height: 5%;
     left: 99%;
-    margin-top: 52%;
+    margin-top: 46%;
     font-family: "Segoe UI";
     font-size: 23px;
     border: 0;
     outline: 0;
-    color: #cccccc;
-    border-bottom: 2px solid #7f7f7f;
-  }
-  .input-select-district {
+    color: black;
+}
+
+.input-select-district {
     width: 25%;
     height: 10%;
     margin-left: 125%;
@@ -81,10 +81,36 @@
     font-size: 23px;
     border: 0;
     outline: 0;
-    color: #cccccc;
-    border-bottom: 2px solid #7f7f7f;
-  }
-  .input-select-ward {
+    color: black;
+}
+
+.enter-your-description-add {
+    position: absolute;
+    width: 12%;
+    height: 10%;
+    left: 8%;
+    top: 31.5%;
+    padding-left: 20px;
+    font-family: "Segoe UI";
+    font-size: 23px;
+    align-items: center;
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.rectangle-add {
+    position: absolute;
+    width: 38%;
+    height: 45%;
+    left: 6.5%;
+    top: 35%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.input-select-ward {
     width: 25%;
     height: 10%;
     margin-left: 151%;
@@ -93,13 +119,13 @@
     font-size: 23px;
     border: 0;
     outline: 0;
-    color: #cccccc;
-    border-bottom: 2px solid #7f7f7f;
-  }
-  .frame-add{
+    color: black;
+}
+
+.frame-add {
     width: 100%;
     height: 100%;
     left: 270px;
     top: 60px;
     background: #ffffff;
-  }
+}
