@@ -41,35 +41,25 @@ function FindTutorFilter(props) {
   };
 
   const handleSubmit = () => {
-    tutor.specialty = tutor.name;
     console.log(tutor);
     var filterString = "";
     if (tutor.specialty != "") filterString += " " + tutor.specialty + ",";
-    if (tutor.gender != "") filterString += " " + tutor.gender + ",";
-    if (filterString != "") filterString = filterString.slice(0, -1);
+    if (tutor.gender != "") filterString += " " + tutor.gender;
+
     console.log(filterString);
 
     TutorServices.findTutor(tutor).then((response) => {
       if (response.data.value.length == 0) {
         toast.warning("Tutor not found");
-        sessionStorage.setItem("filterTutorState", "true");
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 1000);
+        sessionStorage.setItem("filterState", "true");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } else {
         sessionStorage.setItem("filterString", filterString);
         console.log(response.data.value);
-        sessionStorage.setItem("filterTutorState","false");
-        // var tutors = [];
-        // var temp = JSON.stringify(response.data.value);
-        // tutors = JSON.parse(temp);
-        // // var postIds = [];
-        // // Object.values(tutors).forEach((element) => {
-        // //   postIds.push(element.id);
-        // // });
-        // // console.log(postIds);
-        // sessionStorage.setItem("postIds", JSON.stringify(postIds));
-        // window.location.reload();
+        sessionStorage.setItem("filterState", "false");
+        window.location.reload();
       }
       props.setTrigger(false);
     });
@@ -123,7 +113,7 @@ function FindTutorFilter(props) {
         <p className="subject">Subject</p>
         <InputText
           className="input-text-subject position-abs"
-          name="course"
+          name="specialty"
           onChange={handleChange}
         />
         <p className="gender-tutor">Gender</p>

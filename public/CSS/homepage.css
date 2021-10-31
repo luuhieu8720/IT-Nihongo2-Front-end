@@ -176,10 +176,10 @@
 
 .profile-box {
   position: absolute;
-  width: 150%;
-  height: 1000%;
+  width: 170%;
+  height: 10000000%;
   left: 0%;
-  top: 100%;
+  top: 150%;
 
   background: rgba(233, 227, 255, 0.43);
 }
@@ -218,12 +218,12 @@
   border-radius: 20px;
   position: fixed;
   z-index: 1;
-	min-width: 55%;
-	bottom: 0%;
-	margin-left: 9.5%;
-	border-radius: 20px;
-	position: fixed;
-	z-index: 1;
+  min-width: 55%;
+  bottom: 0%;
+  margin-left: 9.5%;
+  border-radius: 20px;
+  position: fixed;
+  z-index: 1;
 }
 
 .filter-text {
