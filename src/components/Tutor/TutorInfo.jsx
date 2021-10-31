@@ -4,7 +4,6 @@ import { Image } from "react-bootstrap";
 
 function TutorInfo(props) {
   const tutor = props.tutor;
-  console.log(tutor);
 
   return (
     <Card className="card-tutor-info box">

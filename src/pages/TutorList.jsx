@@ -38,7 +38,7 @@ function TutorList() {
 	const handleClickClose = () => {
 		sessionStorage.setItem("filterTutorState", "true");
 		sessionStorage.removeItem("tutors");
-		sessionStorage.setItem("filterString", "");
+		sessionStorage.setItem("filterTutorString", "");
 		window.location.reload();
 	}
 	const handleClickFilter = () => {
@@ -75,11 +75,11 @@ function TutorList() {
 							style={{ display: "inline-block" }}
 							className="ms-5 filter-text-condition"
 						>
-							{sessionStorage.getItem("filterString")}
+							{sessionStorage.getItem("filterTutorString")}
 						</Card.Subtitle>
-						<i className="fas fa-angle-double-up fa-lg position-abs" hidden={(sessionStorage.getItem("filterTutorState") != "true" && sessionStorage.getItem("filterState") != null)}
+						<i className="fas fa-angle-double-up fa-lg position-abs" hidden={(sessionStorage.getItem("filterTutorState") != "true" && sessionStorage.getItem("filterTutorState") != null)}
 							onClick={handleClickFilter} style={{ right: '10px' }}></i>
-						<i className="fa fa-window-close fa-lg position-abs" hidden={(sessionStorage.getItem("filterTutorState") == "true" || sessionStorage.getItem("filterState") == null)}
+						<i className="fa fa-window-close fa-lg position-abs" hidden={(sessionStorage.getItem("filterTutorState") == "true" || sessionStorage.getItem("filterTutorState") == null)}
 							onClick={handleClickClose} style={{ right: '10px' }}></i>
 					</Card.Body>
 				</Card>

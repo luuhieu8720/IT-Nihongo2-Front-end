@@ -31,6 +31,7 @@ function FindTutorFilter(props) {
 	const [options, setOptions] = useState([{}]);
 	const handleChangeGender = (e) => {
 		tutor.gender = e.value;
+		console.log(tutor);
 	};
 
 	const handleSubmit = () => {
@@ -39,8 +40,8 @@ function FindTutorFilter(props) {
 		if (tutor.specialty != "") filterString += " " + tutor.specialty + ",";
 		if (tutor.gender != "") filterString += " " + tutor.gender;
 
-		console.log(filterString);
 		TutorServices.findTutor(tutor).then((response) => {
+			console.log(response.data.value)
 			if (response.data.value.length == 0) {
 				toast.warning("Tutor not found");
 				sessionStorage.setItem("filterState", "true");
@@ -48,8 +49,7 @@ function FindTutorFilter(props) {
 					window.location.reload();
 				}, 1000);
 			} else {
-				sessionStorage.setItem("filterString", filterString);
-				console.log(response.data.value);
+				sessionStorage.setItem("filterTutorString", filterString);
 				sessionStorage.setItem("filterTutorState", "false");
 				sessionStorage.setItem("tutors", JSON.stringify(response.data.value));
 				window.location.reload();
@@ -92,8 +92,8 @@ function FindTutorFilter(props) {
 					style={{ right: "0px", top: "-1px" }}
 					onClick={() => {
 						props.setTrigger(false);
-						sessionStorage.setItem("filterState", "true");
-						sessionStorage.setItem("filterString", "");
+						sessionStorage.setItem("filterTutorState", "true");
+						sessionStorage.setItem("filterTutorString", "");
 					}}
 					aria-hidden="true"
 				></i>
