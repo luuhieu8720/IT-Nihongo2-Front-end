@@ -27,7 +27,7 @@ function TutorList() {
 
 	console.log(tutorlist);
 	const listTutor = tutorlist.map((tutor) => (
-		<div className="grid col-12 col-lg-4">
+		<div className="col-12 col-lg-4">
 			<TutorInfo tutor={tutor}></TutorInfo>
 		</div>
 
@@ -63,7 +63,7 @@ function TutorList() {
 					trigger={buttonPopup}
 					setTrigger={setButtonPopup}
 				></FindTutorFilter>
-				<Card className="card-filter">
+				<Card className="card-filter-tutor">
 					<Card.Body>
 						<Card.Title
 							style={{ display: "inline-block" }}
@@ -84,10 +84,8 @@ function TutorList() {
 					</Card.Body>
 				</Card>
 
-				<div style={{ marginTop: "30px" }}>
-					<div className="row">
-						{listTutor}
-					</div>
+				<div className="row">
+					{listTutor}
 				</div>
 			</div>
 			<div

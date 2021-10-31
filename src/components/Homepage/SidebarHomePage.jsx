@@ -24,7 +24,7 @@ function SidebarHomePage() {
           <Link to="/">
             <i className="far fa-folder fa-sm" style={{ color: "white" }}></i>
           </Link>
-          <Link to="/tutor">
+          <Link to="/tutors/list">
             <i className="far fa-user" style={{ color: "white" }}></i>
           </Link>
           <Link to="/">

@@ -95,6 +95,7 @@
   line-height: 44px;
   color: #6c28af;
 }
+
 .text-tutor-list {
   width: 593px;
   font-family: Arial;
@@ -108,6 +109,7 @@
 
   color: #000000;
 }
+
 .text-tutor-list1 {
   position: absolute;
   width: 417px;
@@ -122,6 +124,7 @@
 
   color: rgba(0, 0, 0, 0.5);
 }
+
 .mt-6 {
   margin-top: 4%;
 }
@@ -141,6 +144,7 @@
   border-radius: 20px;
   height: fit-content;
 }
+
 .card-tutor-info {
   margin-top: 30%;
   margin-left: 20%;
@@ -179,10 +183,11 @@
   width: 24%;
   height: 90%;
   left: 75%;
-  top: 10%;
+  margin-top: 30%;
 
   background: rgba(233, 227, 255, 0.43);
 }
+
 .text-time {
   bottom: 5%;
   color: rgb(118, 125, 126);
@@ -218,12 +223,19 @@
   border-radius: 20px;
   position: fixed;
   z-index: 1;
-  min-width: 55%;
   bottom: 0%;
-  margin-left: 9.5%;
+  border-radius: 20px;
+}
+
+.card-filter-tutor {
+  min-width: 60%;
+  margin-top: 30%;
+  margin-left:4%;
   border-radius: 20px;
   position: fixed;
   z-index: 1;
+  bottom: 0%;
+  border-radius: 20px;
 }
 
 .filter-text {
@@ -312,7 +324,7 @@
   width: 23%;
   height: 1%;
   left: 13%;
-  margin-top: 40%;
+  margin-top: 35%;
   font-family: "Segoe UI";
   font-size: 23px;
   border: 0;

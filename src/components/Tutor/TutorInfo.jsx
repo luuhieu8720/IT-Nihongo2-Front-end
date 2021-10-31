@@ -15,11 +15,11 @@ function TutorInfo(props) {
               <Image
                 src={
                   tutor.avatar == "" || tutor.avatar == null
-                    ? "Image/avatardefault.png"
+                    ? "/Image/avatardefault.png"
                     : tutor.avatar
                 }
                 className="position-abs"
-                style={{ marginLeft: "20%", marginTop: "-60%" }}
+                style={{ marginLeft: "17%", marginTop: "-60%" }}
                 width="120"
                 height="120"
                 alt="image"
