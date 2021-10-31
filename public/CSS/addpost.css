@@ -55,7 +55,7 @@
     left: 730px;
     top: 183px;
     font-family: "Segoe UI";
-    color: #cccccc;
+    color: black;
     font-size: 40px;
 }
 
@@ -69,7 +69,7 @@
     font-size: 23px;
     border: 0;
     outline: 0;
-    color: #cccccc;
+    color: black;
 }
 
 .input-select-district {
@@ -81,7 +81,7 @@
     font-size: 23px;
     border: 0;
     outline: 0;
-    color: #cccccc;
+    color: black;
 }
 
 .enter-your-description-add {
@@ -119,7 +119,7 @@
     font-size: 23px;
     border: 0;
     outline: 0;
-    color: #cccccc;
+    color: black;
 }
 
 .frame-add {

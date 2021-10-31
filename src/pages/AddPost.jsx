@@ -12,8 +12,11 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import CreatableSelect from "react-select/creatable";
-import { InputLabel} from "@mui/material";
+import { InputLabel } from "@mui/material";
+import { useHistory } from "react-router";
+
 function AddPost({ }) {
+	const history = useHistory();
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
 		{ value: 'Female', label: 'Female' },
@@ -21,18 +24,18 @@ function AddPost({ }) {
 	];
 	const [post, setPost] = useState({
 		title: "",
-		time:  "",
+		time: "",
 		city: "",
 		district: "",
 		ward: "",
 		gender: "None",
 		details: "",
-		salary: "", 
-		day:""
+		salary: "",
+		day: ""
 	})
 	// Modify postID
 
-	
+
 	// 
 	const [districtOptions, setDistrictOptions] = useState([{
 		value: "",
@@ -50,27 +53,27 @@ function AddPost({ }) {
 		name: ""
 	})
 
-	const [district, setDistrict] = useState({id:"", name:""})
+	const [district, setDistrict] = useState({ id: "", name: "" })
 
 	const handleChange = (evt) => {
 		var value = evt.target.value;
 		console.log(evt.target.name);
 		post.city = city.name;
 		post.district = district.name;
-		post.ward= ward;
+		post.ward = ward;
 
-		 setPost({
-            ...post,
-            [evt.target.name]: value,
-        });
-	
-		console.log("post:",post);
+		setPost({
+			...post,
+			[evt.target.name]: value,
+		});
+
+		console.log("post:", post);
 	};
 
 	const [ward, setWard] = useState();
 
 	const handleChangeCity = e => {
-		setCity({id: e.value, name: e.label});
+		setCity({ id: e.value, name: e.label });
 		var districts = []
 		options.forEach(element => {
 			if (element.Id == e.value) {
@@ -85,7 +88,7 @@ function AddPost({ }) {
 		setDistrictOptions(tmpDistricts);
 	};
 	const handleChangeDistrict = e => {
-		setDistrict({id: e.value, name: e.label});
+		setDistrict({ id: e.value, name: e.label });
 		var wards = []
 		console.log("districtOptions: ", districtOptions)
 		districtOptions.forEach(element => {
@@ -104,16 +107,16 @@ function AddPost({ }) {
 		setWard(e.label)
 		console.log(e.label)
 	};
-	
+
 	const optionsArray = [
 		'Mon',
-		'Tues',
+		'Tue',
 		'Wed',
 		'Thur',
 		'Fri',
 		'Sat',
 		'Sun'
-	  ];
+	];
 	const [cityOptions, setCityOptions] = useState([{
 		value: "",
 		label: ""
@@ -132,71 +135,64 @@ function AddPost({ }) {
 	};
 
 
-	
+
 	const ITEM_HEIGHT = 15;
 	const ITEM_PADDING_TOP = 8;
 	const MenuProps = {
 		PaperProps: {
-		  style: {
-			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-			width: 250,
-		  },
+			style: {
+				maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+				width: 250,
+			},
 		},
-	  };
-	
+	};
+
 	const [date, setDate] = useState([]);
 
 	const handleChangeDay = (event) => {
 		const {
-		target: { value },
+			target: { value },
 		} = event;
 		setDate(
-			// On autofill we get a the stringified value.
 			typeof value === 'string' ? value.split(',') : value,
 		);
 		console.log("day:", value);
 		const stringData = value.join();
 		post.day = stringData;
-		console.log("abc:",post.day);
+		console.log("abc:", post.day);
 	};
 
 	// 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!validator.isInt(post.salary)) {
-		  toast.warning("Salary must be a number.");
+			toast.warning("Salary must be a number.");
 		} else if (
-		  post.title === "" ||
-		  post.time === "" ||
-		  post.city === "" ||
-		  post.district === "" ||
-		  post.ward === "" ||
-		  post.gender === "" ||
-		  post.details === "" ||
-		  post.salary === "" || 
-		  post.day == ""
+			post.title === "" ||
+			post.time === "" ||
+			post.city === "" ||
+			post.district === "" ||
+			post.ward === "" ||
+			post.gender === "" ||
+			post.details === "" ||
+			post.salary === "" ||
+			post.day == ""
 		) {
-		  toast.warning("All fields are not allowed to be null");
-		  setTimeout(() => {
-			  alert("TimeOut");
-			// history.push("/signup");
-		  }, 5000);
-		} 
-	else{
-		await PostServices.creastePost(post)
-			.then(() => {
-				toast.success("Create successfully. Go to View Post!!");
-				setTimeout(() => {
-					alert("TimeOut_New");
-					console.log("post cuoi", post);
-					
-				}, 5000);
-			})
-			.catch((e) => {
-				if (e.response && e.response.data) {
-					toast.error(e.response.data.value)
-				}
-			})
+			toast.warning("All fields are not allowed to be null");
+		}
+		else {
+			await PostServices.creastePost(post)
+				.then(() => {
+					toast.success("Created successfully!");
+					setTimeout(() => {
+						history.push("/");
+					}, 2000);
+				})
+				.catch((e) => {
+					if (e.response && e.response.data) {
+						toast.error(e.response.data.value)
+					}
+				})
 		}
 	};
 
@@ -233,8 +229,8 @@ function AddPost({ }) {
 						<p className="title" >Title</p>
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
-						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
-						<p className="gender" style={{ marginTop: '-10px' }}>Gender</p>
+						<p className="location" style={{ marginTop: '-20px' }}>Location</p>
+						<p className="gender" style={{ marginTop: '-5px' }}>Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -249,47 +245,40 @@ function AddPost({ }) {
 							style={{ left: "49.5%" }}
 							onChange={handleChange}
 						/>
-						<p className="special" style={{ marginTop: '-23px' }}>/</p>
+						<p className="special" style={{ marginTop: '-15px' }}>/</p>
 						<InputText
 							className="input-showpost text-black position-abs"
 							name="time"
-							style={{ left: "49.5%", top: "32%", width: "13%" }}
+							style={{ left: "49.5%", top: "34%", width: "13%" }}
 							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
 						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							{/* <DropdownMultiselect
-								options={optionsArray}
-								name="day"
-								value = {field}
-								onChange={handleChangeDay}
-							/> */}
-							
-							<FormControl sx={{ top: 0, left:2, width: 280, height: 100 }}>
-							<InputLabel id="demo-multiple-checkbox-label">Day</InputLabel>
-							<Select
-								labelId="demo-multiple-checkbox-label"
-								id="demo-multiple-checkbox"
-								style ={{border:0, height: 49}}
-								placeholder="Select expected days"
-								multiple
-								value={date}
-								onChange={handleChangeDay}
-								input={<OutlinedInput label="Tag" />}
-								renderValue={(selected) => selected.join(', ')}
-								MenuProps={MenuProps}
-							>
-							{optionsArray.map((name) => (
-								<MenuItem key={name} value={name}>
-								<Checkbox checked={date.indexOf(name) > -1} />
-								<ListItemText primary={name} />
-								</MenuItem>
-							))}
-							</Select>
-						</FormControl>
-					
-   						 </div>
-					
+							<FormControl sx={{ top: '5px', left: 2, width: 280, height: 80 }}>
+								<InputLabel id="demo-multiple-checkbox-label">Day</InputLabel>
+								<Select
+									labelId="demo-multiple-checkbox-label"
+									id="demo-multiple-checkbox"
+									style={{ border: 0, height: 49 }}
+									placeholder="Select expected days"
+									multiple
+									value={date}
+									onChange={handleChangeDay}
+									input={<OutlinedInput label="Tag" />}
+									renderValue={(selected) => selected.join(', ')}
+									MenuProps={MenuProps}
+								>
+									{optionsArray.map((name) => (
+										<MenuItem key={name} value={name}>
+											<Checkbox checked={date.indexOf(name) > -1} />
+											<ListItemText primary={name} />
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+
+						</div>
+
 						<p className="money">$</p>
 					</div>
 					<div className="row-cols-6" >
@@ -299,13 +288,11 @@ function AddPost({ }) {
 							name="cityId"
 							onChange={handleChangeCity}
 							options={cityOptions}
-							// isDisabled={cityOptions.length === 0}
 							placeholder="City"
 						/>
 						<CreatableSelect
 							className="input-select-district"
 							name="districtId"
-							// isDisabled={districtOptions.length === 0}
 							placeholder="District"
 							style={{ top: "48%" }}
 							options={districtOptions}
@@ -315,7 +302,6 @@ function AddPost({ }) {
 						<CreatableSelect
 							className="input-select-ward"
 							name="wardId"
-							// isDisabled={wardOptions.length === 0}
 							onChange={handleChangeWard}
 							options={wardOptions}
 							placeholder="Ward"
@@ -329,8 +315,8 @@ function AddPost({ }) {
 								onChange={handleChangeGender}
 							/>
 						</div>
-						</div>
-						<div className="row-cols-6">
+					</div>
+					<div className="row-cols-6">
 						<label className="rectangle-add"></label>
 						<p
 							className="enter-your-description-add"
@@ -344,18 +330,18 @@ function AddPost({ }) {
 							name="details"
 							onChange={handleChange}
 						/>
-						</div>
-						<div className="row-cols-6">
+					</div>
+					<div className="row-cols-6">
 						<Button
 							className="button-contact position-abs text-white" onClick={handleSubmit}
 						>
 							Contact right now!
 						</Button>
-						</div>
-						</div>
-						</div>
-						</div>
-						);
-						}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
 
 export default AddPost;
