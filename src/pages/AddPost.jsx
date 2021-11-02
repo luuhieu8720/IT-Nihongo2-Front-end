@@ -269,26 +269,15 @@ function AddPost({ }) {
 							onChange={handleChange}
 						/>
 						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							{/* <DropdownMultiselect
-								options={optionsArray}
-								name="day"
-								value = {field}
-								onChange={handleChangeDay}
-							/> */}
-
-							<FormControl sx={{ top: 0, left: 2, width: 280, height: 100 }}>
-								<InputLabel id="demo-multiple-checkbox-label">Day</InputLabel>
+							<FormControl placeholder="Enter text"  sx={{ top: 0, left: 2, width: 280, height: 100 }}>
 								<Select
-									labelId="demo-multiple-checkbox-label"
-									id="demo-multiple-checkbox"
 									style={{ border: 0, height: 49 }}
-									placeholder="Select expected days"
 									multiple
 									value={date}
 									onChange={handleChangeDay}
-									input={<OutlinedInput label="Tag" />}
 									renderValue={(selected) => selected.join(', ')}
 									MenuProps={MenuProps}
+									
 								>
 									{optionsArray.map((name) => (
 										<MenuItem key={name} value={name}>
@@ -333,11 +322,12 @@ function AddPost({ }) {
 
 
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '54px', width: '165px' }}>
+						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '9%', width: '163px', height: '5%'}} className="gender-select">
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
 								onChange={handleChangeGender}
+					
 							/>
 						</div>
 					</div>
@@ -360,7 +350,7 @@ function AddPost({ }) {
 						<Button
 							className="button-contact position-abs text-white" onClick={handleSubmit}
 						>
-							Contact right now!
+							Create a new post to find tutor
 						</Button>
 					</div>
 				</div>
