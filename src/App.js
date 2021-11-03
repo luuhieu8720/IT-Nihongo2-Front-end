@@ -9,7 +9,8 @@ import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
 import TutorList from "./pages/TutorList";
-import AddPost from "./pages/AddPost"
+import AddPost from "./pages/AddPost";
+import ReportUser from "./pages/ReportUser";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/password/change" component={ChangePassword}></Route>
         <Route exact path="/tutors/list" component={TutorList}></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
+        <Route exact path="/admin/reportuser" component={ReportUser}></Route>
       </Switch>
     </BrowserRouter>
   );
