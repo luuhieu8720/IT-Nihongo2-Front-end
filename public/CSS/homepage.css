@@ -297,7 +297,7 @@
   width: 50%;
   height: 50%;
   left: 13%;
-  top: 45%;
+  top: 40%;
 
   font-family: "Segoe UI";
   font-size: 14px;
@@ -324,7 +324,7 @@
   width: 23%;
   height: 1%;
   left: 13%;
-  margin-top: 35%;
+  margin-top: 32%;
   font-family: "Segoe UI";
   font-size: 23px;
   border: 0;
@@ -387,12 +387,10 @@
 }
 
 .subject {
-  position: absolute;
   width: 50%;
   height: 50%;
-  left: 13%;
-  top: 20%;
-
+  margin-left: 6%;
+  margin-top: -6%;
   font-family: "Segoe UI";
   font-size: 14px;
   align-items: center;
