@@ -238,7 +238,7 @@ function AddPost({ }) {
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
 						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
-						<p className="gender" style={{ marginTop: '-10px' }}>Gender</p>
+						<p className="gender" style={{ marginTop: '-15px' }}>Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -322,7 +322,7 @@ function AddPost({ }) {
 
 
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '9%', width: '163px', height: '5%'}} className="gender-select">
+						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '163px', height: '5%'}} className="gender-select">
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
@@ -350,7 +350,7 @@ function AddPost({ }) {
 						<Button
 							className="button-contact position-abs text-white" onClick={handleSubmit}
 						>
-							Create a new post to find tutor
+							Find tutor
 						</Button>
 					</div>
 				</div>
