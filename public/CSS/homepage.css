@@ -397,6 +397,17 @@
 
   color: #000000;
 }
+.subject-add-post {
+  width: 50%;
+  height: 50%;
+  margin-left: 14%;
+  margin-top: 25%;
+  font-family: "Segoe UI";
+  font-size: 14px;
+  align-items: center;
+
+  color: #000000;
+}
 
 .background-homepage {
   background: #a9a9ad;

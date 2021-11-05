@@ -234,7 +234,7 @@ function AddPost({ }) {
 					<div className="row-cols-6">
 						<label className="tutor-asking position-abs" style={{ marginTop: '-10px' }} >MAKE A NEW POST</label>
 						<p className="title" >Title</p>
-						<p className="subject">Subject</p>
+						<p className="subject-add-post">Subject</p>
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
 						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
@@ -299,13 +299,11 @@ function AddPost({ }) {
 							name="cityId"
 							onChange={handleChangeCity}
 							options={cityOptions}
-							// isDisabled={cityOptions.length === 0}
 							placeholder="City"
 						/>
 						<CreatableSelect
 							className="input-select-district"
 							name="districtId"
-							// isDisabled={districtOptions.length === 0}
 							placeholder="District"
 							style={{ top: "48%" }}
 							options={districtOptions}
@@ -315,7 +313,6 @@ function AddPost({ }) {
 						<CreatableSelect
 							className="input-select-ward"
 							name="wardId"
-							// isDisabled={wardOptions.length === 0}
 							onChange={handleChangeWard}
 							options={wardOptions}
 							placeholder="Ward"
