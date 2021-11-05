@@ -76,7 +76,7 @@ function ChatFeed() {
             onChange={handleChange} 
             placeholder="Nhập tin nhắn ..." 
           />
-          <button onClick={sendMessage}>
+          <button className="button-chat" onClick={sendMessage}>
             Send
           </button>
       </div>
