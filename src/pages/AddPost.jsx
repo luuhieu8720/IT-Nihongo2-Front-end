@@ -6,19 +6,18 @@ import { useEffect, useState } from "react";
 import PostServices from "../services/PostServices";
 import { useHistory } from "react-router";
 import validator from "validator";
-import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import CreatableSelect from "react-select/creatable";
-import { InputLabel } from "@mui/material";
+
 function AddPost({ }) {
+	const history = useHistory();
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
 		{ value: 'Female', label: 'Female' },
-		{ value: 'None', label: 'None' }
 	];
 	const [post, setPost] = useState({
 		title: "",
@@ -29,13 +28,10 @@ function AddPost({ }) {
 		gender: "None",
 		details: "",
 		salary: "",
+		course:"",
 		day: "",
-		course: ""
 	})
-	// Modify postID
 
-
-	// 
 	const [districtOptions, setDistrictOptions] = useState([{
 		value: "",
 		label: "",
@@ -165,9 +161,11 @@ function AddPost({ }) {
 	// 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		console.log(post)
 		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
 			toast.warning("Salary must be a number and be positive.");
-		} else if (
+		}
+		else if (
 			post.title === "" ||
 			post.time === "" ||
 			post.city === "" ||
@@ -176,24 +174,17 @@ function AddPost({ }) {
 			post.gender === "" ||
 			post.details === "" ||
 			post.salary === "" ||
-			post.day == "" ||
-			post.course == ""
-		) {
+			post.day === "" ||
+			post.course === "") {
 			toast.warning("All fields are not allowed to be null");
-			setTimeout(() => {
-
-				// history.push("/signup");
-			}, 5000);
 		}
 		else {
 			await PostServices.creastePost(post)
 				.then(() => {
-					toast.success("Create successfully. Go to View Post!!");
+					toast.success("Create successfully. Return to homepage");
 					setTimeout(() => {
-
-						console.log("post cuoi", post);
-
-					}, 5000);
+						history.push("/");
+					}, 3000);
 				})
 				.catch((e) => {
 					if (e.response && e.response.data) {
@@ -269,7 +260,7 @@ function AddPost({ }) {
 							onChange={handleChange}
 						/>
 						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							<FormControl placeholder="Enter text"  sx={{ top: 0, left: 2, width: 280, height: 100 }}>
+							<FormControl placeholder="Enter text" sx={{ top: 0, left: 2, width: 280, height: 100 }}>
 								<Select
 									style={{ border: 0, height: 49 }}
 									multiple
@@ -277,7 +268,7 @@ function AddPost({ }) {
 									onChange={handleChangeDay}
 									renderValue={(selected) => selected.join(', ')}
 									MenuProps={MenuProps}
-									
+
 								>
 									{optionsArray.map((name) => (
 										<MenuItem key={name} value={name}>
@@ -319,12 +310,12 @@ function AddPost({ }) {
 
 
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '163px', height: '5%'}} className="gender-select">
+						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '163px', height: '5%' }} className="gender-select">
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
 								onChange={handleChangeGender}
-					
+
 							/>
 						</div>
 					</div>

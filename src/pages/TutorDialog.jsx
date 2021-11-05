@@ -6,6 +6,8 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { useState } from "react";
 import { styled } from '@mui/material/styles';
 import UploadImageServices from "../services/UploadImageServices";
+import UserServices from "../services/UserServices";
+import { ToastContainer, toast } from "react-toastify";
 
 const Input = styled('input')({
     display: 'none',
@@ -21,7 +23,8 @@ function TutorDialog() {
         studentId: "",
         address: "",
         telephone: "",
-        experience: ""
+        experience: "",
+        dateOfBirth:""
     })
 
     const [imageSelected, setImageSelected] = useState("");
@@ -45,9 +48,55 @@ function TutorDialog() {
         return result;
     }
 
+    const handleSubmit = () => {
+        const formData = new FormData();
+        formData.append("file", imageSelected);
+        formData.append("upload_preset", "fb42jacc");
+        var imageName = makeid(15);
+        formData.append("public_id", imageName)
+
+        console.log(tutor);
+        console.log(imageSelected)
+
+        if (imageSelected.name != null) {
+            imageName += "." + imageSelected.name.slice(-3);
+            UploadImageServices.uploadImage(formData).then(() => {
+                if (imageName != "") {
+                    tutor.avatar = "https://res.cloudinary.com/it-nihongo/image/upload/v1634999302/" + imageName;
+                    setTutor({ ...tutor, avatar: imageName })
+                    imageName = "";
+                }
+                UserServices.updateProfile(tutor).then(() => {
+                    toast.success("Success")
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                    .catch((e) => {
+                        if (e.response && e.response.data) {
+                            toast.error(e.response.data.value);
+                        }
+                    });
+            })
+        }
+        else {
+            UserServices.updateProfile(tutor).then(() => {
+                toast.success("Success")
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+                .catch((e) => {
+                    if (e.response && e.response.data) {
+                        toast.error(e.response.data.value);
+                    }
+                });
+        }
+    }
 
     return (
         <div className="">
+            <ToastContainer />
             <div className="background-homepage"></div>
             <div className="frame-tutor-dialog">
                 <div className="row">
@@ -73,7 +122,7 @@ function TutorDialog() {
                                     width: '150px', marginTop: '-25px'
                                 }}>I agree privacy policy</p>
                         </div>
-                        <Button className="button-enter-tutor-dialog">Enter</Button>
+                        <Button className="button-enter-tutor-dialog" onClick={handleSubmit}>Enter</Button>
                         <p className="position-abs" style={{
                             color: 'rgba(0, 0, 0, 0.5)',
                             width: '0px', height: '90%', border: '1px solid #8d8989', marginLeft: '26%', top: '5%'
@@ -85,26 +134,33 @@ function TutorDialog() {
                         <div className="row">
                             <div className="col-sm-6">
                                 <InputText className="input-tutor-dialog ms-5"
+                                    onChange={handleChange}
                                     placeholder="Location"
                                     name="address"
                                     style={{ marginTop: '10%' }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
+                                    onChange={handleChange}
                                     placeholder="ID"
                                     name="studentId"
                                     style={{ marginTop: '5%' }}></InputText>
                                 <InputText className="input-tutor-dialog"
+                                    onChange={handleChange}
                                     placeholder="Gender"
                                     name="gender"
                                     style={{ marginTop: '5%', marginLeft: '45.4px' }}></InputText>
                                 <input type="date" className="datetime-picker-dialog"
+                                    onChange={handleChange}
+                                    name="dateOfBirth"
                                     style={{ marginTop: '15%' }}
                                     id="datetimepicker" data-date-format="yyyy-mm-dd"></input>
                             </div>
                             <div className="col-sm-6">
                                 <InputText className="input-tutor-dialog ms-5" placeholder="Phone"
+                                    onChange={handleChange}
                                     name="telephone"
                                     style={{ marginTop: '10%' }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
+                                    onChange={handleChange}
                                     placeholder="Speciality"
                                     name="specialty"
                                     style={{ marginTop: '5%' }}></InputText>
@@ -116,6 +172,8 @@ function TutorDialog() {
                                 </p>
                                 <InputTextarea
                                     className="cert-text-area text-black"
+                                    name="degree"
+                                    onChange={handleChange}
                                 />
                             </div>
                         </div>
@@ -126,7 +184,7 @@ function TutorDialog() {
                             >
                                 Experience
                             </p>
-                            <InputTextarea className="experience-text-area" placeholder=""></InputTextarea>
+                            <InputTextarea className="experience-text-area" onChange={handleChange} name="experience" placeholder=""></InputTextarea>
                         </div>
                     </div>
                 </div>
