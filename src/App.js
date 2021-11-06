@@ -9,8 +9,9 @@ import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
 import TutorList from "./pages/TutorList";
-import AddPost from "./pages/AddPost";
 import ReportUser from "./pages/ReportUser";
+import AddPost from "./pages/AddPost"
+import TutorDialog from "./pages/TutorDialog";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/tutors/list" component={TutorList}></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
         <Route exact path="/admin/reportuser" component={ReportUser}></Route>
+        <Route exact path="/tutors/dialog" component={TutorDialog}></Route>
       </Switch>
     </BrowserRouter>
   );

@@ -11,7 +11,6 @@ function ShowPost({ match }) {
     title: "",
     time: "",
     city: "",
-    course: "",
     district: "",
     ward: "",
     day: "",
@@ -43,15 +42,13 @@ function ShowPost({ match }) {
         <ToastContainer />
       </div>
       <div className="frame-show position-abs">
-        <div>
-          <Link className="" to="/">
-            <i
-              className="fst-normal bi bi-arrow-left-circle fa-2x"
-              style={{ marginLeft: "95%" }}
-            ></i>
-          </Link>
-        </div>
         <div className="col-6">
+          <Link to="/">
+            <i
+              className="fst-normal bi bi-arrow-left-circle fa-3x"
+              style={{ marginLeft: "188%" }}
+            />
+          </Link>
           <div className="row-cols-6">
             <label className="tutor-asking position-abs">TUTOR-ASKING</label>
             <p className="title">Title</p>
@@ -77,15 +74,15 @@ function ShowPost({ match }) {
               style={{ left: "49.5%" }}
               disabled="true"
             />
-            <p className="special">/</p>
             <InputText
               className="input-showpost text-black position-abs"
-              placeholder=""
+              placeholder="Subject"
               name="subject"
               value={post.course}
               style={{ left: "6.5%", top: "35%" }}
               disabled="true"
             />
+            <p className="special">/</p>
             <InputText
               className="input-showpost text-black text-center position-abs"
               placeholder="9:00-11:00"
@@ -101,7 +98,7 @@ function ShowPost({ match }) {
               disabled="true"
               value={post.day}
             />
-            <p className="money">$</p>
+            <p className="money">VNĐ</p>
           </div>
           <div className="row-cols-6">
             <InputText
