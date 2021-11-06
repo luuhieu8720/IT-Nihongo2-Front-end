@@ -14,11 +14,11 @@ function SidebarReport() {
   };
 
   const handleChangeReport = () => {
-    localStorage["stateTabIndex"] = "0";
+    localStorage["stateTabIndex"] = "3";
   };
 
   const handleChangeUser = () => {
-    localStorage["stateTabIndex"] = "01";
+    localStorage["stateTabIndex"] = "2";
   };
 
   const history = useHistory();
@@ -47,18 +47,14 @@ function SidebarReport() {
         className="position-abs"
         style={{
           color: "rgba(0, 0, 0, 0.5)",
-          height: "700px",
+          height: "95%",
           border: "1px solid #8d8989",
           marginLeft: "18%",
           top: "2%",
         }}
       ></p>
       <br />
-      <Link
-        className="position-abs"
-        to="/admin/reportuser"
-        onClick={handleAdminPageSubmit}
-      >
+      <Link className="position-abs" to="/" /*onClick={handleAdminPageSubmit}*/>
         <i
           className="fst-normal bi bi-chat-right-text fa-2x"
           id="id"
@@ -80,10 +76,10 @@ function SidebarReport() {
         </i>
       </Link>
       <br />
-      {/* <div className="mt-5"> */}
       <Link
         className="position-abs"
-        to="/admin/reportuser"
+        to="/tutors/list"
+        // onClick={handleAdminPageSubmit}
         style={{ paddingTop: "3rem" }}
       >
         <i
@@ -93,7 +89,7 @@ function SidebarReport() {
           style={{
             display: "inline-block",
             color:
-              localStorage["stateTabIndex"] == "0"
+              localStorage["stateTabIndex"] == "3"
                 ? "darkviolet"
                 : "rgba(0, 0, 0, 0.5)",
           }}
@@ -112,6 +108,7 @@ function SidebarReport() {
       <Link
         className="position-abs"
         to="/admin/reportuser"
+        // onClick={handleAdminPageSubmit}
         style={{ paddingTop: "6rem" }}
       >
         <i
@@ -121,7 +118,7 @@ function SidebarReport() {
           style={{
             display: "inline-block",
             color:
-              localStorage["stateTabIndex"] == "01"
+              localStorage["stateTabIndex"] == "2"
                 ? "darkviolet"
                 : "rgba(0, 0, 0, 0.5)",
           }}

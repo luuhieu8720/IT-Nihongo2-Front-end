@@ -45,7 +45,9 @@ function ReportUser() {
       <div className="col-sm-define" style={{ marginLeft: "17%" }}>
         <div>
           <TopAdminComponent />
-          <div style={{ marginTop: "35px", marginLeft: "-15%" }}>
+          <div
+            style={{ marginTop: "35px", marginLeft: "-15%", display: "block" }}
+          >
             {listPosts}
           </div>
         </div>
