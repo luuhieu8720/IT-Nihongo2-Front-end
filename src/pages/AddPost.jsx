@@ -6,19 +6,18 @@ import { useEffect, useState } from "react";
 import PostServices from "../services/PostServices";
 import { useHistory } from "react-router";
 import validator from "validator";
-import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import CreatableSelect from "react-select/creatable";
-import { InputLabel } from "@mui/material";
+
 function AddPost({ }) {
+	const history = useHistory();
 	const optionGender = [
 		{ value: 'Male', label: 'Male' },
 		{ value: 'Female', label: 'Female' },
-		{ value: 'None', label: 'None' }
 	];
 	const [post, setPost] = useState({
 		title: "",
@@ -29,13 +28,10 @@ function AddPost({ }) {
 		gender: "None",
 		details: "",
 		salary: "",
+		course: "",
 		day: "",
-		course: ""
 	})
-	// Modify postID
 
-
-	// 
 	const [districtOptions, setDistrictOptions] = useState([{
 		value: "",
 		label: "",
@@ -56,17 +52,10 @@ function AddPost({ }) {
 
 	const handleChange = (evt) => {
 		var value = evt.target.value;
-		console.log(evt.target.name);
-		post.city = city.name;
-		post.district = district.name;
-		post.ward = ward;
-
 		setPost({
 			...post,
 			[evt.target.name]: value,
 		});
-
-		console.log("post:", post);
 	};
 
 	const [ward, setWard] = useState();
@@ -83,17 +72,16 @@ function AddPost({ }) {
 		districts.forEach(element => {
 			tmpDistricts.push({ value: element.Id, label: element.Name, wards: element.Wards })
 		})
-		console.log(tmpDistricts)
+
 		setDistrictOptions(tmpDistricts);
 	};
 	const handleChangeDistrict = e => {
 		setDistrict({ id: e.value, name: e.label });
 		var wards = []
-		console.log("districtOptions: ", districtOptions)
+
 		districtOptions.forEach(element => {
 			if (element.value == e.value) {
 				wards = (element.wards);
-				console.log(element.value + "   " + e.value)
 			}
 		});
 		var tmpWards = [{ value: "", label: "" }]
@@ -104,14 +92,13 @@ function AddPost({ }) {
 	};
 	const handleChangeWard = e => {
 		setWard(e.label)
-		console.log(e.label)
 	};
 
 	const optionsArray = [
 		'Mon',
 		'Tues',
 		'Wed',
-		'Thur',
+		'Thu',
 		'Fri',
 		'Sat',
 		'Sun'
@@ -126,11 +113,7 @@ function AddPost({ }) {
 
 	}])
 	const handleChangeGender = e => {
-		console.log("gender1", post.gender);
-		console.log("gender2", e.value);
 		post.gender = e.value
-		console.log("gender3", post.gender);
-		console.log(post)
 	};
 
 
@@ -153,21 +136,24 @@ function AddPost({ }) {
 			target: { value },
 		} = event;
 		setDate(
-			// On autofill we get a the stringified value.
-			typeof value === 'string' ? value.split(',') : value,
+			typeof value === 'string' ? value.split(', ') : value,
 		);
-		console.log("day:", value);
-		const stringData = value.join();
+		const stringData = value.join(", ");
 		post.day = stringData;
-		console.log("abc:", post.day);
 	};
 
 	// 
 	const handleSubmit = async (e) => {
+
 		e.preventDefault();
+		post.city = city.name;
+		post.district = district.name;
+		post.ward = ward.name;
+		console.log(post)
 		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
 			toast.warning("Salary must be a number and be positive.");
-		} else if (
+		}
+		else if (
 			post.title === "" ||
 			post.time === "" ||
 			post.city === "" ||
@@ -176,24 +162,18 @@ function AddPost({ }) {
 			post.gender === "" ||
 			post.details === "" ||
 			post.salary === "" ||
-			post.day == "" ||
-			post.course == ""
-		) {
+			post.day === "" ||
+			post.course === "") {
 			toast.warning("All fields are not allowed to be null");
-			setTimeout(() => {
-
-				// history.push("/signup");
-			}, 5000);
 		}
 		else {
+			console.log(post)
 			await PostServices.creastePost(post)
 				.then(() => {
-					toast.success("Create successfully. Go to View Post!!");
+					toast.success("Create successfully. Return to homepage");
 					setTimeout(() => {
-
-						console.log("post cuoi", post);
-
-					}, 5000);
+						history.push("/");
+					}, 3000);
 				})
 				.catch((e) => {
 					if (e.response && e.response.data) {
@@ -218,7 +198,6 @@ function AddPost({ }) {
 					});
 					setCityOptions(tmpOptions)
 					setOptions(result)
-					console.log(tmpOptions)
 				},
 				(error) => {
 
@@ -234,11 +213,11 @@ function AddPost({ }) {
 					<div className="row-cols-6">
 						<label className="tutor-asking position-abs" style={{ marginTop: '-10px' }} >MAKE A NEW POST</label>
 						<p className="title" >Title</p>
-						<p className="subject">Subject</p>
+						<p className="subject-add-post" style={{ marginTop: '-15px' }}>Subject</p>
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
-						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
-						<p className="gender" style={{ marginTop: '-15px' }}>Gender</p>
+						<p className="location-add-post" style={{ marginTop: '-35px' }}>Location</p>
+						<p className="gender-add-post">Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -268,16 +247,16 @@ function AddPost({ }) {
 							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
-						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							<FormControl placeholder="Enter text"  sx={{ top: 0, left: 2, width: 280, height: 100 }}>
+						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "33%" }}>
+							<FormControl placeholder="Enter text" style={{ top: '', left: '2px', width: '250px', height: '40px' }}>
 								<Select
-									style={{ border: 0, height: 49 }}
+									style={{ border: 0, height: 38 }}
 									multiple
 									value={date}
 									onChange={handleChangeDay}
 									renderValue={(selected) => selected.join(', ')}
 									MenuProps={MenuProps}
-									
+
 								>
 									{optionsArray.map((name) => (
 										<MenuItem key={name} value={name}>
@@ -290,24 +269,20 @@ function AddPost({ }) {
 
 						</div>
 
-						<p className="money">$</p>
+						<p className="money">VNĐ</p>
 					</div>
-					<div className="row-cols-6" >
-
+					<div className="row-cols-6" className="select-box-location" >
 						<CreatableSelect
 							className="input-select-city"
 							name="cityId"
 							onChange={handleChangeCity}
 							options={cityOptions}
-							// isDisabled={cityOptions.length === 0}
 							placeholder="City"
 						/>
 						<CreatableSelect
 							className="input-select-district"
 							name="districtId"
-							// isDisabled={districtOptions.length === 0}
 							placeholder="District"
-							style={{ top: "48%" }}
 							options={districtOptions}
 							onChange={handleChangeDistrict}
 						/>
@@ -315,19 +290,16 @@ function AddPost({ }) {
 						<CreatableSelect
 							className="input-select-ward"
 							name="wardId"
-							// isDisabled={wardOptions.length === 0}
 							onChange={handleChangeWard}
 							options={wardOptions}
 							placeholder="Ward"
-
-
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '163px', height: '5%'}} className="gender-select">
+						<div style={{ marginLeft: '0%' }} className="gender-select">
+
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
 								onChange={handleChangeGender}
-					
 							/>
 						</div>
 					</div>
