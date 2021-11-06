@@ -11,6 +11,7 @@ function ShowPost({ match }) {
     title: "",
     time: "",
     city: "",
+    course: "",
     district: "",
     ward: "",
     day: "",
@@ -55,6 +56,7 @@ function ShowPost({ match }) {
             <label className="tutor-asking position-abs">TUTOR-ASKING</label>
             <p className="title">Title</p>
             <p className="salary">Salary</p>
+            <p className="subject-showpost">Subject</p>
             <p className="time">Time</p>
             <p className="location">Location</p>
             <p className="gender">Gender</p>
@@ -76,6 +78,14 @@ function ShowPost({ match }) {
               disabled="true"
             />
             <p className="special">/</p>
+            <InputText
+              className="input-showpost text-black position-abs"
+              placeholder=""
+              name="subject"
+              value={post.course}
+              style={{ left: "6.5%", top: "35%" }}
+              disabled="true"
+            />
             <InputText
               className="input-showpost text-black text-center position-abs"
               placeholder="9:00-11:00"
