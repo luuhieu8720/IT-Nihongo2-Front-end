@@ -28,7 +28,7 @@ function AddPost({ }) {
 		gender: "None",
 		details: "",
 		salary: "",
-		course:"",
+		course: "",
 		day: "",
 	})
 
@@ -89,7 +89,6 @@ function AddPost({ }) {
 		districtOptions.forEach(element => {
 			if (element.value == e.value) {
 				wards = (element.wards);
-				console.log(element.value + "   " + e.value)
 			}
 		});
 		var tmpWards = [{ value: "", label: "" }]
@@ -107,7 +106,7 @@ function AddPost({ }) {
 		'Mon',
 		'Tues',
 		'Wed',
-		'Thur',
+		'Thu',
 		'Fri',
 		'Sat',
 		'Sun'
@@ -149,11 +148,10 @@ function AddPost({ }) {
 			target: { value },
 		} = event;
 		setDate(
-			// On autofill we get a the stringified value.
-			typeof value === 'string' ? value.split(',') : value,
+			typeof value === 'string' ? value.split(', ') : value,
 		);
 		console.log("day:", value);
-		const stringData = value.join();
+		const stringData = value.join(", ");
 		post.day = stringData;
 		console.log("abc:", post.day);
 	};
@@ -225,11 +223,11 @@ function AddPost({ }) {
 					<div className="row-cols-6">
 						<label className="tutor-asking position-abs" style={{ marginTop: '-10px' }} >MAKE A NEW POST</label>
 						<p className="title" >Title</p>
-						<p className="subject-add-post">Subject</p>
+						<p className="subject-add-post" style={{ marginTop: '-15px' }}>Subject</p>
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
-						<p className="location" style={{ marginTop: '-35px' }}>Location</p>
-						<p className="gender" style={{ marginTop: '-15px' }}>Gender</p>
+						<p className="location-add-post" style={{ marginTop: '-35px' }}>Location</p>
+						<p className="gender-add-post" style={{ marginTop: '-15px' }}>Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
@@ -259,10 +257,10 @@ function AddPost({ }) {
 							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
-						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%", width: "21.6%" }}>
-							<FormControl placeholder="Enter text" sx={{ top: 0, left: 2, width: 280, height: 100 }}>
+						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "33%" }}>
+							<FormControl placeholder="Enter text" style={{ top: '', left: '2px', width: '250px', height: '40px' }}>
 								<Select
-									style={{ border: 0, height: 49 }}
+									style={{ border: 0, height: 38 }}
 									multiple
 									value={date}
 									onChange={handleChangeDay}
@@ -283,8 +281,7 @@ function AddPost({ }) {
 
 						<p className="money">VNĐ</p>
 					</div>
-					<div className="row-cols-6" >
-
+					<div className="row-cols-6" className="select-box-location" >
 						<CreatableSelect
 							className="input-select-city"
 							name="cityId"
@@ -296,7 +293,6 @@ function AddPost({ }) {
 							className="input-select-district"
 							name="districtId"
 							placeholder="District"
-							style={{ top: "48%" }}
 							options={districtOptions}
 							onChange={handleChangeDistrict}
 						/>
@@ -307,15 +303,13 @@ function AddPost({ }) {
 							onChange={handleChangeWard}
 							options={wardOptions}
 							placeholder="Ward"
-
-
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '145px', height: '5%' }} className="gender-select">
+						<div style={{ marginLeft: '0%' }} className="gender-select">
+
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
 								onChange={handleChangeGender}
-
 							/>
 						</div>
 					</div>
