@@ -398,10 +398,12 @@
   color: #000000;
 }
 .subject-add-post {
+  position: absolute;
   width: 50%;
   height: 50%;
-  margin-left: 14%;
-  margin-top: 25%;
+  left: 7%;
+  top: 32%;
+
   font-family: "Segoe UI";
   font-size: 14px;
   align-items: center;
