@@ -52,17 +52,10 @@ function AddPost({ }) {
 
 	const handleChange = (evt) => {
 		var value = evt.target.value;
-		console.log(evt.target.name);
-		post.city = city.name;
-		post.district = district.name;
-		post.ward = ward;
-
 		setPost({
 			...post,
 			[evt.target.name]: value,
 		});
-
-		console.log("post:", post);
 	};
 
 	const [ward, setWard] = useState();
@@ -79,13 +72,13 @@ function AddPost({ }) {
 		districts.forEach(element => {
 			tmpDistricts.push({ value: element.Id, label: element.Name, wards: element.Wards })
 		})
-		console.log(tmpDistricts)
+
 		setDistrictOptions(tmpDistricts);
 	};
 	const handleChangeDistrict = e => {
 		setDistrict({ id: e.value, name: e.label });
 		var wards = []
-		console.log("districtOptions: ", districtOptions)
+
 		districtOptions.forEach(element => {
 			if (element.value == e.value) {
 				wards = (element.wards);
@@ -99,7 +92,6 @@ function AddPost({ }) {
 	};
 	const handleChangeWard = e => {
 		setWard(e.label)
-		console.log(e.label)
 	};
 
 	const optionsArray = [
@@ -121,11 +113,7 @@ function AddPost({ }) {
 
 	}])
 	const handleChangeGender = e => {
-		console.log("gender1", post.gender);
-		console.log("gender2", e.value);
 		post.gender = e.value
-		console.log("gender3", post.gender);
-		console.log(post)
 	};
 
 
@@ -150,15 +138,17 @@ function AddPost({ }) {
 		setDate(
 			typeof value === 'string' ? value.split(', ') : value,
 		);
-		console.log("day:", value);
 		const stringData = value.join(", ");
 		post.day = stringData;
-		console.log("abc:", post.day);
 	};
 
 	// 
 	const handleSubmit = async (e) => {
+
 		e.preventDefault();
+		post.city = city.name;
+		post.district = district.name;
+		post.ward = ward.name;
 		console.log(post)
 		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
 			toast.warning("Salary must be a number and be positive.");
@@ -177,6 +167,7 @@ function AddPost({ }) {
 			toast.warning("All fields are not allowed to be null");
 		}
 		else {
+			console.log(post)
 			await PostServices.creastePost(post)
 				.then(() => {
 					toast.success("Create successfully. Return to homepage");
@@ -207,7 +198,6 @@ function AddPost({ }) {
 					});
 					setCityOptions(tmpOptions)
 					setOptions(result)
-					console.log(tmpOptions)
 				},
 				(error) => {
 
@@ -227,7 +217,7 @@ function AddPost({ }) {
 						<p className="salary">Salary</p>
 						<p className="time" style={{ marginTop: '-15px' }}>Time</p>
 						<p className="location-add-post" style={{ marginTop: '-35px' }}>Location</p>
-						<p className="gender-add-post" style={{ marginTop: '-15px' }}>Gender</p>
+						<p className="gender-add-post">Gender</p>
 					</div>
 					<div className="row-cols-6">
 						<InputText
