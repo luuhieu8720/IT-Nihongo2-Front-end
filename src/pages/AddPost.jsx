@@ -281,7 +281,7 @@ function AddPost({ }) {
 
 						</div>
 
-						<p className="money">$</p>
+						<p className="money">VNĐ</p>
 					</div>
 					<div className="row-cols-6" >
 
@@ -310,7 +310,7 @@ function AddPost({ }) {
 
 
 						/>
-						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '163px', height: '5%' }} className="gender-select">
+						<div style={{ display: 'inline-block', marginLeft: '99%', marginTop: '7%', width: '145px', height: '5%' }} className="gender-select">
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
