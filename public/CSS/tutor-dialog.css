@@ -1,0 +1,119 @@
+.frame-tutor-dialog {
+    position: fixed;
+    top: 5%;
+    width: 70%;
+    height: 90%;
+    left: 15%;
+    background: #ffffff;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.button-enter-tutor-dialog {
+    background-image: linear-gradient(to right, #CC00FF 0%, #CC00FF 50%, #0008CD 100%);
+    border: white;
+    width: 150px;
+    height: 40px;
+    margin-left: 25%;
+    border-radius: 10px;
+}
+
+.input-tutor-dialog {
+  width: 92%;
+  height: 26%;
+  top: 19%;
+  font-family: "Segoe UI";
+  font-size: 23px;
+  border: 0;
+  outline: 0;
+  color: #000000;
+  background: transparent;
+  border-bottom: 1px solid rgba(73, 72, 72, 0.5);
+}
+
+.cert-text-area {
+  position: absolute;
+  width: 28%;
+  height: 25%;
+  left: 66%;
+  top: 37%;
+  font-family: "Segoe UI";
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  border: 1px solid #ffffff;
+}
+
+.enter-certificate {
+  position: absolute;
+  width: 15%;
+  height: 10%;
+  left: 67%;
+  top: 32%;
+  padding-left: 20px;
+  font-family: "Segoe UI";
+  font-size: 23px;
+  align-items: center;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.5);
+}
+.rectangle-tutor-dialog {
+  position: absolute;
+  width: 30%;
+  height:28%;
+  left: 65%;
+  top: 35%;
+  background: #ffffff;
+  border: 1px solid rgba(73, 72, 72, 0.5);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.experience-text-area {
+  position: absolute;
+  width: 61%;
+  height: 22%;
+  margin-left: 7%;
+  margin-top: 17%;
+  font-family: "Segoe UI";
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  border: 1px solid #ffffff;
+}
+.rectangle-experience{
+  position: absolute;
+  width: 64%;
+  height: 27%;
+  margin-left: 5%;
+  margin-top: 15%;
+  background: #ffffff;
+  border: 1px solid rgba(73, 72, 72, 0.5);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.label-experience{
+  position: absolute;
+  width: 15%;
+  height: 10%;
+  left: 33%;
+  top: 65%;
+  padding-left: 20px;
+  font-family: "Segoe UI";
+  font-size: 20px;
+  align-items: center;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.5);
+}
+.datetime-picker-dialog {
+  margin-top: 10%;
+  margin-left: 15%;
+  border: 1px solid rgba(73, 72, 72, 0.5);
+  border-radius: 10px;
+  height: 25%;
+  width: 92%;
+  color: rgba(12, 12, 12, 0.5);
+}
