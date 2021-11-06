@@ -257,10 +257,10 @@ function AddPost({ }) {
 							placeholder="9:00 - 10:00"
 							onChange={handleChange}
 						/>
-						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "32%" }}>
-							<FormControl placeholder="Enter text" style={{ top: '0', left: '2px', width: '250px', height: '40px' }}>
+						<div className="input-addpost text-black position-abs" style={{ left: "66%", top: "33%" }}>
+							<FormControl placeholder="Enter text" style={{ top: '', left: '2px', width: '250px', height: '40px' }}>
 								<Select
-									style={{ border: 0, height: 49 }}
+									style={{ border: 0, height: 38 }}
 									multiple
 									value={date}
 									onChange={handleChangeDay}
@@ -279,7 +279,7 @@ function AddPost({ }) {
 
 						</div>
 
-						<p className="money">$</p>
+						<p className="money">VNĐ</p>
 					</div>
 					<div className="row-cols-6" className="select-box-location" >
 						<CreatableSelect
@@ -304,7 +304,8 @@ function AddPost({ }) {
 							options={wardOptions}
 							placeholder="Ward"
 						/>
-						<div style={{ marginLeft: '0%'}} className="gender-select">
+						<div style={{ marginLeft: '0%' }} className="gender-select">
+
 							<CreatableSelect
 								options={optionGender}
 								defaultValue={optionGender[0]}
