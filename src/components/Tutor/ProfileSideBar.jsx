@@ -7,7 +7,8 @@ import { IconButton } from "@material-ui/core";
 
 function ProfileSideBar() {
 	const history = useHistory();
-	const [currentUser, setCurrentUser] = useState({ role: "" });
+	const [currentUser, setCurrentUser] = useState({ role: "", specialty: "" });
+	console.log(localStorage.getItem("currentUser"))
 	const [user, setUser] = useState({
 		username: "",
 		name: "",
@@ -18,9 +19,8 @@ function ProfileSideBar() {
 	useEffect(() => {
 		UserServices.getUserInformation().then((response) => {
 			setUser(response.data.value);
+			setCurrentUser(response.data.value);
 		});
-		setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-		console.log(currentUser);
 	}, []);
 
 	return (
@@ -44,87 +44,92 @@ function ProfileSideBar() {
 						></Image>
 						<ul className="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
 							<li><Link className="dropdown-item"
-								to={currentUser.role == "User" ? "/user/profile/setting" : "/"} onClick={() => {sessionStorage.setItem("stateTabIndex","1")}}>Profile</Link></li>
+								to={currentUser.role == "User" ? "/user/profile/setting" : "/"} onClick={() => { sessionStorage.setItem("stateTabIndex", "1") }}>Profile</Link></li>
 							<li><Link className="dropdown-item" to="/" >Report this post</Link></li>
 							<li><Link className="dropdown-item" to="/" >Manage</Link></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<form className="profile-box">
-				<h2
-					className="text-center position-abs"
-					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-40%', right: '20%' }}>
-					PROFILE
-				</h2>
-				<IconButton
-					className="icon-purple postion-abs"
-					children="camera"
-					color="primary"
-					style={{ marginLeft: "-50%", paddingTop: "210%" }}
-				>
-					<Image
-						src="/Image/camera.png"
-						className="position-abs"
-						width="250"
-						height="190"
-						alt="image"
-					></Image>
-				</IconButton>
-				<div style={{ width: '300px' }}>
-					<h6
-						style={{
-							font: "Oxygen",
-							marginTop: "30%",
-							marginLeft: "-40%",
-							fontSize: "24px",
-							color: "rgba(0, 0, 0, 0.5)",
-						}}
-					>
-						You don't have any
-					</h6>
-					<h6
-						style={{
-							font: "Oxygen",
-							marginLeft: "-25%",
-							fontSize: "24px",
-							color: "rgba(0, 0, 0, 0.5)",
-						}}
-					>
-						tutor profile
-					</h6>
-				</div>
-				<div className="position-abs">
-					<p
-						className="text-center position-abs"
-						style={{
-							width:"200px",
-							bottom:"-10%",
-							font: "Oxygen",
-							marginLeft: "-500%",
-							fontSize: "20px",
-							color: "rgba(0, 0, 0, 0.5)",
-						}}
-					>
-						Become a tutor!
-					</p>
-					<IconButton
-						className="icon-purple position-abs"
-						children="asking"
-						color="primary"
-						style={{ marginLeft: "305%", marginTop: "600%" }}
-						size="medium"
-					>
-						<Image
-							src="/Image/tutor_icon.JPG"
-							className="position-abs"
-							width="50"
-							height="50"
-							alt="image"
-						></Image>
-					</IconButton>
-				</div>
-			</form>
+			{(currentUser.specialty == "" || currentUser.specialty == null)
+				? (
+					<form className="profile-box">
+						<h2
+							className="text-center position-abs"
+							style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-40%', right: '20%' }}>
+							PROFILE
+						</h2>
+						<IconButton
+							className="icon-purple postion-abs"
+							children="camera"
+							color="primary"
+							style={{ marginLeft: "-50%", paddingTop: "210%" }}
+						>
+							<Image
+								src="/Image/camera.png"
+								className="position-abs"
+								width="250"
+								height="190"
+								alt="image"
+							></Image>
+						</IconButton>
+						<div style={{ width: '300px' }}>
+							<h6
+								style={{
+									font: "Oxygen",
+									marginTop: "30%",
+									marginLeft: "-40%",
+									fontSize: "24px",
+									color: "rgba(0, 0, 0, 0.5)",
+								}}
+							>
+								You don't have any
+							</h6>
+							<h6
+								style={{
+									font: "Oxygen",
+									marginLeft: "-25%",
+									fontSize: "24px",
+									color: "rgba(0, 0, 0, 0.5)",
+								}}
+							>
+								tutor profile
+							</h6>
+						</div>
+						<div className="position-abs">
+							<p
+								className="text-center position-abs"
+								style={{
+									width: "200px",
+									bottom: "-10%",
+									font: "Oxygen",
+									marginLeft: "-500%",
+									fontSize: "20px",
+									color: "rgba(0, 0, 0, 0.5)",
+								}}
+							>
+								Become a tutor!
+							</p>
+							<IconButton
+								className="icon-purple position-abs"
+								children="asking"
+								color="primary"
+								style={{ marginLeft: "305%", marginTop: "600%" }}
+								size="medium"
+							>
+								<Image
+									src="/Image/tutor_icon.JPG"
+									className="position-abs"
+									width="50"
+									height="50"
+									alt="image"
+								></Image>
+							</IconButton>
+						</div>
+					</form>
+				) : ""
+			}
+
 
 		</div>
 	);
