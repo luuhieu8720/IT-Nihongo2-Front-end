@@ -3,10 +3,11 @@ import { Image, Button } from "react-bootstrap";
 import { Checkbox } from 'primereact/checkbox';
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from 'primereact/inputtextarea';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { styled } from '@mui/material/styles';
 import UploadImageServices from "../services/UploadImageServices";
 import UserServices from "../services/UserServices";
+import validator from "validator";
 import { ToastContainer, toast } from "react-toastify";
 
 const Input = styled('input')({
@@ -14,6 +15,17 @@ const Input = styled('input')({
 });
 
 function TutorDialog() {
+    const [currentUser, setCurrentUser] = useState({
+        gender: "",
+        avatar: "",
+        specialty: "",
+        degree: "",
+        studentId: "",
+        address: "",
+        telephone: "",
+        experience: "",
+        dateOfBirth: ""
+    });
 
     const [tutor, setTutor] = useState({
         gender: "",
@@ -24,13 +36,29 @@ function TutorDialog() {
         address: "",
         telephone: "",
         experience: "",
-        dateOfBirth:""
+        dateOfBirth: ""
     })
 
     const [imageSelected, setImageSelected] = useState("");
 
+    useEffect(() => {
+        UserServices.getUserInformation()
+            .then((response) => {
+                setTutor(response.data.value);
+                setCurrentUser(response.data.value)
+            })
+            .catch((e) => {
+                if (e.response && e.response.data) {
+                    toast.error(e.response.data.value)
+                }
+            })
+    }, [])
+
     const handleChange = (evt) => {
-        const value = evt.target.value;
+        var value = evt.target.value;
+        if (evt.target.name == "gender") {
+            value = value.charAt(0).toUpperCase() + value.slice(1);
+        }
         setTutor({
             ...tutor,
             [evt.target.name]: value,
@@ -49,25 +77,56 @@ function TutorDialog() {
     }
 
     const handleSubmit = () => {
-        const formData = new FormData();
-        formData.append("file", imageSelected);
-        formData.append("upload_preset", "fb42jacc");
-        var imageName = makeid(15);
-        formData.append("public_id", imageName)
+        if (!validator.isInt(tutor.telephone) || (tutor.telephone.length != 10)) {
+            toast.warning("Phone number must be 10 digits");
+        }
+        else if (
+            tutor.address === "" ||
+            tutor.studentId === "" ||
+            tutor.specialty === "" ||
+            tutor.degree === "" || tutor.dateOfBirth === "" ||
+            tutor.experience === ""
+        ) {
+            toast.warning("All fields are not allowed to be null");
+        }
+        else if ((tutor.gender.toLowerCase() != "female") && (tutor.gender.toLowerCase() != "male")) {
+            toast.warning("Gender must be male or female");
+        }
+        else {
+            const formData = new FormData();
+            formData.append("file", imageSelected);
+            formData.append("upload_preset", "fb42jacc");
+            var imageName = makeid(15);
+            formData.append("public_id", imageName)
 
-        console.log(tutor);
-        console.log(imageSelected)
-
-        if (imageSelected.name != null) {
-            imageName += "." + imageSelected.name.slice(-3);
-            UploadImageServices.uploadImage(formData).then(() => {
-                if (imageName != "") {
-                    tutor.avatar = "https://res.cloudinary.com/it-nihongo/image/upload/v1634999302/" + imageName;
-                    setTutor({ ...tutor, avatar: imageName })
-                    imageName = "";
-                }
+            if (imageSelected.name != null) {
+                imageName += "." + imageSelected.name.slice(-3);
+                UploadImageServices.uploadImage(formData).then(() => {
+                    if (imageName != "") {
+                        tutor.avatar = "https://res.cloudinary.com/it-nihongo/image/upload/v1634999302/" + imageName;
+                        setTutor({ ...tutor, avatar: imageName })
+                        imageName = "";
+                    }
+                    UserServices.updateProfile(tutor).then(() => {
+                        toast.success("Success");
+                        setCurrentUser({ ...currentUser, specialty: tutor.specialty })
+                        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 3000);
+                    })
+                        .catch((e) => {
+                            if (e.response && e.response.data) {
+                                toast.error(e.response.data.value);
+                            }
+                        });
+                })
+            }
+            else {
                 UserServices.updateProfile(tutor).then(() => {
-                    toast.success("Success")
+                    toast.success("Success");
+                    setCurrentUser({ ...currentUser, specialty: tutor.specialty })
+                    localStorage.setItem("currentUser", JSON.stringify(currentUser));
                     setTimeout(() => {
                         window.location.reload();
                     }, 3000);
@@ -77,20 +136,7 @@ function TutorDialog() {
                             toast.error(e.response.data.value);
                         }
                     });
-            })
-        }
-        else {
-            UserServices.updateProfile(tutor).then(() => {
-                toast.success("Success")
-                setTimeout(() => {
-                    window.location.reload();
-                }, 3000);
-            })
-                .catch((e) => {
-                    if (e.response && e.response.data) {
-                        toast.error(e.response.data.value);
-                    }
-                });
+            }
         }
     }
 
