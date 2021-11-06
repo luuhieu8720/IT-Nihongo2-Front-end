@@ -84,7 +84,7 @@ function ShowPost({ match }) {
 								disabled="true"
 								value={post.day}
 							/>
-							<p className="money">$</p>
+							<p className="money">VNĐ</p>
 						</div>
 						<div className="row-cols-6">
 							<InputText
