@@ -1,30 +1,27 @@
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import PostServices from "../../services/PostServices";
+import ReportServices from "../../services/ReportServices";
 import { toast, ToastContainer } from "react-toastify";
+import { Image } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 function ReportUserList(props) {
-  const postID = {
+  const reportID = {
     id: props.id.toString(),
   };
-  const [post, setPost] = useState({
-    title: "",
-    time: "",
-    day: "",
-    city: "",
-    district: "",
-    ward: "",
-    gender: "",
-    details: "",
-    salary: "",
-    course: "",
+
+  const [report, setReport] = useState({
+    id: "",
+    userName: "",
+    tutorName: "",
+    score: "",
+    comment: "",
   });
 
   useEffect(() => {
-    PostServices.getPostInformation(postID)
+    ReportServices.getReportInformation(reportID)
       .then((response) => {
-        setPost(response.data.value);
+        setReport(response.data.value);
         console.log(response.data.value);
       })
       .catch((e) => {
@@ -35,60 +32,57 @@ function ReportUserList(props) {
       });
   }, []);
 
+  const history = useHistory();
+  const deleteReport = (id) => {
+    alert(id);
+    ReportServices.deleteReport(id).then((response) => {
+      //   setReport(response.data.value);
+      //   console.log(report);
+      // })
+      // .catch((e) => {
+      //   if (e.response && e.response.data) {
+      //     toast.error(e.response.data.value);
+      //   }
+      // });
+      toast.success("Successfully");
+      response.JSON().then((resp) => {
+        console.warn(resp);
+      });
+    });
+    setTimeout(() => {
+      history.push("/admin/reportuser");
+    }, 1000);
+  };
+
   return (
-    <Card className="card-tutor">
+    <Card className="card-report-user">
       <ToastContainer />
       <Card.Body>
         <div className="row">
           <div className="col-sm-6">
-            <Card.Title>Title: {post.title}</Card.Title>
-            <Card.Text>Description: {post.details}</Card.Text>
-          </div>
-          <div className="col-sm-6">
-            <div className="dropdown">
-              <i
-                className="fa fa-ellipsis-v"
-                style={{ marginLeft: "95%" }}
-                type=""
-                id="dropdownMenuButton2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></i>
-              <ul
-                className="dropdown-menu dropdown-menu-light"
-                aria-labelledby="dropdownMenuButton2"
-              >
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to={`/post/show/${postID.id}`}
-                    params={{ id: postID.id }}
-                  >
-                    View detail
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/">
-                    Report this post
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/">
-                    Manage
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <Card.Subtitle>Salary: {post.salary} VND</Card.Subtitle>
-            <Card.Subtitle className="mt-2">
-              Time: {post.time} {post.day}
-            </Card.Subtitle>
-            <Card.Subtitle className="mt-2">
-              Location: {post.ward + ", " + post.district + ", " + post.city}
-            </Card.Subtitle>
-            <Card.Subtitle className="mt-2">
-              Gender: {post.gender}
-            </Card.Subtitle>
+            <Image
+              src="/Image/avatardefault.png"
+              className="position-abs"
+              width="70"
+              height="70"
+              alt="image"
+              aria-expanded="false"
+              roundedCircle
+            ></Image>
+            <Card.Text className="comment-report">
+              {report.tutorName} is reported!
+            </Card.Text>
+            <i
+              className="position-abs bi bi-trash fa-2x"
+              style={{
+                display: "inline-block",
+                marginTop: "-6.5%",
+                marginLeft: "90%",
+              }}
+              onClick={() => {
+                deleteReport(report.id);
+              }}
+            ></i>
           </div>
         </div>
       </Card.Body>

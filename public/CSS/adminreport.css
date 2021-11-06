@@ -17,3 +17,21 @@
 
   color: rgba(0, 0, 0, 0.5);
 }
+.card-report-user {
+  min-width: 80%;
+  min-height: 95px;
+  margin-top: 1%;
+  margin-left: 15%;
+  border-radius: 20px;
+  height: fit-content;
+}
+.comment-report {
+  height: 42px;
+  margin-left: 20%;
+  margin-top: 3%;
+  font-family: "Roboto";
+  font-size: 30px;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.5);
+}

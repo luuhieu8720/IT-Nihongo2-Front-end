@@ -1,38 +1,38 @@
 import SidebarReport from "../components/Admin/SidebarReport";
 import TopAdminComponent from "../components/Admin/TopAdminComponent";
 import { useState, useEffect } from "react";
-import PostServices from "../services/PostServices";
+import ReportServices from "../services/ReportServices";
 import ReportUserList from "../components/Admin/ReportUserList";
 
 function ReportUser() {
-  var postIDs = [];
+  var reportIDs = [];
 
-  const [posts, setPostIDs] = useState([]);
+  const [reports, setReportIDs] = useState([]);
   useEffect(() => {
-    var postIds = JSON.parse(sessionStorage.getItem("postIds"));
-    let postTemp = [];
+    var reportIds = JSON.parse(sessionStorage.getItem("reportIds"));
+    let reportTemp = [];
 
-    if (postIds != null) {
-      postIds.forEach((element) => postTemp.push(element));
-      setPostIDs(postTemp);
+    if (reportIds != null) {
+      reportIds.forEach((element) => reportTemp.push(element));
+      setReportIDs(reportTemp);
     } else {
-      PostServices.getAllPost()
+      ReportServices.getAllReport()
         .then((response) => {
-          var listPosts = response.data.value;
-          let ids = listPosts.map((post) => post.id);
-          setPostIDs(ids);
+          var listReports = response.data.value;
+          let ids = listReports.map((report) => report.id);
+          setReportIDs(ids);
         })
         .catch((error) => console.log(error));
     }
   }, []);
 
-  Object.values(posts).forEach((id) => {
-    postIDs.push(id);
+  Object.values(reports).forEach((id) => {
+    reportIDs.push(id);
   });
 
-  const listPosts = postIDs.map((postID) => (
+  const listPosts = reportIDs.map((reportID) => (
     <div>
-      <ReportUserList id={postID}></ReportUserList>
+      <ReportUserList id={reportID}></ReportUserList>
       <div className="blank"></div>
     </div>
   ));
