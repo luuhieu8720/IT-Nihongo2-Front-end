@@ -14,7 +14,7 @@ function ShowPost({ match }) {
     district: "",
     ward: "",
     day: "",
-    male: "",
+    gender: "",
     details: "",
     salary: "",
   });
@@ -112,7 +112,7 @@ function ShowPost({ match }) {
               className="input-select"
               name="gender"
               style={{ top: "68%" }}
-              value={post.male == true ? "Male" : "Female"}
+              value={post.gender}
               disabled="true"
             ></InputText>
           </div>
