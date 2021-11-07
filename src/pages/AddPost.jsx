@@ -148,7 +148,7 @@ function AddPost({ }) {
 		e.preventDefault();
 		post.city = city.name;
 		post.district = district.name;
-		post.ward = ward.name;
+		post.ward = ward;
 		console.log(post)
 		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
 			toast.warning("Salary must be a number and be positive.");
@@ -167,19 +167,22 @@ function AddPost({ }) {
 			toast.warning("All fields are not allowed to be null");
 		}
 		else {
-			console.log(post)
-			await PostServices.creastePost(post)
-				.then(() => {
-					toast.success("Create successfully. Return to homepage");
-					setTimeout(() => {
-						history.push("/");
-					}, 3000);
-				})
-				.catch((e) => {
-					if (e.response && e.response.data) {
-						toast.error(e.response.data.value)
-					}
-				})
+			toast.loading("Creating...");
+			setTimeout(() => {
+				PostServices.creastePost(post)
+					.then(() => {
+						toast.dismiss();
+						toast.success("Create successfully. Return to homepage");
+						setTimeout(() => {
+							history.push("/");
+						}, 3000);
+					})
+					.catch((e) => {
+						if (e.response && e.response.data) {
+							toast.error(e.response.data.value)
+						}
+					})
+			}, 2000);
 		}
 	};
 
