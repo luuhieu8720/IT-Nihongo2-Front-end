@@ -53,7 +53,7 @@ function TutorInfo(props) {
 									<li>
 										<Link
 											className="dropdown-item"
-											to={`/post/show/${tutor.username}`}
+											to={`/tutor/detail/${tutor.username}`}
 											params={{ id: tutor.username }}
 										>
 											View detail
