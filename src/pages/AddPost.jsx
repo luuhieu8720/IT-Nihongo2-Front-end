@@ -148,7 +148,7 @@ function AddPost({ }) {
 		e.preventDefault();
 		post.city = city.name;
 		post.district = district.name;
-		post.ward = ward.name;
+		post.ward = ward;
 		console.log(post)
 		if (!validator.isInt(post.salary) || (post.salary <= 0)) {
 			toast.warning("Salary must be a number and be positive.");
