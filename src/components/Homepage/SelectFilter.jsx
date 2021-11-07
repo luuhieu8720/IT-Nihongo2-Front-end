@@ -105,6 +105,7 @@ function SelectFilter(props) {
         post.district = district.name;
         post.ward = ward;
         console.log(post);
+        post.course = post.course.trim();
         var filterString = "";
         if (post.course != "") filterString += " " + post.course + ",";
         if (post.city != "") filterString += " " + post.city + ",";
@@ -169,7 +170,7 @@ function SelectFilter(props) {
             </div>
 
             <div className="frame-select-filter position-abs">
-                <i className="fa fa-window-close position-abs" style={{ right: '0px', top: '-1px' }}
+                <i className="fa fa-window-close position-abs fa-2x" style={{ right: '0px', top: '-1px' }}
                     onClick={() => {
                         props.setTrigger(false); sessionStorage.setItem("filterState", "true");
                         sessionStorage.setItem("filterString", "")
@@ -183,32 +184,33 @@ function SelectFilter(props) {
                     onChange={handleChange}
                 />
                 <p className="home-page-location">Location</p>
-                <Select
-                    className="input-select-city-homepage"
-                    onChange={handleChangeCity}
-                    options={cityOptions}
-                    placeholder="City"
-                />
+                <div style={{ marginTop: '230px', marginLeft: '80px' }}>
+                    <Select
+                        className="input-select-city-homepage"
+                        onChange={handleChangeCity}
+                        options={cityOptions}
+                        placeholder="City"
+                    />
 
-                <Select
-                    className="input-select-district-homepage"
-                    name="districtId"
-                    placeholder="District"
-                    style={{ top: "48%" }}
-                    options={districtOptions}
-                    onChange={handleChangeDistrict}
-                />
+                    <Select
+                        className="input-select-district-homepage"
+                        name="districtId"
+                        placeholder="District"
+                        options={districtOptions}
+                        onChange={handleChangeDistrict}
+                    />
 
-                <Select
-                    className="input-select-ward-homepage"
-                    name="wardId"
-                    onChange={handleChangeWard}
-                    options={wardOptions}
-                    placeholder="Ward"
-                />
+                    <Select
+                        className="input-select-ward-homepage"
+                        name="wardId"
+                        onChange={handleChangeWard}
+                        options={wardOptions}
+                        placeholder="Ward"
+                    />
+                </div>
                 <p className="gender-homepage">Gender</p>
 
-                <Select className="position-abs input-select-gender"
+                <Select className="input-select-gender-homepage"
                     options={optionGender}
                     defaultValue={optionGender[2]}
                     onChange={handleChangeGender}
