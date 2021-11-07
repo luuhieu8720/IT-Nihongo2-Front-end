@@ -6,8 +6,8 @@
 }
 
 .tutor-name {
-    margin-left: 55px;
-    margin-top: 5px;
+    margin-left: 29%;
+    margin-top: 3%;
 }
 
 .label-left {
@@ -28,29 +28,26 @@
 .label-phone{
     margin-top: 29%;
     margin-left: 4.4%;
-    /* padding-top: 12px; */
     display: block;
 }
+
 .label-email{
     margin-top: 1%;
     margin-left: 4.4%;
-    /* padding-top: 12px; */
     display: block;
 }
 .total-left {
     margin-top: -2.7%;
-    /* margin-bottom: 30px; */
     padding-top: 2.7%;
 }
 
 .total-left-new {
     margin-left: 6%;
-    /* padding-top: 12px; */
-    /* display: block; */
 }
 
 .total-right {
-    margin-top: -2.9%;
+    margin-top: 2.4%;
+    padding-left: 0px;
 }
 
 .image-avar{
@@ -59,118 +56,105 @@
     height:80px;
     margin-left: 200%;
 }
-/* .tutor-box {
-    position: absolute;
-    width: 24%;
-    height: 90%;
-    left: 75%;
-    margin-top: 30%;
-  }
-   */
-   .chau-vy{
-    font-family: myFirstFont;
-   }
+.chau-vy{
+font-family: myFirstFont;
+}
 
-   /* Form in ProfileTutor */
-   .tutor-left{
-    margin-top: 30%;
-   margin-left: 6%;
-   }
-   .tutor-right{
-    margin-top: -265%;
-    margin-left: 50%;
-   }
-   .label-left-tutor{
-       margin-left: -239%;
-       padding-top: 30.5%;
-       display: block;
-   }
-   .tutor-left-new {
-    margin-left: -240%;
-    /* padding-top: 12px; */
+/* Form in ProfileTutor */
+.tutor-left{
+margin-top: 30%;
+margin-left: 6%;
+}
+.tutor-right{
+margin-top: -252%;
+margin-left: 50%;
+}
+.label-left-tutor{
+    margin-left: -239%;
+    padding-top: 80.5%;
+    display: block;
+}
+.tutor-left-new {
+margin-left: -240%;
+}
+.tutor-right-new {
+    margin-top: 10.5%;
+    display: block;
+}
+.label-right-tutor{
+    margin-left: -5.4%;
+    width: 200px;
     /* display: block; */
+    padding-top: 30.5%;
+}
+.card-tutor-new{
+    margin-left: 1%;
+    width: 800px;
+    height: 80px;
+    background: rgb(241, 240, 240);
+    border: 0px;
+}
+.card-tutor-new1{
+    margin-top: 1%;
+    margin-left: 1%;
+    width: 800px;
+    height: 80px;
+    border: 0px;
+}
+.henry{
+    margin-top: -5%;
+    padding-top: 2.7%;
+}
+.henry-top{
+    margin-left: -90%;
+}
+.henry-bottom{
+    margin-left: -90%;
+    color: darkgray;
+}
+.mark{
+    font-size:20px;
+    color: rgb(119, 122, 126);
+    background: rgb(241, 240, 240);
+    right: -5%;
+    margin-top: -2.5%;
+}
+.mark1{
+    font-size:20px;
+    color: rgb(119, 122, 126);
+    right: -5%;
+    margin-top: -2.5%;
+}
+.mark2{
+    font-size:20px;
+    color: rgb(119, 122, 126);
+    right: -5%;
+    margin-top: 1.8%;
+    margin-left: -16px;
+}
+.star-mark{
+    font-size:25px;
+    color:rgb(255, 217, 0);
+}
+.star-mark-gray{
+    font-size:25px;
+    color:darkgray;
+    margin-right: 0.9%;
+}
+.five{
+    margin-left: 30%;
+}
+.input-tutor-detail {
+    width: 530px;
+    height: 35px;
+    font-family: "Segoe UI";
+    font-size: 19px;
+    border-radius: 20px;
+    border: 2px solid #beaeae;
+    color: #fff;
+    background: transparent;
+    padding: 10px;
     }
-    .tutor-right-new {
-        margin-top: 10.5%;
-        /* padding-top: 12px; */
-        display: block;
+    .list{
+        margin-top: -1%;
     }
-    .label-right-tutor{
-        margin-left: -5.4%;
-        width: 200px;
-        /* display: block; */
-        padding-top: 30.5%;
-    }
-    .card-tutor-new{
-        margin-left: 1%;
-        width: 800px;
-        height: 80px;
-        background: rgb(241, 240, 240);
-        border: 0px;
-    }
-    .card-tutor-new1{
-        margin-top: 1%;
-        margin-left: 1%;
-        width: 800px;
-        height: 80px;
-        /* background: rgb(241, 240, 240); */
-        border: 0px;
-    }
-    .henry{
-        margin-top: -5%;
-        /* margin-bottom: 30px; */
-        padding-top: 2.7%;
-    }
-    .henry-top{
-        margin-left: -90%;
-    }
-    .henry-bottom{
-        margin-left: -90%;
-        color: darkgray;
-    }
-    .mark{
-        font-size:20px;
-        color: rgb(119, 122, 126);
-        background: rgb(241, 240, 240);
-        right: -5%;
-        margin-top: -2.5%;
-    }
-    .mark1{
-        font-size:20px;
-        color: rgb(119, 122, 126);
-        right: -5%;
-        margin-top: -2.5%;
-    }
-    .mark2{
-        font-size:20px;
-        color: rgb(119, 122, 126);
-        right: -5%;
-        margin-top: 1.8%;
-        margin-left: -16px;
-    }
-    .star-mark{
-        font-size:25px;
-        color:rgb(255, 217, 0);
-    }
-    .star-mark-gray{
-        font-size:25px;
-        color:darkgray;
-        margin-right: 0.9%;
-    }
-    .five{
-        margin-left: 30%;
-    }
-    .input-tutor-detail {
-        width: 530px;
-        height: 35px;
-        font-family: "Segoe UI";
-        font-size: 19px;
-        border-radius: 20px;
-        border: 2px solid #beaeae;
-        color: #fff;
-        background: transparent;
-        padding: 10px;
-      }
-      .list{
-          margin-top: -1%;
-      }

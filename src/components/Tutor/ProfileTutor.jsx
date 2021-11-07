@@ -8,9 +8,8 @@ import { blue } from "@material-ui/core/colors";
 import { Card } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 
-function ProfileTutor(props) {
+function ProfileTutor() {
 	const history = useHistory();
-	// const tutor = props.tutor;
 	const [currentUser, setCurrentUser] = useState({ role: "" });
 	const [user, setUser] = useState({
 		username: "",
@@ -26,11 +25,10 @@ function ProfileTutor(props) {
 	useEffect(() => {
 		UserServices.getUserInformation().then((response) => {
 			setUser(response.data.value);
+			console.log(response.data.value)
 		});
-		setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-		console.log(currentUser);
 	}, []);
-
+	console.log(user.dateOfBirth);
 	return (
 		<div className="" style={{ position: 'fixed' }}>
 			<ToastContainer />
@@ -63,14 +61,14 @@ function ProfileTutor(props) {
 			<form className="profile-box" >
 				<h3
 					className="text-center position-abs"
-					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-40%', right: '20%' }}>
+					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-60%', right: '-40%' }}>
 					PROFILE
 				</h3>
 				<IconButton
 					className="icon-purple postion-abs"
 					children="camera"
 					color="primary"
-					style={{ marginLeft: "-50%", paddingTop: "210%" }}
+					style={{ marginLeft: "3%", paddingTop: "210%" }}
 				>
                     <Image 
 					src={
@@ -80,46 +78,25 @@ function ProfileTutor(props) {
 					}                    
 					alt="image" 
                     className="position-abs image-avar"
-                    roundedCircle>
+                    roundedCircle
+					style={{marginTop: '-600%', width: '110px', height:'110px'}}>
 
                     </Image>
                     <h4
 					className="text-center position-abs chau-vy"
-					style={{ color: "black", marginTop: '-100%', right: '-450%', width: '200px' }}>
+					style={{ color: "black", marginTop: '50%', right: '-450%', width: '200px' }}>
 					{user.name}
 				    </h4>
 
 				</IconButton>
-				{/* <div style={{ width: '300px' }}>
-					<h6
-						style={{
-							font: "Oxygen",
-							marginTop: "30%",
-							marginLeft: "-40%",
-							fontSize: "24px",
-							color: "rgba(0, 0, 0, 0.5)",
-						}}
-					>
-						You don't have any
-					</h6>
-					<h6
-						style={{
-							font: "Oxygen",
-							marginLeft: "-25%",
-							fontSize: "24px",
-							color: "rgba(0, 0, 0, 0.5)",
-						}}
-					>
-						tutor profile
-					</h6>
-				</div> */}
+				
                 <div className="row">
-                                   <div className="col-sm-8 tutor-left">
+                                   <div className="col-sm-7 tutor-left">
                                         <b className="label-left-tutor">Age </b> 
                                         <b className="label-left-tutor">Gender</b> 
                                         <b className="label-left-tutor">Location</b>
 										<b className="label-left-tutor">Speciality</b>
-										<br/>
+										
 										<b className="label-left-tutor">Rank</b>
 
                                        
@@ -133,24 +110,12 @@ function ProfileTutor(props) {
                                     </div>
                 </div>
 				<div className="position-abs">
-					<p
-						className="text-center position-abs"
-						style={{
-							width:"200px",
-							bottom:"-10%",
-							font: "Oxygen",
-							marginLeft: "-500%",
-							fontSize: "20px",
-							color: "rgba(0, 0, 0, 0.5)",
-						}}
-					>
-						Become a tutor!
-					</p>
+					
 					<IconButton
 						className="icon-purple position-abs"
 						children="asking"
 						color="primary"
-						style={{ marginLeft: "305%", marginTop: "600%" }}
+						style={{ marginLeft: "570%", marginTop: "80%" }}
 						size="medium"
 					>
 						<Image

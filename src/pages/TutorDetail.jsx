@@ -5,10 +5,42 @@ import StudentSideBar from "../components/StudentSideBar";
 import { Image } from "react-bootstrap";
 import ProfileTutor from "../components/Tutor/ProfileTutor";
 import { InputText } from "primereact/inputtext";
+import { ToastContainer, toast } from "react-toastify";
+import UserServices from "../services/UserServices";
+import { useEffect, useState } from "react";
 
-function TutorDetail() {
+function TutorDetail({match}) {
+    const [user, setUser] = useState({
+		username: "",
+		name: "",
+		telephone: "",
+		email: "",
+		avatar: "",
+		specialty: "",
+      	degree: "",
+		address: "",
+		gender: "", 
+        dateOfBirth:""
+	});
+	useEffect(() => {
+        var username = {
+          username: match.params.username.toString(),
+        };
+        console.log("user:", username)
+        UserServices.getUser(username)
+          .then((response) => {
+            setUser(response.data.value);
+            console.log(user);
+          })
+          .catch((e) => {
+            if (e.response && e.response.data) {
+              toast.error(e.response.data.value);
+            }
+          });
+      }, []);
     return (
         <div class="row">
+            <ToastContainer/>
             <div className="col-sm-auto">
                 <SidebarHomePage className="position-abs" />
             </div>
@@ -23,45 +55,69 @@ function TutorDetail() {
                                         <Image className="image-avartar"src="https://scontent.fdad3-4.fna.fbcdn.net/v/t1.6435-1/c60.0.240.240a/p240x240/242046587_155555230081668_8229001917049422588_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=AIrIDWQewnkAX-DcMIZ&_nc_ht=scontent.fdad3-4.fna&oh=2fc2ae77c9b90864901be4f793b63bd4&oe=618F5DB7" alt="image" roundedCircle  ></Image>
                                     </div>
                                     <div className="row-sm-1">
-                                        <label className="tutor-name">Thu Loan</label>
+                                        <label className="tutor-name">{user.username}</label>
                                     </div>
-                                    {/* <Card.Title>Title: Finding math teacher</Card.Title>
-                                    <Card.Text class="Bold">Currentjob Student</Card.Text> */}
-                                    {/* <Card.Text className="position-abs text-time">September, 16 - September, 30</Card.Text> */}
                                 </div>
                                
-                                    {/* <div class="dropdown">
-                                        <i class="fa fa-ellipsis-v" style={{ marginLeft: '95%' }} type="" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </i>
-                                        {/* <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-                                            <li><Link class="dropdown-item" >View detail</Link></li>
-                                            <li><Link class="dropdown-item" >Report this post</Link></li>
-                                            <li><Link class="dropdown-item" >Manage</Link></li>
-                                        </ul> */}
-                                    {/* </div> */} 
                                    <div className="col-sm-3 total-left">
-                                        <b className="total-left-new">Current job</b> 
                                         <b className="label-left">Age </b> 
                                         <b className="label-left">Gender</b> 
                                         <b className="label-left">Location</b>
                                         <b className="label-left">Speciality</b> 
                                         <b className="label-left">Experience</b>
                                         <b className="label-left">Certificate</b>
-                                        <b className="label-phone">Phone</b>
-                                        <b className="label-left"> </b> 
-                                        <b className="label-email">Email</b> 
+                                        <b className="label-left">Phone</b>
+                                        <b className="label-left">Email</b> 
                                         </div>
                                     <div className="col-sm-5 total-right">
-                                         <p className="label-right-new">Student</p>
-                                         <p className="label-right">21</p>
-                                         <p className="label-right">Female</p>
-                                         <p className="label-right">Da Nang</p>
-                                         <p className="label-right">Japanese</p>
-                                         <p className="label-right">3 years</p>
-                                         <p className="label-right">Certificate Japanese-Language</p>
-                                         <p className="label-right">Proficiency level N2</p>
-                                         <p className="label-right">03 789 11 234</p>
-                                         <p className="label-right">tttloan.edu@gmail.com </p>
+                                         <p className="label-right">
+                                        {
+                                         user.dateOfBirth == "" || user.dateOfBirth == null
+										? "No Information"
+										: user.dateOfBirth}</p>
+                                         <p className="label-right">
+                                         {
+                                         user.gender == "" || user.gender == null
+										? "No Information"
+										: user.gender}
+                                        </p>
+                                         <p className="label-right">
+                                         {
+                                         user.address == "" || user.address == null
+										? "No Information"
+										: user.address}    
+                                        </p>
+                                         <p className="label-right">
+                                         {
+                                         user.specialty == "" || user.specialty == null
+										? "No Information"
+										: user.specialty}    
+                                         </p>
+                                         <p className="label-right">
+                                         {
+                                         user.experience == "" || user.experience == null
+										? "No Information"
+										: user.experience}         
+                                        </p>
+                                         <p className="label-right">
+                                         {
+                                         user.degree == "" || user.degree == null
+										? "No Information"
+										: user.degree}    
+                                        </p>
+                                        
+                                         <p className="label-right">
+                                         {
+                                         user.telephone == "" || user.telephone == null
+										? "No Information"
+										: user.telephone}   
+                                        </p>
+                                         <p className="label-right">
+                                         {
+                                         user.email == "" || user.email == null
+										? "No Information"
+										: user.email}      
+                                        </p>
                                     </div>
                             </div>
                         </Card.Body>
@@ -82,21 +138,8 @@ function TutorDetail() {
                                         style={{width:'60px' , height:'60px' }}
                                         ></Image>
                                     </div>
-                                   
-                                    {/* <Card.Title>Title: Finding math teacher</Card.Title>
-                                    <Card.Text class="Bold">Currentjob Student</Card.Text> */}
-                                    {/* <Card.Text className="position-abs text-time">September, 16 - September, 30</Card.Text> */}
                                 </div>
                                
-                                    {/* <div class="dropdown">
-                                        <i class="fa fa-ellipsis-v" style={{ marginLeft: '95%' }} type="" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </i>
-                                        {/* <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-                                            <li><Link class="dropdown-item" >View detail</Link></li>
-                                            <li><Link class="dropdown-item" >Report this post</Link></li>
-                                            <li><Link class="dropdown-item" >Manage</Link></li>
-                                        </ul> */}
-                                    {/* </div> */} 
                                    <div className="col-sm-7 henry">
                                    <div className="col-sm-4">
                                     <div className="row-sm-3" style={{ marginTop: '-3%' }}>
@@ -107,9 +150,6 @@ function TutorDetail() {
                                          <label className=" henry-bottom">The best helpful post!</label> 
                                     </div>
                                 </div>
-                                        {/* 
-                                        <b className=" henry-bottom">Nice!</b> 
-                                        */}
                                         </div>
                                 <div className="col-sm-1 mark">
                                     <i class="fa">&#xf06a;</i>

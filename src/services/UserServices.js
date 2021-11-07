@@ -10,6 +10,9 @@ class UserServices {
 	updatePassword(passwordModel){
 		return axios.put("/auth/update/password", passwordModel)
 	}
+	getUser(username) {
+        return axios.post("auth/get", username)
+    }
 }
 
 export default new UserServices();
