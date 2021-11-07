@@ -10,8 +10,8 @@ class ReportServices {
   findReport() {
     return axios.post("auth/report/find");
   }
-  deleteReport(id) {
-    return axios.post("auth/report/delete", id);
+  deleteReport(idRP) {
+    return axios.delete("auth/report/delete", idRP);
   }
 }
 

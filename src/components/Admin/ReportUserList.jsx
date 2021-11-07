@@ -4,6 +4,7 @@ import ReportServices from "../../services/ReportServices";
 import { toast, ToastContainer } from "react-toastify";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 function ReportUserList(props) {
   const reportID = {
@@ -32,26 +33,12 @@ function ReportUserList(props) {
       });
   }, []);
 
-  const history = useHistory();
-  const deleteReport = (id) => {
-    alert(id);
-    ReportServices.deleteReport(id).then((response) => {
-      //   setReport(response.data.value);
-      //   console.log(report);
-      // })
-      // .catch((e) => {
-      //   if (e.response && e.response.data) {
-      //     toast.error(e.response.data.value);
-      //   }
-      // });
-      toast.success("Successfully");
-      response.JSON().then((resp) => {
-        console.warn(resp);
-      });
-    });
-    setTimeout(() => {
-      history.push("/admin/reportuser");
-    }, 1000);
+  const deleteReportHandle = (id, e) => {
+    e.preventDefault();
+    console.log(id);
+    ReportServices.deleteReport(+`${id}`)
+      .then((res) => console.log("Delete Report", res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -73,14 +60,14 @@ function ReportUserList(props) {
               {report.tutorName} is reported!
             </Card.Text>
             <i
-              className="position-abs bi bi-trash fa-2x"
+              className="position-abs bi bi-trash fa-2x px-2 py-1"
               style={{
                 display: "inline-block",
                 marginTop: "-6.5%",
                 marginLeft: "90%",
               }}
-              onClick={() => {
-                deleteReport(report.id);
+              onClick={(e) => {
+                deleteReportHandle(report.id, e);
               }}
             ></i>
           </div>
