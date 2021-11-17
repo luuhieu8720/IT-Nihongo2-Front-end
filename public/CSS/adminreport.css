@@ -1,0 +1,19 @@
+.text-eto-sidebar {
+  font-size: 30px;
+  background: -webkit-linear-gradient(#cc00ff 100%, #cc00ff 0%);
+  -webkit-background-clip: text;
+  background-clip: "";
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+}
+
+.text-admin {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+
+  color: rgba(0, 0, 0, 0.5);
+}
