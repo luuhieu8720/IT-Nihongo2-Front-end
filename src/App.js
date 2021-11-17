@@ -12,7 +12,6 @@ import TutorList from "./pages/TutorList";
 import AddPost from "./pages/AddPost";
 import ChatFeed from "./components/Chat/ChatFeed"
 import ReportUser from "./pages/ReportUser";
-import AddPost from "./pages/AddPost"
 import TutorDetail from "./pages/TutorDetail";
 import TutorDialog from "./pages/TutorDialog";
 
