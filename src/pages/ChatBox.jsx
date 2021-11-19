@@ -1,6 +1,10 @@
 import { InputText } from "primereact/inputtext";
 import Image from "rc-image";
 import { Card } from "react-bootstrap";
+import React, { useState, useEffect, useRef } from "react";
+import socketIOClient from "socket.io-client";
+
+const host = "http://localhost:3000";
 
 function ChatBox() {
   return (
@@ -10,16 +14,20 @@ function ChatBox() {
         <Image
           src="/Image/avatardefault.png"
           alt="image"
-          style={{ marginLeft: "70%", marginTop: "20%" }}
+          style={{ marginLeft: "78%", marginTop: "20%" }}
           width="140px"
           height="140px"
           roundedCircle
         ></Image>
-        <i className="name-information-chatbox">Hiền gà</i>
-        <i className="subject-information-chatbox">Student</i>
+        <div className="information-container">
+          <i className="name-information-chatbox">Hiền gà</i>
+          <i className="subject-information-chatbox">Student</i>
+        </div>
       </div>
       <div className="col-sm-1 information-chatbox2">
-        <i style={{ fontFamily: "Segoe UI" }}>All conversations</i>
+        <i className="text-black" style={{ fontFamily: "Segoe UI" }}>
+          All conversations
+        </i>
         <label className="new-message-notification">
           <i className="" style={{ color: "#FF0000", marginLeft: "30%" }}>
             3
@@ -44,7 +52,6 @@ function ChatBox() {
             <InputText
               className="enter-message-chat"
               name="message"
-              disabled="true"
               placeholder="Enter your message..."
             ></InputText>
           </label>

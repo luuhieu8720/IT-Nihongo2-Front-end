@@ -1,7 +1,5 @@
 .eto-chatbox {
   position: absolute;
-  width: 134px;
-  height: 62px;
   left: 3%;
   top: 3%;
   background: -webkit-linear-gradient(#cc00ff 100%, #cc00ff 0%);
@@ -15,51 +13,48 @@
 }
 .information-chatbox {
   position: absolute;
-  width: 375px;
-  height: 313px;
+  width: 25%;
+  height: 36%;
   left: 3%;
   top: 12%;
-
   border-radius: 20px;
+}
+.information-container {
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  margin-left: -3%;
+  margin-top: 12%;
 }
 .name-information-chatbox {
   position: absolute;
-  width: 132px;
-  height: 42px;
-  margin-left: 26%;
-  margin-top: 10%;
+  width: 100%;
+  height: 15%;
   color: #000000;
   font-family: "Segoe UI";
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
   line-height: 42px;
-  display: flex;
-  align-items: center;
   text-align: center;
 }
 .subject-information-chatbox {
   position: absolute;
-  width: 63px;
-  height: 21px;
-  margin-left: 35%;
-  margin-top: 25%;
-
+  width: 100%;
+  height: 15%;
+  margin-top: 13%;
   font-family: "Segoe UI";
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-
-  display: flex;
-  align-items: center;
-
+  text-align: center;
   color: rgba(0, 0, 0, 0.5);
 }
 .information-chatbox2 {
   position: absolute;
-  width: 375px;
-  height: 313px;
+  width: 25%;
+  height: 50%;
   left: 3%;
   top: 50%;
 
@@ -67,36 +62,31 @@
 }
 .new-message-notification {
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 7%;
+  height: 7%;
   left: 50%;
-
-  background: rgba(176, 175, 180, 0.7);
+  flex-direction: column;
+  background: rgba(24, 24, 27, 0.6);
   border-radius: 30px;
 }
 .card-message {
   position: absolute;
-  width: 375px;
-  height: 80px;
-  left: 3%;
-  top: 12%;
-
-  background: rgba(246, 243, 255, 0.7);
-  border-radius: 20px;
+  width: 100%;
+  height: 22%;
+  flex-direction: column;
+  margin-left: -3%;
+  margin-top: 5%;
+  border: 2px solid #000000;
+  border-radius: 10px;
 }
 .name-card-message {
   position: absolute;
-  width: 225px;
-  height: 32px;
+  width: 100%;
   margin-left: 25%;
   margin-top: 5.5%;
-
   font-family: "Segoe UI";
   font-style: normal;
   font-size: 22px;
-  display: flex;
-  align-items: center;
-
   color: #000000;
 }
 .chatbox {
@@ -105,9 +95,8 @@
   height: 90%;
   left: 32%;
   top: 8%;
-
-  background: #f6f3ff;
-  border-radius: 25px;
+  border-radius: 10px;
+  border: 2px solid #000000;
 }
 .enter-your-message {
   position: absolute;
@@ -153,14 +142,9 @@
 .my-message {
   position: absolute;
   width: 80%;
-  height: 100px;
+  height: 16%;
   margin-left: 7%;
   margin-top: 47%;
-
-  background: #f6f3ff;
-  border: 1px solid #f6f3ff;
-  box-sizing: border-box;
-  border-radius: 20px;
 }
 .message-blue {
   position: relative;
