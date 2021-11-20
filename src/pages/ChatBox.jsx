@@ -105,7 +105,7 @@ function ChatBox() {
 						All conversations
 					</i>
 					<i className="" style={{ color: "#FF0000", marginLeft: "30%" }}>
-						3
+						{conversationIds.length}
 					</i>
 					<div style={{ marginTop: "10px" }}>{listConversations}</div>
 				</div>
