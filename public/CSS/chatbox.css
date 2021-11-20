@@ -1,16 +1,17 @@
 .eto-chatbox {
   position: absolute;
   left: 3%;
-  top: 3%;
+  top: 2%;
   background: -webkit-linear-gradient(#cc00ff 100%, #cc00ff 0%);
   -webkit-background-clip: text;
   background-clip: "";
   -webkit-text-fill-color: transparent;
   font-family: "Segoe UI";
   font-weight: 500;
-  font-size: 48px;
+  font-size: 35px;
   line-height: 56px;
 }
+
 .information-chatbox {
   position: absolute;
   width: 25%;
@@ -19,30 +20,32 @@
   top: 12%;
   border-radius: 20px;
 }
+
 .information-container {
   position: absolute;
-  width: 100%;
+  width: 25%;
+  text-align: center;
   height: 30%;
-  margin-left: -3%;
-  margin-top: 12%;
 }
+
 .name-information-chatbox {
-  position: absolute;
-  width: 100%;
+  position: relative;
   height: 15%;
+  text-align: center;
   color: #000000;
   font-family: "Segoe UI";
   font-style: normal;
   font-weight: normal;
-  font-size: 36px;
+  font-size: 25px;
   line-height: 42px;
   text-align: center;
 }
+
 .subject-information-chatbox {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 15%;
-  margin-top: 13%;
+  margin-top: 10px;
   font-family: "Segoe UI";
   font-style: normal;
   font-weight: normal;
@@ -51,15 +54,16 @@
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
 }
+
 .information-chatbox2 {
   position: absolute;
-  width: 25%;
+  width: 20%;
+  left: 2.5%;
   height: 50%;
-  left: 3%;
-  top: 50%;
-
+  top: 45%;
   border-radius: 20px;
 }
+
 .new-message-notification {
   position: absolute;
   width: 7%;
@@ -69,45 +73,45 @@
   background: rgba(24, 24, 27, 0.6);
   border-radius: 30px;
 }
+
 .card-message {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 22%;
-  flex-direction: column;
-  margin-left: -3%;
-  margin-top: 5%;
-  border: 2px solid #000000;
+  margin-top: 10px;
+  border: 1px solid #d4d2d2;
   border-radius: 10px;
 }
+
 .name-card-message {
-  position: absolute;
-  width: 100%;
-  margin-left: 25%;
-  margin-top: 5.5%;
+  position: relative;
+  display: inline-block;
   font-family: "Segoe UI";
   font-style: normal;
   font-size: 22px;
+  padding-top: 10px;
   color: #000000;
+  flex: "0 0 auto";
+  width: 71%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px
 }
-.chatbox {
-  position: absolute;
-  width: 65%;
-  height: 90%;
-  left: 32%;
-  top: 8%;
-  border-radius: 10px;
-  border: 2px solid #000000;
-}
-.enter-your-message {
-  position: absolute;
-  width: 87%;
-  height: 13%;
-  margin-left: 5%;
-  margin-top: 58%;
 
-  background: #ffffff;
+.chatbox {
+  position: relative;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgb(231, 229, 226);
+}
+
+.enter-your-message {
+  position: relative;
+  width: 95%;
+  margin-left: 5%;
+  margin-bottom: 20px;
   border-radius: 10px;
 }
+
 .rectangle-chatbox {
   position: absolute;
   width: 82%;
@@ -118,19 +122,22 @@
   background: #ffffff;
   border-radius: 15px;
 }
+
 .enter-message-chat {
-  position: absolute;
-  width: 95%;
-  height: 90%;
+  position: relative;
+  width: 80%;
+  height: 40px;
   margin-left: 2%;
-  margin-top: 0.1%;
   font-family: "Segoe UI";
-  font-size: 23px;
+  font-size: 18px;
   border: 0;
   outline: 0;
   color: #000000;
   background: transparent;
+  border: 1px solid rgb(158, 156, 156);
+  border-radius: 10px;
 }
+
 .card-my-message {
   position: absolute;
   width: 87%;
@@ -139,6 +146,7 @@
   margin-top: 50%;
   border-radius: 10px;
 }
+
 .my-message {
   position: absolute;
   width: 80%;
@@ -146,6 +154,7 @@
   margin-left: 7%;
   margin-top: 47%;
 }
+
 .message-blue {
   position: relative;
   margin-left: 11%;

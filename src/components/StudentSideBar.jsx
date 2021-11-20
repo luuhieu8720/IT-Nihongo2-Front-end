@@ -15,9 +15,10 @@ function StudentSideBar() {
         avatar: ""
     });
     useEffect(() => {
-        UserServices.getUserInformation().then(response => {
+        UserServices.getUserInformation().then((response) => {
             setUser(response.data.value)
-        });
+			localStorage.setItem("current", JSON.stringify(response.data.value))
+		})
         setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
         console.log(currentUser)
     }, [])
