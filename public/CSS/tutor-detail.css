@@ -6,13 +6,13 @@
 }
 
 .tutor-name {
-    margin-left: 29%;
+    margin-left: 25%;
     margin-top: 3%;
 }
 
 .label-left {
     margin-left: 4.4%;
-    padding-top: 6.5%;
+    padding-top: 13.5%;
     display: block;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .label-right {
-    margin-top: -2.7%;
+    margin-bottom: 7.6%;
     display: block;
 }
 .label-phone{
@@ -37,8 +37,8 @@
     display: block;
 }
 .total-left {
-    margin-top: -2.7%;
-    padding-top: 2.7%;
+    margin-top: 4.8%;
+    padding-top: 3.7%;
 }
 
 .total-left-new {
@@ -46,8 +46,8 @@
 }
 
 .total-right {
-    margin-top: 2.4%;
-    padding-left: 0px;
+    margin-top: 11.3%;
+    margin-left: -40px;
 }
 
 .image-avar{
@@ -62,16 +62,18 @@ font-family: myFirstFont;
 
 /* Form in ProfileTutor */
 .tutor-left{
-margin-top: 30%;
-margin-left: 6%;
+margin-top: 28%;
+margin-left: 5%;
 }
 .tutor-right{
-margin-top: -252%;
+margin-top: -258.5%;
 margin-left: 50%;
+padding-left: 30%;
+padding-top: 8.6%;
 }
 .label-left-tutor{
-    margin-left: -239%;
-    padding-top: 80.5%;
+    margin-left: -500%;
+    padding-top: 243%;
     display: block;
 }
 .tutor-left-new {
@@ -82,11 +84,11 @@ margin-left: -240%;
     display: block;
 }
 .label-right-tutor{
-    margin-left: -5.4%;
+    margin-left: -20.8%;
     width: 200px;
-    /* display: block; */
-    padding-top: 30.5%;
-}
+    display: block;
+    /* padding-top: 30.5%; */
+} 
 .card-tutor-new{
     margin-left: 1%;
     width: 800px;
@@ -101,6 +103,14 @@ margin-left: -240%;
     height: 80px;
     border: 0px;
 }
+.card-tutor-new2 {
+    min-width: 80%;
+    margin-top: 1%;
+    margin-left: 15%;
+    border-radius: 20px;
+    height: 650px;
+  }
+  
 .henry{
     margin-top: -5%;
     padding-top: 2.7%;

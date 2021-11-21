@@ -7,6 +7,7 @@ import { IconButton } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
 import { Card } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
+import { borderLeft } from "@mui/system";
 
 function ProfileTutor() {
 	const history = useHistory();
@@ -32,36 +33,36 @@ function ProfileTutor() {
 	return (
 		<div className="" style={{ position: 'fixed' }}>
 			<ToastContainer />
-			<div className="row">
+			<div className="row"style={{ display: 'flex', flexWrap: 'nowrap'  }}>
 				<div className="col-sm-auto student-top-component" style={{ marginLeft: '3%' }}>
 					<i className="far fa-envelope fa-2x"></i>
 				</div>
 				<div className="col-sm-auto student-top-component">
 					<i className="far fa-bell fa-2x"></i>
 				</div>
-				<div className="col-sm-auto student-top-component" style={{ paddingRight: '-1%', paddingLeft: '5%' }} >
+				<div className="col-sm-auto student-top-component" style={{ paddingRight: '1%', paddingLeft: '3%', maxWidth:'200px' }} >
 					<p >Hi, {localStorage.getItem('currentUser') == null ? history.push("/signin") : user.name}</p>
 
 				</div>
-				<div className="col-sm-auto" style={{ marginTop: '-20%' }}>
+				<div className="col-sm-1" style={{ marginTop: '-3%' }}>
 					<div className="dropdown">
-						<Image className="position-abs" src={user.avatar == "" || user.avatar == null ? "/Image/avatardefault.png" : user.avatar} style={{ right: '-370px' }}
+						<Image className="position-abs" src={user.avatar == "" || user.avatar == null ? "https://static.yeah1.com/uploads/editors/49/2021/01/27/02lZu7RzhZ8rqYiEce4JSxhXjo7hPeJbbLkO550O.jpeg" : user.avatar} 
 							width="60" height="60" alt="image" id="dropdownMenuButton2"
 							data-bs-toggle="dropdown" aria-expanded="false" roundedCircle
 						></Image>
 						<ul className="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
 							<li><Link className="dropdown-item"
-								to={currentUser.role == "User" ? "/user/profile/setting" : "/"} onClick={() => {sessionStorage.setItem("stateTabIndex","1")}}>Profile</Link></li>
+								to={currentUser.role == "User" ? "/user/profile/setting" : "/"} onClick={() => { sessionStorage.setItem("stateTabIndex", "1") }}>Profile</Link></li>
 							<li><Link className="dropdown-item" to="/" >Report this post</Link></li>
 							<li><Link className="dropdown-item" to="/" >Manage</Link></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<form className="profile-box" >
+			<form className="profile-box" style={{right: '-50%'}}>
 				<h3
 					className="text-center position-abs"
-					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-60%', right: '-40%' }}>
+					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-90%', right: '-50%' }}>
 					PROFILE
 				</h3>
 				<IconButton
@@ -73,7 +74,7 @@ function ProfileTutor() {
                     <Image 
 					src={
 						user.avatar == "" || user.avatar == null
-						? "/Image/avatardefault.png"
+						? "https://static.yeah1.com/uploads/editors/49/2021/01/27/02lZu7RzhZ8rqYiEce4JSxhXjo7hPeJbbLkO550O.jpeg"
 						: user.avatar
 					}                    
 					alt="image" 
@@ -84,14 +85,14 @@ function ProfileTutor() {
                     </Image>
                     <h4
 					className="text-center position-abs chau-vy"
-					style={{ color: "black", marginTop: '50%', right: '-450%', width: '200px' }}>
+					style={{ color: "black", marginTop: '140%', right: '-450%', width: '200px' }}>
 					{user.name}
 				    </h4>
 
 				</IconButton>
 				
-                <div className="row">
-                                   <div className="col-sm-7 tutor-left">
+				<div className = "row" style={{marginTop:'20%'}}>
+                                   <div className="col-sm-5 tutor-left">
                                         <b className="label-left-tutor">Age </b> 
                                         <b className="label-left-tutor">Gender</b> 
                                         <b className="label-left-tutor">Location</b>
@@ -101,14 +102,35 @@ function ProfileTutor() {
 
                                        
                                         </div>
-                                    <div className="col-sm-4 tutor-right">
-                                         <p className="label-right-tutor">{user.dateOfBirth}</p>
-                                         <p className="label-right-tutor">{user.gender}</p>
-                                         <p className="label-right-tutor">{user.address}</p>
-										 <p className="label-right-tutor">{user.specialty}</p>
+                                    <div className=" col-sm-5 tutor-right">
+                                         <p className="label-right-tutor">
+										 {
+                                         user.dateOfBirth == "" || user.dateOfBirth == null
+										? "None"
+										: user.dateOfBirth}      	
+										</p>
+                                         <p className="label-right-tutor">
+										 {
+                                         user.gender == "" || user.gender == null
+										? "None"
+										: user.gender}     	
+										</p>
+                                         <p className="label-right-tutor">
+										 {
+                                         user.address == "" || user.address == null
+										? "None"
+										: user.address}
+										 </p>
+										 <p className="label-right-tutor">
+										 {
+                                         user.specialty == "" || user.specialty == null
+										? "None"
+										: user.specialty}
+										</p>
 										 <p className="label-right-tutor">0/5</p>
                                     </div>
                 </div>
+				
 				<div className="position-abs">
 					
 					<IconButton
