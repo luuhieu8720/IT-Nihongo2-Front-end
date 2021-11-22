@@ -4,52 +4,48 @@
 .chat-item {
   width: 50%;
 }
+
 .your-message {
-  background: #009bff;
-  margin: 1em;
+  background: #EFCAFF;
+  margin: 0.5em;
   border-radius: 1em;
   padding: 1em;
-  color: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
   float: right;
 }
 
 .other-people {
-  background: #868686;
-  margin: 1em;
+  background: #FFFFFF;
+  margin: 0.5em;
   border-radius: 1em;
   padding: 1em;
-  color: white;
+  color: black;
   text-align: left;
   float: left;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border-radius: 20px;
 }
 
 .box-chat_message {
-  min-height: 60vh;  
-  max-height: 60vh;  
+  min-height: 87vh;  
+  max-height: 87vh;  
   overflow-y: auto;
   
 }
 .box-chat {
-  width:70%;
-  margin: 0 auto;
-  margin-top: 100px;
-  box-shadow: 0 0 10px 0 black;
+  position: absolute;
+  width:75%;
+  height: 100%;
   border-radius: 1em;
+  background-color: rgba(214, 211, 211, 0.5);
 }
 
 .send-box {
   width: 100%;
   padding: 1em;
-}
-
-textarea {
-  width: 80%;
-  margin: 0;
-  padding: 0.5em;
-  background: #ebf5ff;
-  border-radius: 2em; 
-  display: flex;
-  float: left;
 }
 
 .button-chat {
@@ -68,4 +64,3 @@ textarea {
   background: black;
 }
 textarea:focus {outline:0;}
-
