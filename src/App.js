@@ -9,9 +9,11 @@ import ShowPost from "./pages/ShowPost";
 import CheckSignup from "./pages/CheckSignup";
 import ChangePassword from "./pages/ChangePassword";
 import TutorList from "./pages/TutorList";
+import AddPost from "./pages/AddPost";
 import ReportUser from "./pages/ReportUser";
-import AddPost from "./pages/AddPost"
+import TutorDetail from "./pages/TutorDetail";
 import TutorDialog from "./pages/TutorDialog";
+import ChatBox from "./pages/ChatBox";
 
 function App() {
   return (
@@ -28,8 +30,10 @@ function App() {
         <Route exact path="/password/change" component={ChangePassword}></Route>
         <Route exact path="/tutors/list" component={TutorList}></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
+        <Route exact path="/tutor/detail/:username" component={TutorDetail}></Route>
         <Route exact path="/admin/reportuser" component={ReportUser}></Route>
         <Route exact path="/tutors/dialog" component={TutorDialog}></Route>
+        <Route exact path="/chat" component={ChatBox}></Route>
       </Switch>
     </BrowserRouter>
   );

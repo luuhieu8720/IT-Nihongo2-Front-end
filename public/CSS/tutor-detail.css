@@ -1,4 +1,4 @@
-.image-avartar{
+.image-avartar {
     width: 150px;
     height: 150px;
     margin-left: 20px;
@@ -25,17 +25,19 @@
     margin-top: -2.7%;
     display: block;
 }
-.label-phone{
+
+.label-phone {
     margin-top: 29%;
     margin-left: 4.4%;
     display: block;
 }
 
-.label-email{
+.label-email {
     margin-top: 1%;
     margin-left: 4.4%;
     display: block;
 }
+
 .total-left {
     margin-top: -2.7%;
     padding-top: 2.7%;
@@ -50,100 +52,118 @@
     padding-left: 0px;
 }
 
-.image-avar{
+.image-avar {
     margin-top: -800%;
-    width:80px;
-    height:80px;
+    width: 80px;
+    height: 80px;
     margin-left: 200%;
 }
-.chau-vy{
-font-family: myFirstFont;
+
+.chau-vy {
+    font-family: myFirstFont;
 }
 
 /* Form in ProfileTutor */
-.tutor-left{
-margin-top: 30%;
-margin-left: 6%;
+.tutor-left {
+    margin-top: 30%;
+    margin-left: 6%;
 }
-.tutor-right{
-margin-top: -252%;
-margin-left: 50%;
+
+.tutor-right {
+    margin-top: -252%;
+    margin-left: 50%;
 }
-.label-left-tutor{
+
+.label-left-tutor {
     margin-left: -239%;
     padding-top: 80.5%;
     display: block;
 }
+
 .tutor-left-new {
-margin-left: -240%;
+    margin-left: -240%;
 }
+
 .tutor-right-new {
     margin-top: 10.5%;
     display: block;
 }
-.label-right-tutor{
+
+.label-right-tutor {
     margin-left: -5.4%;
     width: 200px;
     /* display: block; */
     padding-top: 30.5%;
 }
-.card-tutor-new{
+
+.card-tutor-new {
     margin-left: 1%;
     width: 800px;
     height: 80px;
     background: rgb(241, 240, 240);
     border: 0px;
 }
-.card-tutor-new1{
+
+.card-tutor-new1 {
     margin-top: 1%;
     margin-left: 1%;
     width: 800px;
     height: 80px;
     border: 0px;
 }
-.henry{
+
+.henry {
     margin-top: -5%;
     padding-top: 2.7%;
 }
-.henry-top{
+
+.henry-top {
     margin-left: -90%;
 }
-.henry-bottom{
+
+.henry-bottom {
     margin-left: -90%;
     color: darkgray;
 }
-.mark{
-    font-size:20px;
+
+.mark {
+    font-size: 20px;
     color: rgb(119, 122, 126);
     background: rgb(241, 240, 240);
     right: -5%;
     margin-top: -2.5%;
 }
-.mark1{
-    font-size:20px;
+
+.mark1 {
+    font-size: 20px;
     color: rgb(119, 122, 126);
     right: -5%;
     margin-top: -2.5%;
 }
-.mark2{
-    font-size:20px;
+
+.mark2 {
+    font-size: 20px;
     color: rgb(119, 122, 126);
     right: -5%;
     margin-top: 1.8%;
     margin-left: -16px;
 }
-.star-mark{
-    font-size:25px;
-    color:rgb(255, 217, 0);
+
+.star-mark {
+    font-size: 25px;
+    color: rgb(255, 217, 0);
 }
-.star-mark-gray{
-    font-size:25px;
-    color:darkgray;
+
+.star-mark-gray {
+    font-size: 25px;
+    color: darkgray;
     margin-right: 0.9%;
 }
-.five{
+
+.five {
     margin-left: 30%;
 }
+
 .input-tutor-detail {
     width: 530px;
     height: 35px;
@@ -154,7 +174,8 @@ margin-left: -240%;
     color: #fff;
     background: transparent;
     padding: 10px;
-    }
-    .list{
-        margin-top: -1%;
-    }
+}
+
+.list {
+    margin-top: -1%;
+}
