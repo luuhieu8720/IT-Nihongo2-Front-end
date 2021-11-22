@@ -230,7 +230,7 @@
 .card-filter-tutor {
   min-width: 60%;
   margin-top: 30%;
-  margin-left:4%;
+  margin-left: 4%;
   border-radius: 20px;
   position: fixed;
   z-index: 1;
@@ -255,9 +255,9 @@
 
 .frame-select-filter {
   width: 45%;
-  height: 65%;
-  left: 28%;
-  top: 17%;
+  height: 500px;
+  left: 30%;
+  top: 10%;
   background: #ffffff;
   justify-content: center;
   align-items: center;
@@ -269,7 +269,7 @@
   width: 50%;
   height: 50%;
   left: 13%;
-  top: 35%;
+  top: 37%;
 
   font-family: "Segoe UI";
   font-size: 14px;
@@ -306,19 +306,6 @@
   color: #000000;
 }
 
-.input-select-gender {
-  position: absolute;
-  width: 23%;
-  height: 1%;
-  left: 13%;
-  margin-top: 15%;
-  font-family: "Segoe UI";
-  font-size: 23px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #7f7f7f;
-}
-
 .input-select-gender1 {
   position: absolute;
   width: 23%;
@@ -333,42 +320,27 @@
 }
 
 .input-select-city-homepage {
-  position: absolute;
-  width: 23%;
-  height: 1%;
-  margin-top: 28%;
-  left: 13%;
-  font-family: "Segoe UI";
-  font-size: 23px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #7f7f7f;
+  display: inline-block;
+  width: 120px;
 }
 
 .input-select-district-homepage {
-  position: absolute;
-  width: 23%;
-  height: 1%;
-  margin-top: -1%;
-  left: 39%;
-  font-family: "Segoe UI";
-  font-size: 23px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #7f7f7f;
+  display: inline-block;
+  margin-left: 5%;
+  width: 120px;
+}
+
+.input-select-gender-homepage {
+  display: inline-block;
+  margin-top: 70px;
+  margin-left: 80px;
+  width: 120px;
 }
 
 .input-select-ward-homepage {
-  position: absolute;
-  width: 23%;
-  height: 1%;
-  margin-top: -0.75%;
-  left: 65%;
-  font-family: "Segoe UI";
-  font-size: 23px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #7f7f7f;
+  display: inline-block;
+  margin-left: 5%;
+  width: 120px;
 }
 
 .input-text-subject {
@@ -397,6 +369,7 @@
 
   color: #000000;
 }
+
 .subject-add-post {
   position: absolute;
   width: 50%;
@@ -425,6 +398,6 @@
 }
 
 .button-filter {
-  margin-left: 42%;
-  margin-top: 10%;
+  margin-top: 150px;
+  margin-left: 9%;
 }
