@@ -61,12 +61,12 @@ function TutorInfo(props) {
 									</li>
 									<li>
 										<Link className="dropdown-item" to="/">
-											Report this post
+											Rate
 										</Link>
 									</li>
 									<li>
-										<Link className="dropdown-item" to="/">
-											Manage
+										<Link className="dropdown-item" to="/chat">
+											Send message
 										</Link>
 									</li>
 								</ul>

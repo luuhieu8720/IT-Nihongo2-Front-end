@@ -41,8 +41,8 @@ function Navbar() {
                     <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
                         <li><Link className="dropdown-item"
                             to={currentUser.role == "User" ? "/user/profile/setting" : "/"} onClick={() => { sessionStorage.setItem("stateTabIndex", "1") }}>Profile</Link></li>
-                        <li><Link className="dropdown-item" to="/" >Report this post</Link></li>
-                        <li><Link className="dropdown-item" to="/" >Manage</Link></li>
+                        <li><Link className="dropdown-item" to="/" >Profile</Link></li>
+                        <li><Link className="dropdown-item" to="/" >Sign out</Link></li>
                     </ul>
                 </div>
             </div>

@@ -26,83 +26,88 @@ function ProfileSideBar() {
 
 	return (
 		<div className="" style={{ position: 'fixed' }}>
-			<Navbar />
 			{(currentUser.specialty == "" || currentUser.specialty == null)
 				? (
-					<form className="profile-box">
-						<h2
-							className="text-center position-abs"
-							style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-40%', right: '20%' }}>
-							PROFILE
-						</h2>
-						<IconButton
-							className="icon-purple postion-abs"
-							children="camera"
-							color="primary"
-							style={{ marginLeft: "-50%", paddingTop: "210%" }}
-						>
-							<Image
-								src="/Image/camera.png"
-								className="position-abs"
-								width="250"
-								height="190"
-								alt="image"
-							></Image>
-						</IconButton>
-						<div style={{ width: '300px' }}>
-							<h6
-								style={{
-									font: "Oxygen",
-									marginTop: "30%",
-									marginLeft: "-40%",
-									fontSize: "24px",
-									color: "rgba(0, 0, 0, 0.5)",
-								}}
-							>
-								You don't have any
-							</h6>
-							<h6
-								style={{
-									font: "Oxygen",
-									marginLeft: "-25%",
-									fontSize: "24px",
-									color: "rgba(0, 0, 0, 0.5)",
-								}}
-							>
-								tutor profile
-							</h6>
-						</div>
-						<div className="position-abs">
-							<p
+
+					<div>
+						<Navbar />
+						<form className="profile-box">
+							<h3
 								className="text-center position-abs"
-								style={{
-									width: "200px",
-									bottom: "-10%",
-									font: "Oxygen",
-									marginLeft: "-500%",
-									fontSize: "20px",
-									color: "rgba(0, 0, 0, 0.5)",
-								}}
-							>
-								Become a tutor!
-							</p>
+								style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-90%', right: '-50%' }}>
+								PROFILE
+							</h3>
 							<IconButton
-								className="icon-purple position-abs"
-								children="asking"
+								className="icon-purple"
+								children="camera"
 								color="primary"
-								style={{ marginLeft: "305%", marginTop: "600%" }}
-								size="medium"
+								style={{ marginLeft: "50%", marginTop: "200%" }}
 							>
 								<Image
-									src="/Image/tutor_icon.JPG"
+									src="/Image/camera.png"
 									className="position-abs"
-									width="50"
-									height="50"
+									width="250"
+									height="190"
 									alt="image"
-								></Image>
+									style={{}}>
+
+								</Image>
 							</IconButton>
-						</div>
-					</form>
+							<div style={{ width: '300px' }}>
+								<h6
+									style={{
+										font: "Oxygen",
+										marginTop: "30%",
+										marginLeft: "-20%",
+										fontSize: "24px",
+										color: "rgba(0, 0, 0, 0.5)",
+									}}
+								>
+									You don't have any
+								</h6>
+								<h6
+									style={{
+										font: "Oxygen",
+										marginLeft: "-5%",
+										fontSize: "24px",
+										color: "rgba(0, 0, 0, 0.5)",
+									}}
+								>
+									tutor profile
+								</h6>
+							</div>
+							<div className="position-abs">
+								<p
+									className="text-center position-abs"
+									style={{
+										width: "200px",
+										bottom: "-10%",
+										font: "Oxygen",
+										marginLeft: "-250%",
+										fontSize: "20px",
+										color: "rgba(0, 0, 0, 0.5)",
+									}}
+								>
+									Become a tutor!
+								</p>
+								<IconButton
+									className="icon-purple position-abs"
+									children="asking"
+									color="primary"
+									style={{ marginLeft: "600%", marginTop: "600%" }}
+									size="medium"
+								>
+									<Image
+										src="/Image/tutor_icon.JPG"
+										className="position-abs"
+										width="50"
+										height="50"
+										alt="image"
+									></Image>
+								</IconButton>
+							</div>
+						</form>
+					</div>
 				) : <ProfileTutor />
 			}
 
