@@ -4,10 +4,7 @@ import { useHistory } from "react-router";
 import UserServices from "../../services/UserServices";
 import { Link } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
-import { blue } from "@material-ui/core/colors";
-import { Card } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
-import { borderLeft } from "@mui/system";
 
 function ProfileTutor() {
 	const history = useHistory();
