@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import UserServices from "../../services/UserServices";
 
 function SideBarProfile() {
+  const [currentUser, setCurrentUser] = useState({ role: "" });
+  const [user, setUser] = useState({
+    username: "",
+    name: "",
+    telephone: "",
+    email: "",
+    avatar: "",
+  });
+
   const handleProfileSubmit = () => {
     localStorage["stateProfile"] = "show";
   };
@@ -13,7 +24,14 @@ function SideBarProfile() {
   const handleChangeIndexPassword = () => {
     sessionStorage["stateTabIndex"] = "0";
   };
-
+  useEffect(() => {
+    UserServices.getUserInformation().then((response) => {
+      setUser(response.data.value);
+      localStorage.setItem("current", JSON.stringify(response.data.value));
+    });
+    setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
+    console.log(currentUser);
+  }, []);
   return (
     <div className="pt-3 ps-5">
       <label className="text-profile-sidebar">ETO</label>
@@ -29,7 +47,11 @@ function SideBarProfile() {
       ></p>
       <Link
         className="position-abs"
-        to="/user/profile/setting"
+        to={
+          currentUser.role == "User"
+            ? "user/profile/setting"
+            : "tutor/profile/setting"
+        }
         onClick={handleProfileSubmit}
       >
         <i

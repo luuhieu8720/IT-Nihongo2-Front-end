@@ -5,15 +5,26 @@ import UserServices from "../../services/UserServices";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 
-function ProfileComponent() {
+function ProfileTutorComponent() {
   const handleEdit = () => {
     localStorage["stateProfile"] = "edit";
     window.location.reload();
   };
-  const [userInformation, setUserInformation] = useState({
-    telephone: "",
+  const [tutorInformation, setTutorInformation] = useState({
+    username: "",
     email: "",
+    name: "",
+    telephone: "",
+    experience: "",
+    currentJob: "",
+    dateOfBirth: "",
     address: "",
+    gender: "",
+    avatar: "",
+    specialty: "",
+    degree: "",
+    studentId: "",
+    role: "",
   });
   const [gender, setGender] = useState("");
   useEffect(() => {
@@ -25,7 +36,7 @@ function ProfileComponent() {
         } else {
           setGender("Male");
         }
-        setUserInformation(response.data.value);
+        setTutorInformation(response.data.value);
       })
       .catch((e) => {
         if (e.response && e.response.data) {
@@ -65,25 +76,40 @@ function ProfileComponent() {
             }}
           ></p>
         </div>
-        <div className="col-sm-3" style={{ marginTop: "6%" }}>
-          <h5 className="py-1">Phone </h5>
-          <h5 className="py-1">Email </h5>
+        <div className="col-sm-3">
           <h5 className="py-1">Name </h5>
-          <h5 className="py-1">Gender </h5>
-          <h5 className="py-1">Address </h5>
+          <h5 className="py-1">Age </h5>
+          <h5 className="py-1">Gender</h5>
+          <h5 className="py-1">Location</h5>
+          <h5 className="py-1">Speciality </h5>
+          <h5 className="py-1">Birthday </h5>
+          <h5 className="py-1">Experience </h5>
+          <h5 className="py-1">Certificate </h5>
+          <h5 className="py-1">Teaching Method </h5>
+          <br />
+          <br />
+          <h5 className="py-1">ID </h5>
+          <h5 className="py-1">Phone </h5>
+          <h5 className="py-1">Email</h5>
         </div>
-        <div
-          className="col-sm-auto text-name-profile"
-          style={{ marginTop: "4.5%" }}
-        >
-          <h6 className="pb-2 pt-1">{userInformation.telephone}</h6>
-          <h6 className="pb-2 pt-1">{userInformation.email}</h6>
-          <h6 className="pb-2 pt-1">{userInformation.name}</h6>
-          <h6 className="pb-2 pt-2">{gender}</h6>
-          <h6 className="pb-2 pt-1">{userInformation.address}</h6>
+        <div className="col-sm-auto">
+          <h6 className="pb-2 pt-2">{tutorInformation.name}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.age}</h6>
+          <h6 className="pb-2 pt-1">{gender}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.address}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.specialty}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.dateOfBirth}</h6>
+          <h6 className="pb-2 pt-2">{tutorInformation.experience}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.role}</h6>
+          <h6 className="pb-2 pt-2">{tutorInformation.currentJob}</h6>
+          <br />
+          <br />
+          <h6 className="pb-2 pt-1">{tutorInformation.studentId}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.telephone}</h6>
+          <h6 className="pb-2 pt-1">{tutorInformation.email}</h6>
         </div>
       </div>
     </div>
   );
 }
-export default ProfileComponent;
+export default ProfileTutorComponent;
