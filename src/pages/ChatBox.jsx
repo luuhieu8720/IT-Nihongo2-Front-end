@@ -14,11 +14,12 @@ const prefixes = "/api/socket";
 /*
 Model được sử dụng
 GroupChat {
-  id: string,     // Mã id của group
-  name: string,   // Tên hiển thị của group
-  length: int,    // Số tin nhắn trong group == chats.length
+  id: string,          // Mã id của group
+  name: string,        // Tên hiển thị của group
+  length: int,         // Số tin nhắn trong group == chats.length
   members: [{username: string, seenIndex: int}, ...], // Danh sách người dùng trong nhóm
-  chats: [Chat, ...] // Danh sách tin nhắn
+  chats: [Chat, ...],  // Danh sách tin nhắn
+  avatar: string       // Url avatar
 }
 Chat {
   idGroup: string,
