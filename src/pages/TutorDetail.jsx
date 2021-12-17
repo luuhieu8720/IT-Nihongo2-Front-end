@@ -4,6 +4,7 @@ import { Image } from "react-bootstrap";
 import ProfileTutor from "../components/Tutor/ProfileTutor";
 import { ToastContainer, toast } from "react-toastify";
 import UserServices from "../services/UserServices";
+import Button from 'react-bootstrap/Button'
 import { useEffect, useState } from "react";
 
 function TutorDetail({ match }) {
@@ -17,13 +18,14 @@ function TutorDetail({ match }) {
         degree: "",
         address: "",
         gender: "",
-        dateOfBirth: ""
+        dateOfBirth: "",
+        teachingMethod: ""
     });
     useEffect(() => {
         var username = {
             username: match.params.username.toString(),
         };
-        console.log("user:", username)
+
         UserServices.getUser(username)
             .then((response) => {
                 setUser(response.data.value);
@@ -34,6 +36,8 @@ function TutorDetail({ match }) {
                     toast.error(e.response.data.value);
                 }
             });
+
+        
     }, []);
     return (
         <div class="row">
@@ -48,20 +52,21 @@ function TutorDetail({ match }) {
                             <h4
                                 className="text-center position-abs"
                                 style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginLeft: "33%", marginTop: "6%" }}>
-                                Detail Information of Tutor
+                                Tutor details
                             </h4>
                         </Card.Title>
                         <Card.Body>
                             <div className="row">
-                                <div className="col-sm-4">
-                                    <div className="row-sm-3" style={{ marginTop: '-3%' }}>
+                                <div className="col-sm-4" style={{ textAlign:"center" }}>
+                                    <div className="row-sm-3" style={{ marginTop: '-3%', display: "block", marginLeft: "auto", marginRight: "auto", width: "75%" }}>
                                         <Image className="image-avartar" src={user.avatar === "" || user.avatar === null ? "/Image/avatardefault.png" : user.avatar} alt="image" roundedCircle  ></Image>
+                                        <div className="tutor-name-left" >
+                                            <label style={{ textAlign:"center", width:"100%" }}>{user.name}</label>
+                                        </div>
 
                                     </div>
-                                    <div className="text-center">
-                                        <label>{user.username}</label>
-                                    </div>
-
+                                    <p style={{ color: "rgba(0, 0, 0, 0.5)", height: "0px", left: "35px", border: "1px solid rgb(141, 137, 137)" }}></p>
+                                <p>{user.teachingMethod}</p>
                                 </div>
 
                                 <div className="col-sm-3 total-left">
@@ -73,6 +78,7 @@ function TutorDetail({ match }) {
                                     <b className="label-left">Certificate</b>
                                     <b className="label-left">Phone</b>
                                     <b className="label-left">Email</b>
+                                    <Button variant="primary" className="mt-4">Contact now</Button>{' '}
                                 </div>
                                 <div className="col-sm-5 total-right">
                                     <p className="label-right">

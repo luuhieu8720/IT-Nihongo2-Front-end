@@ -44,7 +44,7 @@ function ProfileSideBar() {
 								style={{ marginLeft: "50%", marginTop: "200%" }}
 							>
 								<Image
-									src="/Image/camera.png"
+									src="/Image/camera_tutors_list.png"
 									className="position-abs"
 									width="250"
 									height="190"

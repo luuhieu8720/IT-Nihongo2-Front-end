@@ -101,7 +101,7 @@
 }
 
 .label-right-tutor {
-margin-top: 30px;
+    margin-top: 30px;
     width: 200px;
     display: block;
     /* padding-top: 30.5%; */
@@ -197,4 +197,18 @@ margin-top: 30px;
 
 .list {
     margin-top: -1%;
+}
+
+.tutor-name-left {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'cpsp'on;
+
+    color: #000000;
 }
