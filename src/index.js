@@ -7,7 +7,7 @@ import axios from "axios";
 
 var user = JSON.parse(localStorage.getItem('currentUser'));
 
-if (user != null){
+if (user != null && user != ""){
   axios.defaults.headers.common['Authorization'] = "Bearer " + user.token;
 }
 axios.defaults.baseURL="https://itnihongo2.herokuapp.com/api/";
