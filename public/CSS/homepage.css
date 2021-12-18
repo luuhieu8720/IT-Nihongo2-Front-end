@@ -178,16 +178,6 @@
   color: #000000;
 }
 
-.profile-box {
-  position: absolute;
-  width: 24%;
-  height: 90%;
-  left: 75%;
-  margin-top: 30%;
-
-  background: rgba(233, 227, 255, 0.43);
-}
-
 .text-time {
   bottom: 5%;
   color: rgb(118, 125, 126);
