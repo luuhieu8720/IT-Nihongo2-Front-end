@@ -24,7 +24,8 @@ function TutorDialog() {
         address: "",
         telephone: "",
         experience: "",
-        dateOfBirth: ""
+        dateOfBirth: "",
+        teachingMethod: ""
     });
 
     const [tutor, setTutor] = useState({
@@ -36,7 +37,8 @@ function TutorDialog() {
         address: "",
         telephone: "",
         experience: "",
-        dateOfBirth: ""
+        dateOfBirth: "",
+        teachingMethod: ""
     })
 
     const [imageSelected, setImageSelected] = useState("");
@@ -85,7 +87,8 @@ function TutorDialog() {
             tutor.studentId === "" ||
             tutor.specialty === "" ||
             tutor.degree === "" || tutor.dateOfBirth === "" ||
-            tutor.experience === ""
+            tutor.experience === "" ||
+            tutor.teachingMethod === ""
         ) {
             toast.warning("All fields are not allowed to be null");
         }
@@ -194,7 +197,7 @@ function TutorDialog() {
                                     value={tutor.studentId}
                                     name="studentId"
                                     style={{ marginTop: '5%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
-                                <InputText className="input-tutor-dialog"
+                                <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     placeholder="Gender"
                                     value={tutor.gender}
@@ -237,7 +240,7 @@ function TutorDialog() {
                         <div>
                             <label className="rectangle-experience"></label>
                             <p
-                                className="label-experience"
+                                className="enter-experience"
                             >
                                 Experience
                             </p>
@@ -248,6 +251,19 @@ function TutorDialog() {
                                 value={tutor.experience}
                                 style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
                             ></InputTextarea>
+                             <label className="rectangle-teaching-method"></label>
+                                <p
+                                    className="enter-teaching"
+                                >
+                                    Teaching method
+                                </p>
+                                <InputTextarea
+                                    className="teach-text-area text-black"
+                                    name="teaching"
+                                    value={tutor.teachingMethod}
+                                    onChange={handleChange}
+                                    style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
+                                />
                         </div>
                     </div>
                 </div>

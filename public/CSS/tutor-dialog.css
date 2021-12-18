@@ -34,10 +34,24 @@
 
 .cert-text-area {
   position: absolute;
+  width: 26%;
+  height: 19%;
+  left: 68%;
+  top: 38%;
+  font-family: "Segoe UI";
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  border: 1px solid #ffffff;
+}
+
+.teach-text-area {
+  position: absolute;
   width: 28%;
-  height: 25%;
+  height: 24.5%;
   left: 66%;
-  top: 37%;
+  top: 67%;
   font-family: "Segoe UI";
   background: transparent;
   border: 0;
@@ -48,7 +62,7 @@
 
 .enter-certificate {
   position: absolute;
-  width: 15%;
+  width: 13%;
   height: 10%;
   left: 67%;
   top: 32%;
@@ -59,10 +73,36 @@
   background: #ffffff;
   color: rgba(0, 0, 0, 0.5);
 }
+.enter-teaching {
+  position: absolute;
+  width: 20%;
+  height: 10%;
+  left: 67%;
+  top: 61%;
+  padding-left: 20px;
+  font-family: "Segoe UI";
+  font-size: 23px;
+  align-items: center;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.5);
+}
+.enter-experience{
+  position: absolute;
+  width: 13%;
+  height: 10%;
+  left: 32%;
+  top: 61%;
+  padding-left: 20px;
+  font-family: "Segoe UI";
+  font-size: 23px;
+  align-items: center;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.5);
+}
 .rectangle-tutor-dialog {
   position: absolute;
   width: 30%;
-  height:28%;
+  height:23%;
   left: 65%;
   top: 35%;
   background: #ffffff;
@@ -73,10 +113,10 @@
 
 .experience-text-area {
   position: absolute;
-  width: 61%;
-  height: 22%;
-  margin-left: 7%;
-  margin-top: 17%;
+  width: 25%;
+  height: 24%;
+  left: 34%;
+  top: 67%;
   font-family: "Segoe UI";
   background: transparent;
   border: 0;
@@ -86,10 +126,21 @@
 }
 .rectangle-experience{
   position: absolute;
-  width: 64%;
-  height: 27%;
+  width: 30%;
+  height: 30%;
   margin-left: 5%;
   margin-top: 15%;
+  background: #ffffff;
+  border: 1px solid rgba(73, 72, 72, 0.5);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.rectangle-teaching-method{
+  position: absolute;
+  width: 30%;
+  height:30.5%;
+  left: 65%;
+  top: 63%;
   background: #ffffff;
   border: 1px solid rgba(73, 72, 72, 0.5);
   box-sizing: border-box;
@@ -110,10 +161,10 @@
 }
 .datetime-picker-dialog {
   margin-top: 10%;
-  margin-left: 15%;
+  margin-left: 16%;
   border: 1px solid rgba(73, 72, 72, 0.5);
   border-radius: 10px;
   height: 25%;
-  width: 92%;
+  width: 95%;
   color: rgba(12, 12, 12, 0.5);
 }
