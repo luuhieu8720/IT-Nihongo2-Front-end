@@ -52,7 +52,7 @@ function ProfileTutorComponent() {
         <div className="col-sm-3">
           <h3
             className=""
-            style={{ fontSize: "28px", marginTop: "18%", color: "darkviolet" }}
+            style={{ fontSize: "28px", marginTop: "10%", color: "darkviolet" }}
           >
             Profile
           </h3>
@@ -68,7 +68,7 @@ function ProfileTutorComponent() {
             style={{
               color: "rgba(0, 0, 0, 0.5)",
               width: "0px",
-              height: "400px",
+              height: "500px",
               left: "35px",
               border: "1px solid #8d8989",
               marginLeft: "35%",

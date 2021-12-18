@@ -33,7 +33,7 @@ function SideBarProfile() {
     console.log(currentUser);
   }, []);
   return (
-    <div className="pt-3 ps-5">
+    <div className="pt-3 ps-5" style={{ position:"fixed" }}>
       <label className="text-profile-sidebar">ETO</label>
       <p className="pt-5 text-customize">Customize</p>
       <p
@@ -49,8 +49,8 @@ function SideBarProfile() {
         className="position-abs"
         to={
           currentUser.role == "User"
-            ? "user/profile/setting"
-            : "tutor/profile/setting"
+            ? "/user/profile/setting"
+            : "/tutor/profile/setting"
         }
         onClick={handleProfileSubmit}
       >
@@ -126,7 +126,7 @@ function SideBarProfile() {
       <br />
       <i
         className="position-abs far fa-arrow-alt-circle-left fa-3x"
-        style={{ bottom: "30px" }}
+        style={{ marginTop:"80%" }}
       ></i>
     </div>
   );
