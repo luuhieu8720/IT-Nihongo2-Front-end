@@ -1,61 +1,67 @@
 .text-profile-sidebar {
-    font-size: 30px;
-    background: -webkit-linear-gradient(#CC00FF 100%, #CC00FF 0%);
-    -webkit-background-clip: text;
-    background-clip: '';
-    -webkit-text-fill-color: transparent;
-    font-weight: bolder;
+  font-size: 30px;
+  background: -webkit-linear-gradient(#cc00ff 100%, #cc00ff 0%);
+  -webkit-background-clip: text;
+  background-clip: "";
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
 }
 
 .text-customize {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 42px;
-    letter-spacing: 0.05em;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 42px;
+  letter-spacing: 0.05em;
 
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 i {
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 #id:focus {
-    color: darkviolet;
+  color: darkviolet;
 }
 
 .text-name-profile {
-    padding-top: 2%;
-    padding-left: 1%;
-    font-size: x-large;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
+  padding-top: 2%;
+  padding-left: 1%;
+  font-size: x-large;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .input-update-profile {
-    width: 250px;
-    height: 40px;
+  width: 250px;
+  height: 40px;
 }
 
 .button-update-password {
-    background: rgba(151, 150, 150, 0.5);
-    font-weight: bold;
-    border: rgba(196, 196, 196, 0.5);
-    border-radius: 10px;
-    width: 80px;
-    margin-left: 30px;
+  background: rgba(151, 150, 150, 0.5);
+  font-weight: bold;
+  border: rgba(196, 196, 196, 0.5);
+  border-radius: 10px;
+  width: 80px;
+  margin-left: 30px;
 }
 
 .button-update-password:hover {
-    background: rgba(75, 74, 74, 0.5);
+  background: rgba(75, 74, 74, 0.5);
 }
 
 .button-confirm-password {
-    margin-left: 50px;
-    background: linear-gradient(270deg, #0008CD 0%, rgba(0, 8, 205, 0) 100%), linear-gradient(90deg, #CC00FF 0%, rgba(204, 0, 255, 0) 105.62%);
-    width: 120px;
-    border: white;
-    border-radius: 10px;
+  margin-left: 50px;
+  background: linear-gradient(270deg, #0008cd 0%, rgba(0, 8, 205, 0) 100%),
+    linear-gradient(90deg, #cc00ff 0%, rgba(204, 0, 255, 0) 105.62%);
+  width: 120px;
+  border: white;
+  border-radius: 10px;
+}
+.edit-setting-tutor {
+  width: 61%;
+  margin-top: -77%;
+  margin-left: 65%;
 }
