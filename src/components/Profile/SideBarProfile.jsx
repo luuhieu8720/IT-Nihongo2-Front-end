@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import UserServices from "../../services/UserServices";
+import { useHistory } from "react-router";
 
 function SideBarProfile() {
+  const history = useHistory();
   const [currentUser, setCurrentUser] = useState({ role: "" });
   const [user, setUser] = useState({
     username: "",
@@ -33,7 +35,7 @@ function SideBarProfile() {
     console.log(currentUser);
   }, []);
   return (
-    <div className="pt-3 ps-5" style={{ position:"fixed" }}>
+    <div className="pt-3 ps-5" style={{ position: "fixed" }}>
       <label className="text-profile-sidebar">ETO</label>
       <p className="pt-5 text-customize">Customize</p>
       <p
@@ -124,10 +126,11 @@ function SideBarProfile() {
         </i>
       </Link>
       <br />
-      <i
-        className="position-abs far fa-arrow-alt-circle-left fa-3x"
-        style={{ marginTop:"80%" }}
-      ></i>
+        <i
+          className="position-abs far fa-arrow-alt-circle-left fa-3x"
+          style={{ marginTop: "80%" }}
+onClick={history.goBack()}
+        ></i>
     </div>
   );
 }
