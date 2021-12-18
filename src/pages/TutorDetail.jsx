@@ -37,7 +37,7 @@ function TutorDetail({ match }) {
                 }
             });
 
-        
+
     }, []);
     return (
         <div class="row">
@@ -57,16 +57,20 @@ function TutorDetail({ match }) {
                         </Card.Title>
                         <Card.Body>
                             <div className="row">
-                                <div className="col-sm-4" style={{ textAlign:"center" }}>
+                                <div className="col-sm-4" style={{ textAlign: "center" }}>
                                     <div className="row-sm-3" style={{ marginTop: '-3%', display: "block", marginLeft: "auto", marginRight: "auto", width: "75%" }}>
                                         <Image className="image-avartar" src={user.avatar === "" || user.avatar === null ? "/Image/avatardefault.png" : user.avatar} alt="image" roundedCircle  ></Image>
                                         <div className="tutor-name-left" >
-                                            <label style={{ textAlign:"center", width:"100%" }}>{user.name}</label>
+                                            <label style={{ textAlign: "center", width: "100%" }}>{user.name}</label>
                                         </div>
 
                                     </div>
-                                    <p style={{ color: "rgba(0, 0, 0, 0.5)", height: "0px", left: "35px", border: "1px solid rgb(141, 137, 137)" }}></p>
-                                <p>{user.teachingMethod}</p>
+                                    <p 
+                                        style={{
+                                            color: "rgba(0, 0, 0, 0.5)", height: "0px", left: "35px",
+                                            border: "1px solid rgb(141, 137, 137)"
+                                        }}></p>
+                                    <p className="text-justify" style={{ textAlign:"justify", textJustify:"inter-word" }}>{user.teachingMethod}</p>
                                 </div>
 
                                 <div className="col-sm-3 total-left">

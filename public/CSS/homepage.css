@@ -287,7 +287,7 @@
   width: 50%;
   height: 50%;
   left: 13%;
-  top: 40%;
+  top: 38%;
 
   font-family: "Segoe UI";
   font-size: 14px;
@@ -297,16 +297,10 @@
 }
 
 .input-select-gender1 {
-  position: absolute;
-  width: 23%;
-  height: 1%;
-  left: 13%;
-  margin-top: 32%;
-  font-family: "Segoe UI";
-  font-size: 23px;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #7f7f7f;
+  display: inline-block;
+  margin-top: 170px;
+  margin-left: 70px;
+  width: 120px;
 }
 
 .input-select-city-homepage {
@@ -390,4 +384,14 @@
 .button-filter {
   margin-top: 150px;
   margin-left: 9%;
+}
+.frame-select-filter-tutor{
+  width: 40%;
+  height: 370px;
+  left: 33%;
+  top: 20%;
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }

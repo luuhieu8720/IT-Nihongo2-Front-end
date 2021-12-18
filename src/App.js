@@ -14,6 +14,7 @@ import ReportUser from "./pages/ReportUser";
 import TutorDetail from "./pages/TutorDetail";
 import TutorDialog from "./pages/TutorDialog";
 import ChatBox from "./pages/ChatBox";
+import ProfileTutor from "./pages/ProfileTutor";
 
 function App() {
   return (
@@ -25,12 +26,21 @@ function App() {
         <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/homepage" component={HomePage}></Route>
         <Route exact path="/user/profile/setting" component={Profile}></Route>
+        <Route
+          exact
+          path="/tutor/profile/setting"
+          component={ProfileTutor}
+        ></Route>
         <Route exact path="/post/show/:id" component={ShowPost}></Route>
         <Route exact path="/verify-code" component={CheckSignup}></Route>
         <Route exact path="/password/change" component={ChangePassword}></Route>
         <Route exact path="/tutors/list" component={TutorList}></Route>
         <Route exact path="/post/add" component={AddPost}></Route>
-        <Route exact path="/tutor/detail/:username" component={TutorDetail}></Route>
+        <Route
+          exact
+          path="/tutor/detail/:username"
+          component={TutorDetail}
+        ></Route>
         <Route exact path="/admin/reportuser" component={ReportUser}></Route>
         <Route exact path="/tutors/dialog" component={TutorDialog}></Route>
         <Route exact path="/chat" component={ChatBox}></Route>
