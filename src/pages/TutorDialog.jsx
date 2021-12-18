@@ -24,7 +24,8 @@ function TutorDialog() {
         address: "",
         telephone: "",
         experience: "",
-        dateOfBirth: ""
+        dateOfBirth: "",
+        teachingMethod: ""
     });
 
     const [tutor, setTutor] = useState({
@@ -36,7 +37,8 @@ function TutorDialog() {
         address: "",
         telephone: "",
         experience: "",
-        dateOfBirth: ""
+        dateOfBirth: "",
+        teachingMethod: ""
     })
 
     const [imageSelected, setImageSelected] = useState("");
@@ -85,7 +87,8 @@ function TutorDialog() {
             tutor.studentId === "" ||
             tutor.specialty === "" ||
             tutor.degree === "" || tutor.dateOfBirth === "" ||
-            tutor.experience === ""
+            tutor.experience === "" ||
+            tutor.teachingMethod === ""
         ) {
             toast.warning("All fields are not allowed to be null");
         }
@@ -149,12 +152,15 @@ function TutorDialog() {
                     <div className="col-sm-3">
                         <label htmlFor="icon-button-file">
                             <Input accept="image/*" id="icon-button-file" type="file" onChange={(event) => { setImageSelected(event.target.files[0]) }} />
-                            <IconButton color="primary" aria-label="upload picture" component="span">
+                            <IconButton color="primary" aria-label="upload picture"
+                                style={{ marginLeft: "50%", marginRight: "50%", marginTop: "20px" }}
+                                component="span">
                                 <Image
-                                    src="/Image/camera.png"
-                                    width="230"
-                                    height="180"
+                                    src={tutor.avatar != "" ? tutor.avatar : "/Image/camera.png"}
+                                    width="100"
+                                    height="100"
                                     alt="image"
+                                    style={{ borderRadius: "50%" }}
                                 ></Image>
                             </IconButton>
                         </label>
@@ -182,34 +188,40 @@ function TutorDialog() {
                                 <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     placeholder="Location"
+                                    value={tutor.address}
                                     name="address"
-                                    style={{ marginTop: '10%' }}></InputText>
+                                    style={{ marginTop: '7%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     placeholder="ID"
+                                    value={tutor.studentId}
                                     name="studentId"
-                                    style={{ marginTop: '5%' }}></InputText>
-                                <InputText className="input-tutor-dialog"
+                                    style={{ marginTop: '3%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
+                                <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     placeholder="Gender"
+                                    value={tutor.gender}
                                     name="gender"
-                                    style={{ marginTop: '5%', marginLeft: '45.4px' }}></InputText>
+                                    style={{ marginTop: '4%', marginLeft: '45.4px', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <input type="date" className="datetime-picker-dialog"
                                     onChange={handleChange}
                                     name="dateOfBirth"
-                                    style={{ marginTop: '15%' }}
+                                    value={tutor.dateOfBirth}
+                                    style={{ marginTop: '13%', paddingLeft:"5px" , font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
                                     id="datetimepicker" data-date-format="yyyy-mm-dd"></input>
                             </div>
                             <div className="col-sm-6">
                                 <InputText className="input-tutor-dialog ms-5" placeholder="Phone"
                                     onChange={handleChange}
                                     name="telephone"
-                                    style={{ marginTop: '10%' }}></InputText>
+                                    value={tutor.telephone}
+                                    style={{ marginTop: '7%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
+                                    value={tutor.specialty}
                                     placeholder="Speciality"
                                     name="specialty"
-                                    style={{ marginTop: '5%' }}></InputText>
+                                    style={{ marginTop: '3%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <label className="rectangle-tutor-dialog"></label>
                                 <p
                                     className="enter-certificate"
@@ -219,18 +231,39 @@ function TutorDialog() {
                                 <InputTextarea
                                     className="cert-text-area text-black"
                                     name="degree"
+                                    value={tutor.degree}
                                     onChange={handleChange}
+                                    style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
                                 />
                             </div>
                         </div>
                         <div>
                             <label className="rectangle-experience"></label>
                             <p
-                                className="label-experience"
+                                className="enter-experience"
                             >
                                 Experience
                             </p>
-                            <InputTextarea className="experience-text-area" onChange={handleChange} name="experience" placeholder=""></InputTextarea>
+                            <InputTextarea className="experience-text-area"
+                                onChange={handleChange}
+                                name="experience"
+                                placeholder=""
+                                value={tutor.experience}
+                                style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
+                            ></InputTextarea>
+                             <label className="rectangle-teaching-method"></label>
+                                <p
+                                    className="enter-teaching"
+                                >
+                                    Teaching method
+                                </p>
+                                <InputTextarea
+                                    className="teach-text-area text-black"
+                                    name="teaching"
+                                    value={tutor.teachingMethod}
+                                    onChange={handleChange}
+                                    style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
+                                />
                         </div>
                     </div>
                 </div>

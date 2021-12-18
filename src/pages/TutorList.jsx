@@ -90,7 +90,7 @@ function TutorList() {
 			</div>
 			<div
 				className="col-sm-3 student-top-component"
-				style={{ paddingLeft: "3%" }}
+				style={{ marginLeft: "20px" }}
 			>
 				<ProfileSideBar />
 			</div>
