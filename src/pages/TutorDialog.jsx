@@ -190,24 +190,24 @@ function TutorDialog() {
                                     placeholder="Location"
                                     value={tutor.address}
                                     name="address"
-                                    style={{ marginTop: '10%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
+                                    style={{ marginTop: '7%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     placeholder="ID"
                                     value={tutor.studentId}
                                     name="studentId"
-                                    style={{ marginTop: '5%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
+                                    style={{ marginTop: '3%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     placeholder="Gender"
                                     value={tutor.gender}
                                     name="gender"
-                                    style={{ marginTop: '5%', marginLeft: '45.4px', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
+                                    style={{ marginTop: '4%', marginLeft: '45.4px', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <input type="date" className="datetime-picker-dialog"
                                     onChange={handleChange}
                                     name="dateOfBirth"
                                     value={tutor.dateOfBirth}
-                                    style={{ marginTop: '15%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
+                                    style={{ marginTop: '13%', paddingLeft:"5px" , font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}
                                     id="datetimepicker" data-date-format="yyyy-mm-dd"></input>
                             </div>
                             <div className="col-sm-6">
@@ -215,13 +215,13 @@ function TutorDialog() {
                                     onChange={handleChange}
                                     name="telephone"
                                     value={tutor.telephone}
-                                    style={{ marginTop: '10%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
+                                    style={{ marginTop: '7%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <InputText className="input-tutor-dialog ms-5"
                                     onChange={handleChange}
                                     value={tutor.specialty}
                                     placeholder="Speciality"
                                     name="specialty"
-                                    style={{ marginTop: '5%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
+                                    style={{ marginTop: '3%', font: "Oxygen", color: "rgba(0, 0, 0, 0.5)" }}></InputText>
                                 <label className="rectangle-tutor-dialog"></label>
                                 <p
                                     className="enter-certificate"
