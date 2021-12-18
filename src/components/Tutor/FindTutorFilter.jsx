@@ -86,7 +86,7 @@ function FindTutorFilter(props) {
 			<ToastContainer />
 			<div className="background-homepage"></div>
 
-			<div className="frame-select-filter position-abs">
+			<div className="frame-select-filter-tutor position-abs">
 				<i
 					className="fa fa-window-close position-abs"
 					style={{ right: "0px", top: "-1px" }}
@@ -119,8 +119,8 @@ function FindTutorFilter(props) {
 					placeholder="Gender"
 				/>
 				<Button
-					className="btn btn-secondary position-abs button-filter"
-					style={{ marginTop: "15%" }}
+					className="btn btn-secondary position-abs"
+					style={{ marginTop: "8%", marginLeft:"40%" , display: "block"}}
 					onClick={handleSubmit}
 				>
 					Start Filtering
