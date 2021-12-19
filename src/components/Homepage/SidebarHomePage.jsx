@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 
 function SidebarHomePage() {
+  var currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const history = useHistory();
   const signOut = () => {
     toast.success("Successfully");
@@ -27,7 +28,7 @@ function SidebarHomePage() {
           <Link to="/tutors/list">
             <i className="far fa-user" style={{ color: "white" }}></i>
           </Link>
-          <Link to="/">
+          <Link to={currentUser.role == "User" ? "/user/profile/setting" : "/tutor/profile/setting"}>
             <i className="fas fa-cog" style={{ color: "white" }}></i>
           </Link>
         </div>
