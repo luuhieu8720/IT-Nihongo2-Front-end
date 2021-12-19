@@ -1,8 +1,8 @@
 import axios from "axios";
 
 class ChatServices {
-    newGroup(group) {
-        return axios.post("api/chat/group/new", group)
+    async newGroup(group) {
+        return await axios.post("chat/group/new", group);
     }
 }
 

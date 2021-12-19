@@ -9,9 +9,9 @@ function TutorInfo(props) {
 	console.log(tutor)
 
 	const beforeStartChat = (username) => {
-		let group = JSON.stringify({ member: [{ username: username }] })
-		let res = await ChatServices.newGroup(group);
-		return "/chat";
+		let group = { members: [{ username: username }] }
+		let res = ChatServices.newGroup(group);
+		console.log(res);
 	}
 
 	return (
@@ -72,8 +72,8 @@ function TutorInfo(props) {
 											Rate
 										</Link>
 									</li>
-									<li>
-										<Link className="dropdown-item" to={() => { return beforeStartChat(tutor.username) }}>
+									<li onClick={() => { beforeStartChat(); }}>
+										<Link className="dropdown-item" to="/chat">
 											Send message
 										</Link>
 									</li>
