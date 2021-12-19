@@ -6,8 +6,6 @@ import Thumbnail from "../components/Homepage/Thumbnail";
 import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import SelectFilter from "../components/Homepage/SelectFilter";
-import UserServices from "../services/UserServices";
-import axios from "axios";
 
 function HomePage() {
 	var postIDs = [];
