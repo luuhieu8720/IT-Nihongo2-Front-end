@@ -30,12 +30,7 @@ function ProfileTutor() {
 		<div className="" style={{ position: 'fixed' }}>
 			<ToastContainer />
 			<Navbar />
-			<form className="profile-box">
-				<h3
-					className="text-center position-abs"
-					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-90%', right: '-50%' }}>
-					PROFILE
-				</h3>
+			<form className="profile-box" >
 				<IconButton
 					className="icon-purple postion-abs"
 					children="camera"
