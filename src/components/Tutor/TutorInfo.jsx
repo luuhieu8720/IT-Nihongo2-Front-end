@@ -37,7 +37,7 @@ function TutorInfo(props) {
 							></Image>
 							<Card.Text className="name-tutor-text">{tutor.name}</Card.Text>
 							<Card.Text className="city-tutor" style={{ marginTop: "-3%" }}>
-								Current job: {tutor.degree}
+								Current job: {tutor.currentJob}
 							</Card.Text>
 							<Card.Text className="city-tutor" style={{ marginTop: "6%" }}>
 								Speciality: {tutor.specialty}
@@ -48,7 +48,7 @@ function TutorInfo(props) {
 							<div className="dropdown">
 								<i
 									className="fa fa-ellipsis-v"
-									style={{ marginLeft: "470%", marginTop: '-100%' }}
+									style={{ marginLeft: "455%", marginTop: '-100%' }}
 									type=""
 									id="dropdownMenuButton2"
 									data-bs-toggle="dropdown"
