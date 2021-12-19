@@ -45,7 +45,7 @@ function StudentSideBar() {
             Hi,{" "}
             {localStorage.getItem("currentUser") == null
               ? history.push("/signin")
-              : user.name}
+              : user.username}
           </p>
         </div>
         <div className="col-sm-auto" style={{ marginTop: "-3%" }}>
