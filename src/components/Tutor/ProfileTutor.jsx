@@ -5,6 +5,7 @@ import UserServices from "../../services/UserServices";
 import Navbar from "../Navbar"
 import { IconButton } from "@material-ui/core";
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function ProfileTutor() {
 	const history = useHistory();
@@ -23,20 +24,13 @@ function ProfileTutor() {
 	useEffect(() => {
 		UserServices.getUserInformation().then((response) => {
 			setUser(response.data.value);
-			console.log(response.data.value)
 		});
 	}, []);
-	console.log(user.dateOfBirth);
 	return (
 		<div className="" style={{ position: 'fixed' }}>
 			<ToastContainer />
 			<Navbar />
-			<form className="profile-box">
-				<h3
-					className="text-center position-abs"
-					style={{ font: "Oxygen", color: "rgba(0, 0, 0, 0.5)", marginTop: '-90%', right: '-50%' }}>
-					PROFILE
-				</h3>
+			<form className="profile-box" >
 				<IconButton
 					className="icon-purple postion-abs"
 					children="camera"
@@ -69,10 +63,6 @@ function ProfileTutor() {
 						<b className="label-left-tutor">Gender</b>
 						<b className="label-left-tutor">Location</b>
 						<b className="label-left-tutor">Speciality</b>
-
-						<b className="label-left-tutor">Rank</b>
-
-
 					</div>
 					<div className=" col-sm-6 profile-tutor">
 						<p className="label-right-tutor">
@@ -99,27 +89,28 @@ function ProfileTutor() {
 									? "None"
 									: user.specialty}
 						</p>
-						<p className="label-right-tutor">0/5</p>
 					</div>
 				</div>
 
 				<div className="position-abs">
+					<Link to="/tutors/dialog">
+						<IconButton
+							className="icon-purple position-abs"
+							children="asking"
+							color="primary"
+							style={{ marginLeft: "570%", marginTop: "230%" }}
+							size="medium"
+						>
+							<Image
+								src="/Image/tutor_icon.JPG"
+								className="position-abs"
+								width="50"
+								height="50"
+								alt="image"
+							></Image>
+						</IconButton>
+					</Link>
 
-					<IconButton
-						className="icon-purple position-abs"
-						children="asking"
-						color="primary"
-						style={{ marginLeft: "570%", marginTop: "80%" }}
-						size="medium"
-					>
-						<Image
-							src="/Image/tutor_icon.JPG"
-							className="position-abs"
-							width="50"
-							height="50"
-							alt="image"
-						></Image>
-					</IconButton>
 				</div>
 			</form>
 
