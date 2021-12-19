@@ -152,7 +152,7 @@ function EditProfile() {
             style={{
               color: "rgba(0, 0, 0, 0.5)",
               width: "0px",
-              height: "400px",
+              height: "600px",
               left: "35px",
               border: "1px solid #8d8989",
               marginLeft: "35%",
@@ -164,7 +164,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Name </span>
             <InputText
-              style={{ marginLeft: "6.2rem" }}
+              style={{
+                marginLeft: "6.2rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.name}
               name="name"
               className="input-update-profile"
@@ -175,7 +182,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Age </span>
             <InputText
-              style={{ marginLeft: "7.1rem" }}
+              style={{
+                marginLeft: "7.1rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.age}
               name="age"
               className="input-update-profile"
@@ -185,7 +199,12 @@ function EditProfile() {
           </div>
           <div className="mt-3">
             <span className="">Gender </span>
-            <div style={{ display: "inline-block", marginLeft: "5.6rem" }}>
+            <div
+              style={{
+                display: "inline-block",
+                marginLeft: "5.6rem",
+              }}
+            >
               <Select
                 styles={colourStyles}
                 options={options}
@@ -199,7 +218,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Location </span>
             <InputText
-              style={{ marginLeft: "5.1rem" }}
+              style={{
+                marginLeft: "5.1rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.address}
               name="location"
               className="input-update-profile"
@@ -210,7 +236,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Speciality </span>
             <InputText
-              style={{ marginLeft: "4.7rem" }}
+              style={{
+                marginLeft: "4.7rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.specialty}
               name="specialty"
               className="input-update-profile"
@@ -221,7 +254,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Birthday </span>
             <InputText
-              style={{ marginLeft: "5.2rem" }}
+              style={{
+                marginLeft: "5.2rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.dateOfBirth}
               name="birthday"
               className="input-update-profile"
@@ -232,7 +272,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Experience </span>
             <InputText
-              style={{ marginLeft: "4.1rem" }}
+              style={{
+                marginLeft: "4.1rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.experience}
               name="experience"
               className="input-update-profile"
@@ -243,7 +290,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Certificate </span>
             <InputText
-              style={{ marginLeft: "4.4rem" }}
+              style={{
+                marginLeft: "4.4rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.role}
               name="role"
               className="input-update-profile"
@@ -254,7 +308,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Teaching Method </span>
             <InputText
-              style={{ marginLeft: "1.2rem" }}
+              style={{
+                marginLeft: "1.2rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.currentJob}
               name="currentJob"
               className="input-update-profile"
@@ -262,10 +323,17 @@ function EditProfile() {
               onChange={handleChange}
             />
           </div>
-          {/* <div className="mt-3">
+          <div className="mt-3">
             <span className="">ID </span>
             <InputText
-              style={{ marginLeft: "4.6rem" }}
+              style={{
+                marginLeft: "7.9rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.studentId}
               name="id"
               className="input-update-profile"
@@ -276,7 +344,14 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Phone </span>
             <InputText
-              style={{ marginLeft: "4.6rem" }}
+              style={{
+                marginLeft: "6.0rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.telephone}
               name="telephone"
               className="input-update-profile"
@@ -287,64 +362,36 @@ function EditProfile() {
           <div className="mt-3">
             <span className="">Email </span>
             <InputText
-              style={{ marginLeft: "4.6rem" }}
+              style={{
+                marginLeft: "6.4rem",
+                border: 0,
+                outline: 0,
+                color: "#000000",
+                background: "transparent",
+                borderBottom: "1px solid #000000",
+              }}
               defaultValue={tutorInformation.email}
               name="email"
               className="input-update-profile"
               placeholder=""
               onChange={handleChange}
             />
-          </div> */}
-          <div className="col-sm-auto edit-setting-tutor">
-            {" "}
-            <div className="mt-3">
-              <span className="">ID </span>
-              <InputText
-                style={{ marginLeft: "4.6rem" }}
-                defaultValue={tutorInformation.studentId}
-                name="id"
-                className="input-update-profile"
-                placeholder=""
-                disabled="true"
-              />
-            </div>
-            <div className="mt-3">
-              <span className="">Phone </span>
-              <InputText
-                style={{ marginLeft: "2.8rem" }}
-                defaultValue={tutorInformation.telephone}
-                name="telephone"
-                className="input-update-profile"
-                placeholder=""
-                onChange={handleChange}
-              />
-            </div>
-            <div className="mt-3">
-              <span className="">Email </span>
-              <InputText
-                style={{ marginLeft: "3.3rem" }}
-                defaultValue={tutorInformation.email}
-                name="email"
-                className="input-update-profile"
-                placeholder=""
-                onChange={handleChange}
-              />
-            </div>
           </div>
-          <div className="mt-3" style={{ marginLeft: "65%" }}>
-            <input
-              type="file"
-              style={{ marginTop: "1rem" }}
-              onChange={(event) => {
-                setImageSelected(event.target.files[0]);
-              }}
-            ></input>
-          </div>
-
+          <br />
+        </div>
+        <div className="col-mt-7">
+          <input
+            type="file"
+            style={{ marginLeft: "25%" }}
+            onChange={(event) => {
+              setImageSelected(event.target.files[0]);
+            }}
+          ></input>
+          <br />
           <Button
             variant="primary"
             className="mt-4"
-            style={{ marginLeft: "65%" }}
+            style={{ marginLeft: "25%" }}
             onClick={handleSubmit}
           >
             Save
