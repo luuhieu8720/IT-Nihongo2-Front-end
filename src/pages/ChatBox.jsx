@@ -1,11 +1,11 @@
 import { InputText } from "primereact/inputtext";
 import { Image } from "react-bootstrap";
-import { Card } from "react-bootstrap";
 import React, { useState, useEffect, useRef } from "react";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
 import ThumbnailChat from "../components/Chat/ThumbnailChat";
 import axios from "axios";
+import UserServices from "../services/UserServices";
 
 const host = "https://itnihongo2.herokuapp.com";
 // const host = "http://localhost:8080";
@@ -34,6 +34,10 @@ Chat {
 function ChatBox() {
 	const currentUser = JSON.parse(localStorage.getItem("current"));
 
+	if (currentUser.avatar === "") {
+		currentUser.avatar = "/Image/avatardefault.png"
+	}
+
 	const [message, setMessage] = useState("");
 
 	const messagesEnd = useRef();
@@ -43,8 +47,9 @@ function ChatBox() {
 	// State all conversation
 	const [conversationIds, setConversationIds] = useState([]);
 	const [chatInfo, setChatInfo] = useState([{
-		conversationId:"",
-		name:""
+		conversationId: "",
+		name: "",
+		avatar:""
 	}]);
 	const [groups, setGroups] = useState([]);
 
@@ -138,7 +143,8 @@ function ChatBox() {
 
 			chatInfo.push({
 				conversationId: groupModel.id,
-				name:groupModel.name
+				name: groupModel.name,
+				avatar: groupModel.avatar
 			})
 
 			groups[groupModel.id] = groupModel;
@@ -217,31 +223,36 @@ function ChatBox() {
 
 		groups[groupModel.id] = groupModel;
 		conversationIds.push(groupModel.id);
-		
-		// chatInfo.push({
-		// 	conversationId: groupModel.id,
-		// 	name: groupModel.name
-		// })
-
-		// setChatInfo(chatInfo);
 		setConversationIds(conversationIds);
 		setCurrentConversationId(groupModel.id);
 	};
 	console.log(chatInfo)
 	const listConversations = chatInfo.map((chatInfo) => (
 		<div key={chatInfo.conversationId} onClick={() => { onChangeConversation(chatInfo.conversationId); }}>
-			<ThumbnailChat name={chatInfo.name}></ThumbnailChat>
+			<ThumbnailChat name={chatInfo.name} avatar={chatInfo.avatar}></ThumbnailChat>
 			<div className="blank"></div>
 		</div>
 	));
 
 	const renderMess = currentConversation.map((chat) => (
-		<div
-			key={chat.index}
-			className={`${chat.username === currentUser.username ? "your-message" : "other-people"
-				} chat-item`}
-		>
-			{chat.content}
+		<div>
+			<div key={chat.index}
+				className={`${chat.username === currentUser.username ? "your-message-box" : "other-people-box"
+					} chat-item`}>
+				{/* <Image className={`${chat.username === currentUser.username ? "your-image" : "other-image"
+					}`}
+					src={currentUser.avatar}
+					style={{ borderRadius: "50%" }}
+					alt="image"
+					width="50px"
+					height="50px">
+				</Image> */}
+				<div className={`${chat.username === currentUser.username ? "your-message" : "other-people-message"
+					} `}>
+					{chat.content}
+				</div>
+			</div>
+
 		</div>
 	));
 
@@ -258,12 +269,8 @@ function ChatBox() {
 					}}
 				>
 					<Image
-						src={
-							currentUser.avatar === ""
-								? "/Image/avatardefault.png"
-								: currentUser.avatar
-						}
-						style={{ borderRadius:"50%" }}
+						src={currentUser.avatar}
+						style={{ borderRadius: "50%" }}
 						alt="image"
 						width="100px"
 						height="100px"
