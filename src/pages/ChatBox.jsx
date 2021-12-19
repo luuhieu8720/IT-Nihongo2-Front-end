@@ -8,8 +8,9 @@ import ThumbnailChat from "../components/Chat/ThumbnailChat";
 import axios from "axios";
 
 const host = "https://itnihongo2.herokuapp.com";
-const endpoint = host + "/api/socket/endpoint";
-const prefixes = "/api/socket";
+// const host = "http://localhost:8080";
+const endpoint = host + "/socket/endpoint";
+const prefixes = "/socket";
 
 /*
 Model được sử dụng
@@ -33,49 +34,61 @@ Chat {
 function ChatBox() {
   const currentUser = JSON.parse(localStorage.getItem("current"));
 
-  const [mess, setMess] = useState([]);
   const [message, setMessage] = useState("");
 
-  let username = "";
-
-  const socketRef = useRef();
   const messagesEnd = useRef();
 
-  const [conversationIds, setConversationIds] = useState([1, 2]);
-  //gọi service để lấy id của các cuộc trò chuyện có trong db ở đây, sau đó lưu vào conversationIds
-  // tui đang giả sử nó chỉ có 2 Id là 1 và 2
+  const stompClient = useRef();
 
-  // Chứa toàn bộ group và chat (chat có trong group)
-  const allGroup = {};
+  // State all conversation
+  const [conversationIds, setConversationIds] = useState([]);
+  const [groups, setGroups] = useState([]);
 
-  // Dùng để chuyển đổi conversation id hiện tại
+  // State conversation hiện tại
   const [currentConversationId, setCurrentConversationId] = useState("");
+  const [currentConversation, setCurrentConversation] = useState([]);
+
+  const [needUpdate, setNeedUpdate] = useState(0);
 
   useEffect(() => {
-    // socketRef.current = socketIOClient.connect(host);
+    const token = axios.defaults.headers.common["Authorization"];
+    let header = { Authorization: token };
+    stompClient.current = Stomp.over(new SockJS(endpoint));
 
-    // socketRef.current.on("getId", (data) => {
-    // 	setId(data);
-    // });
+    stompClient.current.connect(header, function (frame) {
+      // Đăng ký các callback cho các đường dẫn
 
-    // socketRef.current.on("sendDataServer", (dataGot) => {
-    // 	setMess((oldMsgs) => [...oldMsgs, dataGot.data]);
-    // 	scrollToBottom();
-    // });
+      // Callback ("/chat/receive") cho việc nhận tin nhắn gửi đến
+      stompClient.current.subscribe("/user/queue/chat/receive", receiveChat);
+
+      // Callback ("/chat/group") cho việc lấy thông tin group
+      stompClient.current.subscribe("/user/queue/chat/group", receiveGroup);
+
+      // Callback ("/chat/group") cho nhận thông tin group mới tạo
+      stompClient.current.subscribe("/user/queue/chat/group/new", receiveNewGroup);
+
+      // Callback ("/chat/group") cho nhận tất cả group (không đầy đủ)
+      stompClient.current.subscribe("/user/queue/chat/group/all", receiveAllGroup);
+
+      getAllGroup();
+    });
 
     return () => {
-      // socketRef.current.disconnect();
+      stompClient.current.disconnect();
     };
   }, []);
 
-  //này là tin nhắn để send đi gần nhất
+  useEffect(() => {
+    if (groups[currentConversationId] && groups[currentConversationId].chats)
+      setCurrentConversation(groups[currentConversationId].chats);
+  }, [needUpdate, currentConversationId]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [currentConversation.length]);
+
   const sendMessage = () => {
     if (message !== null) {
-      //   const msg = {
-      //     content: message,
-      //     id: id,
-      //   };
-      //   socketRef.current.emit("sendDataClient", msg);
       sendChat(currentConversationId, message);
       setMessage("");
     }
@@ -90,39 +103,17 @@ function ChatBox() {
   };
 
   const onEnterPress = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false) {
+    if (e.keyCode === 13 && e.shiftKey === false) {
       sendMessage();
     }
   };
 
-  const token = axios.defaults.headers.common["Authorization"];
-  let header = { Authorization: token };
-
-  let socket = new SockJS(endpoint);
-  let stompClient = Stomp.over(socket);
-
-  stompClient.connect(header, function (frame) {
-    // Callback khi kết nối thành công
-    username = frame.headers["user-name"];
-    // Đăng ký các callback cho các đường dẫn
-
-    // Callback ("/chat/receive") cho việc nhận tin nhắn gửi đến
-    stompClient.subscribe("/user/queue/chat/receive", receiveChat);
-
-    // Callback ("/chat/group") cho việc lấy thông tin group
-    stompClient.subscribe("/user/queue/chat/group", receiveGroup);
-
-    // Callback ("/chat/group") cho nhận thông tin group mới tạo
-    stompClient.subscribe("/user/queue/chat/group/new", receiveNewGroup);
-
-    // Callback ("/chat/group") cho nhận tất cả group (không đầy đủ)
-    stompClient.subscribe("/user/queue/chat/group/all", receiveAllGroup);
-
-    getAllGroup();
-  });
+  const onChangeConversation = (groupId) => {
+    setCurrentConversationId(groupId);
+  }
 
   const getAllGroup = () => {
-    stompClient.send(prefixes + "/chat/group/all");
+    stompClient.current.send(prefixes + "/chat/group/all");
   };
 
   const receiveAllGroup = (model) => {
@@ -133,67 +124,70 @@ function ChatBox() {
       return;
     }
     let groupModels = response.value;
+    if (groupModels.length <= 0) return;
+
     conversationIds.length = 0;
     groupModels.forEach((groupModel) => {
       conversationIds.push(groupModel.id);
-      allGroup[groupModel.id] = groupModel;
+      groups[groupModel.id] = groupModel;
     });
-    // Render lại listConversations
-    // Render lại chatbox (chỗ này là phải gọi getGroup(currentConvaersationId) vì api này chỉ trả kết quả thô)
+    setConversationIds(conversationIds);
+    setNeedUpdate(Math.random());
+
+    setCurrentConversationId(conversationIds[0]);
+    getGroup(conversationIds[0]);
   };
 
-  // id là string (được lấy từ conversationIds)
-  const getGroup = (id) => {
-    let payload = JSON.stringify({ id: id });
-    stompClient.send(prefixes + "/chat/group", {}, payload);
+  const getGroup = (groupId) => {
+    let payload = JSON.stringify({ id: groupId });
+    stompClient.current.send(prefixes + "/chat/group", payload);
   };
 
   const receiveGroup = (model) => {
     let response = JSON.parse(model.body);
     if (!response.success) {
-      console.log("Receive All Group Fail");
+      console.log("Receive Group Fail");
       console.log(response.value);
       return;
     }
+
     let groupModel = response.value;
-    // Kiểm tra đã có group đó chưa
-    if (conversationIds.find((value) => {return value === groupModel.id;}) === undefined)
+    if (conversationIds.find((value) => { return value === groupModel.id; }) === undefined) {
       conversationIds.push(groupModel.id);
-      // render lại listConversations
-    
-    allGroup[groupModel.id] = groupModel;
-    // render lại chatbox nếu 
-    // groupModel.id == currentConversationId
+      setConversationIds(conversationIds);
+    }
+    groups[groupModel.id] = groupModel;
+    setNeedUpdate(Math.random());
   };
 
   const sendChat = (idGroup, mes) => {
     let payload = JSON.stringify({ idGroup: idGroup, content: mes });
-    stompClient.send(prefixes + "/chat/send", {}, payload);
+    stompClient.current.send(prefixes + "/chat/send", payload);
   };
 
   const receiveChat = (model) => {
     let response = JSON.parse(model.body);
     if (!response.success) {
-      console.log("Receive All Group Fail");
+      console.log("Receive Chat Fail");
       console.log(response.value);
       return;
     }
+
     let chatModel = response.value;
-    // Kiểm tra đã có thông tin của group mà tin nhắn gửi đến
     let have = false;
     conversationIds.forEach((conversationId) => {
-      if (conversationId == chatModel.idGroup)
-        if (allGroup[chatModel.idGroup].chats != null) have = true;
+      if (conversationId === chatModel.idGroup)
+        if (groups[chatModel.idGroup].chats != null) have = true;
     });
+
     if (!have) {
-      // Nếu ko có thì dùng getGroup để lấy
       getGroup(chatModel.idGroup);
       return;
     }
-    // Nếu có rồi thì lưu data chat vào group
-    allGroup[chatModel.idGroup].chats.push(chatModel);
-    // Render lại chatbox nếu
-    // groupModel.id == currentConversationId
+
+    groups[chatModel.idGroup].chats.push(chatModel);
+
+    setNeedUpdate(Math.random());
   };
 
   // Trước khi chat với ai đều cần tạo group
@@ -202,41 +196,39 @@ function ChatBox() {
   // Nếu muốn truyền mảng hay gì đó thì tự sửa nha, miễn payload có đủ thành phần là được
   const newGroup = (group) => {
     let payload = JSON.stringify(group);
-    stompClient.send(prefixes + "/chat/group/new", {}, payload);
+    stompClient.current.send(prefixes + "/chat/group/new", {}, payload);
   };
 
   const receiveNewGroup = (model) => {
     let response = JSON.parse(model.body);
     if (!response.success) {
-      console.log("Receive All Group Fail");
+      console.log("Receive New Group Fail");
       console.log(response.value);
       return;
     }
     let groupModel = response.value;
-    allGroup[groupModel.id] = groupModel;
+
+    groups[groupModel.id] = groupModel;
     conversationIds.push(groupModel.id);
-    // Render lại listConversations
-    // Render lại chatbox (bắt buộc render cái này)
-    // setCurrentConversationId(groupModel.id)
+
+    setConversationIds(conversationIds);
+    setCurrentConversationId(groupModel.id);
   };
 
-  // Thêm Onclick vô cái này nha, dùng để thay đổi currentConversationId cũng như render lại renderMess
   const listConversations = conversationIds.map((conversationId) => (
-    <div>
-      <ThumbnailChat id={conversationId}></ThumbnailChat>
+    <div key={conversationId} onClick={() => { onChangeConversation(conversationId); }}>
+      <ThumbnailChat id=""></ThumbnailChat>
       <div className="blank"></div>
     </div>
   ));
 
-  // Chuyển sang kiểm tra với username
-  const renderMess = mess.map((m, index) => (
+  const renderMess = currentConversation.map((chat) => (
     <div
-      key={index}
-      className={`${
-        m.username === username ? "your-message" : "other-people"
-      } chat-item`}
+      key={chat.index}
+      className={`${chat.username === currentUser.username ? "your-message" : "other-people"
+        } chat-item`}
     >
-      {m.content}
+      {chat.content}
     </div>
   ));
 
@@ -284,8 +276,8 @@ function ChatBox() {
       </div>
 
       <div className="col-9">
-        <div class="box-chat">
-          <div class="box-chat_message">
+        <div className="box-chat">
+          <div className="box-chat_message">
             {renderMess}
             <div
               style={{ float: "left", clear: "both" }}

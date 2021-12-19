@@ -2,10 +2,18 @@ import { Card } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
+import ChatServices from "../../services/ChatServices";
 
 function TutorInfo(props) {
 	const tutor = props.tutor;
 	console.log(tutor)
+
+	const beforeStartChat = (username) => {
+		let group = JSON.stringify({ member: [{ username: username }] })
+		let res = await ChatServices.newGroup(group);
+		return "/chat";
+	}
+
 	return (
 		<Card className="card-tutor-info box">
 			<ToastContainer />
@@ -40,7 +48,7 @@ function TutorInfo(props) {
 							<div className="dropdown">
 								<i
 									className="fa fa-ellipsis-v"
-									style={{ marginLeft: "470%", marginTop:'-100%' }}
+									style={{ marginLeft: "470%", marginTop: '-100%' }}
 									type=""
 									id="dropdownMenuButton2"
 									data-bs-toggle="dropdown"
@@ -65,7 +73,7 @@ function TutorInfo(props) {
 										</Link>
 									</li>
 									<li>
-										<Link className="dropdown-item" to="/chat">
+										<Link className="dropdown-item" to={() => { return beforeStartChat(tutor.username) }}>
 											Send message
 										</Link>
 									</li>
