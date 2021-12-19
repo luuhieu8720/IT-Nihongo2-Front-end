@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import UserServices from "../services/UserServices";
 import Button from 'react-bootstrap/Button'
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ChatServices from "../services/ChatServices";
 
 function TutorDetail({ match }) {
     const [user, setUser] = useState({
@@ -21,6 +23,13 @@ function TutorDetail({ match }) {
         dateOfBirth: "",
         teachingMethod: ""
     });
+
+    const beforeStartChat = (username) => {
+        let group = { members: [{ username: username }] }
+        let res = ChatServices.newGroup(group);
+        console.log(res);
+    }
+
     useEffect(() => {
         var username = {
             username: match.params.username.toString(),
@@ -65,12 +74,12 @@ function TutorDetail({ match }) {
                                         </div>
 
                                     </div>
-                                    <p 
+                                    <p
                                         style={{
                                             color: "rgba(0, 0, 0, 0.5)", height: "0px", left: "35px",
                                             border: "1px solid rgb(141, 137, 137)"
                                         }}></p>
-                                    <p className="text-justify" style={{ textAlign:"justify", textJustify:"inter-word" }}>{user.teachingMethod}</p>
+                                    <p className="text-justify" style={{ textAlign: "justify", textJustify: "inter-word" }}>{user.teachingMethod}</p>
                                 </div>
 
                                 <div className="col-sm-3 total-left">
@@ -82,7 +91,9 @@ function TutorDetail({ match }) {
                                     <b className="label-left">Certificate</b>
                                     <b className="label-left">Phone</b>
                                     <b className="label-left">Email</b>
-                                    <Button variant="primary" className="mt-4">Contact now</Button>{' '}
+                                    <Link to="/chat" onClick={() => { beforeStartChat(user.username); }}>
+                                        <Button variant="primary" className="mt-4">Contact now</Button>{' '}
+                                    </Link>
                                 </div>
                                 <div className="col-sm-5 total-right">
                                     <p className="label-right">
