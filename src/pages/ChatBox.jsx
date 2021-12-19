@@ -79,8 +79,10 @@ function ChatBox() {
   }, []);
 
   useEffect(() => {
-    if (groups[currentConversationId] && groups[currentConversationId].chats)
-      setCurrentConversation(groups[currentConversationId].chats);
+    if (groups[currentConversationId])
+      if (groups[currentConversationId].chats)
+        setCurrentConversation(groups[currentConversationId].chats);
+      else getGroup(currentConversationId);
   }, [needUpdate, currentConversationId]);
 
   useEffect(() => {

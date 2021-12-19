@@ -72,7 +72,7 @@ function TutorInfo(props) {
 											Rate
 										</Link>
 									</li>
-									<li onClick={() => { beforeStartChat(); }}>
+									<li onClick={() => { beforeStartChat(tutor.username); }}>
 										<Link className="dropdown-item" to="/chat">
 											Send message
 										</Link>
