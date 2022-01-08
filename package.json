@@ -50,9 +50,9 @@
         "react-sticky": "^6.0.3",
         "react-toastify": "^8.0.3",
         "sockjs-client": "latest",
-        "webstomp-client": "latest",
         "validator": "^13.7.0",
         "web-vitals": "^1.1.2",
+        "webstomp-client": "latest",
         "yup": "^0.32.11"
     },
     "scripts": {

@@ -4,7 +4,8 @@ import { useHistory } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 
 function SidebarHomePage() {
-  var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  var currentUser = {};
+  currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const history = useHistory();
   const signOut = () => {
     toast.success("Successfully");
